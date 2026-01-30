@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Limits of Basic Types</title><meta name="generator" content="DocBook XSL Stylesheets V1.50.0"><meta name="generator" content="GTK-Doc V1.0 (XML mode)"><style type="text/css">
+        .synopsis, .classsynopsis {
+            background: #eeeeee;
+            border: solid 1px #aaaaaa;
+            padding: 0.5em;
+        }
+        .programlisting {
+            background: #eeeeff;
+            border: solid 1px #aaaaff;
+            padding: 0.5em;
+        }
+        .variablelist {
+            padding: 4px;
+            margin-left: 3em;
+        }
+        .navigation {
+            background: #ffeeee;
+            border: solid 1px #ffaaaa;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+        .navigation a {
+            color: #770000;
+        }
+        .navigation a:visited {
+            color: #550000;
+        }
+        .navigation .title {
+            font-size: 200%;
+        }
+      </style><link rel="home" href="index.html" title="GLib Reference Manual"><link rel="up" href="glib-fundamentals.html" title="GLib Fundamentals"><link rel="previous" href="glib-Basic-Types.html" title="Basic Types"><link rel="next" href="glib-Standard-Macros.html" title="Standard Macros"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><table class="navigation" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2"><tr valign="middle"><td><a accesskey="p" href="glib-Basic-Types.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td><td><a accesskey="u" href="glib-fundamentals.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td><td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td><th width="100%" align="center">GLib Reference Manual</th><td><a accesskey="n" href="glib-Standard-Macros.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td></tr></table><div class="refentry"><a name="glib-Limits-of-Basic-Types"></a><div class="titlepage"></div><div class="refnamediv"><h2>Limits of Basic Types</h2><p>Limits of Basic Types &#8212; portable method of determining the limits of the standard types.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><pre class="synopsis">
+
+#include &lt;glib.h&gt;
+
+
+#define     <a href="glib-Limits-of-Basic-Types.html#G-MININT-CAPS">G_MININT</a>
+#define     <a href="glib-Limits-of-Basic-Types.html#G-MAXINT-CAPS">G_MAXINT</a>
+#define     <a href="glib-Limits-of-Basic-Types.html#G-MAXUINT-CAPS">G_MAXUINT</a>
+
+#define     <a href="glib-Limits-of-Basic-Types.html#G-MINSHORT-CAPS">G_MINSHORT</a>
+#define     <a href="glib-Limits-of-Basic-Types.html#G-MAXSHORT-CAPS">G_MAXSHORT</a>
+#define     <a href="glib-Limits-of-Basic-Types.html#G-MAXUSHORT-CAPS">G_MAXUSHORT</a>
+
+#define     <a href="glib-Limits-of-Basic-Types.html#G-MINLONG-CAPS">G_MINLONG</a>
+#define     <a href="glib-Limits-of-Basic-Types.html#G-MAXLONG-CAPS">G_MAXLONG</a>
+#define     <a href="glib-Limits-of-Basic-Types.html#G-MAXULONG-CAPS">G_MAXULONG</a>
+
+#define     <a href="glib-Limits-of-Basic-Types.html#G-MININT64-CAPS">G_MININT64</a>
+#define     <a href="glib-Limits-of-Basic-Types.html#G-MAXINT64-CAPS">G_MAXINT64</a>
+#define     <a href="glib-Limits-of-Basic-Types.html#G-MAXUINT64-CAPS">G_MAXUINT64</a>
+
+#define     <a href="glib-Limits-of-Basic-Types.html#G-MINFLOAT-CAPS">G_MINFLOAT</a>
+#define     <a href="glib-Limits-of-Basic-Types.html#G-MAXFLOAT-CAPS">G_MAXFLOAT</a>
+
+#define     <a href="glib-Limits-of-Basic-Types.html#G-MINDOUBLE-CAPS">G_MINDOUBLE</a>
+#define     <a href="glib-Limits-of-Basic-Types.html#G-MAXDOUBLE-CAPS">G_MAXDOUBLE</a>
+</pre></div><div class="refsect1"><h2>Description</h2><p>
+These macros provide a portable method to determine the limits of some of
+the standard integer and floating point types.
+</p></div><div class="refsect1"><h2>Details</h2><div class="refsect2"><h3><a name="G-MININT-CAPS"></a>G_MININT</h3><pre class="programlisting">#define G_MININT	INT_MIN
+</pre><p>
+The minimum value which can be held in a <a href="glib-Basic-Types.html#gint">gint</a>.
+</p></div><hr><div class="refsect2"><h3><a name="G-MAXINT-CAPS"></a>G_MAXINT</h3><pre class="programlisting">#define G_MAXINT	INT_MAX
+</pre><p>
+The maximum value which can be held in a <a href="glib-Basic-Types.html#gint">gint</a>.
+</p></div><hr><div class="refsect2"><h3><a name="G-MAXUINT-CAPS"></a>G_MAXUINT</h3><pre class="programlisting">#define G_MAXUINT	UINT_MAX
+</pre><p>
+The maximum value which can be held in a <a href="glib-Basic-Types.html#guint">guint</a>.
+</p></div><hr><div class="refsect2"><h3><a name="G-MINSHORT-CAPS"></a>G_MINSHORT</h3><pre class="programlisting">#define G_MINSHORT	SHRT_MIN
+</pre><p>
+The minimum value which can be held in a <a href="glib-Basic-Types.html#gshort">gshort</a>.
+</p></div><hr><div class="refsect2"><h3><a name="G-MAXSHORT-CAPS"></a>G_MAXSHORT</h3><pre class="programlisting">#define G_MAXSHORT	SHRT_MAX
+</pre><p>
+The maximum value which can be held in a <a href="glib-Basic-Types.html#gshort">gshort</a>.
+</p></div><hr><div class="refsect2"><h3><a name="G-MAXUSHORT-CAPS"></a>G_MAXUSHORT</h3><pre class="programlisting">#define G_MAXUSHORT	USHRT_MAX
+</pre><p>
+The maximum value which can be held in a <a href="glib-Basic-Types.html#gushort">gushort</a>.
+</p></div><hr><div class="refsect2"><h3><a name="G-MINLONG-CAPS"></a>G_MINLONG</h3><pre class="programlisting">#define G_MINLONG	LONG_MIN
+</pre><p>
+The minimum value which can be held in a <a href="glib-Basic-Types.html#glong">glong</a>.
+</p></div><hr><div class="refsect2"><h3><a name="G-MAXLONG-CAPS"></a>G_MAXLONG</h3><pre class="programlisting">#define G_MAXLONG	LONG_MAX
+</pre><p>
+The maximum value which can be held in a <a href="glib-Basic-Types.html#glong">glong</a>.
+</p></div><hr><div class="refsect2"><h3><a name="G-MAXULONG-CAPS"></a>G_MAXULONG</h3><pre class="programlisting">#define G_MAXULONG	ULONG_MAX
+</pre><p>
+The maximum value which can be held in a <a href="glib-Basic-Types.html#gulong">gulong</a>.
+</p></div><hr><div class="refsect2"><h3><a name="G-MININT64-CAPS"></a>G_MININT64</h3><pre class="programlisting">#define G_MININT64	((gint64)  0x8000000000000000)
+</pre><p>
+The minimum value which can be held in a <a href="glib-Basic-Types.html#gint64">gint64</a>.
+</p></div><hr><div class="refsect2"><h3><a name="G-MAXINT64-CAPS"></a>G_MAXINT64</h3><pre class="programlisting">#define G_MAXINT64	((gint64)  0x7fffffffffffffff)
+</pre><p>
+The maximum value which can be held in a <a href="glib-Basic-Types.html#gint64">gint64</a>.
+</p></div><hr><div class="refsect2"><h3><a name="G-MAXUINT64-CAPS"></a>G_MAXUINT64</h3><pre class="programlisting">#define G_MAXUINT64	((guint64) 0xffffffffffffffff)
+</pre><p>
+The maximum value which can be held in a <a href="glib-Basic-Types.html#guint64">guint64</a>.
+</p></div><hr><div class="refsect2"><h3><a name="G-MINFLOAT-CAPS"></a>G_MINFLOAT</h3><pre class="programlisting">#define G_MINFLOAT	FLT_MIN
+</pre><p>
+The minimum value which can be held in a <a href="glib-Basic-Types.html#gfloat">gfloat</a>.
+</p></div><hr><div class="refsect2"><h3><a name="G-MAXFLOAT-CAPS"></a>G_MAXFLOAT</h3><pre class="programlisting">#define G_MAXFLOAT	FLT_MAX
+</pre><p>
+The maximum value which can be held in a <a href="glib-Basic-Types.html#gfloat">gfloat</a>.
+</p></div><hr><div class="refsect2"><h3><a name="G-MINDOUBLE-CAPS"></a>G_MINDOUBLE</h3><pre class="programlisting">#define G_MINDOUBLE	DBL_MIN
+</pre><p>
+The minimum value which can be held in a <a href="glib-Basic-Types.html#gdouble">gdouble</a>.
+</p></div><hr><div class="refsect2"><h3><a name="G-MAXDOUBLE-CAPS"></a>G_MAXDOUBLE</h3><pre class="programlisting">#define G_MAXDOUBLE	DBL_MAX
+</pre><p>
+The maximum value which can be held in a <a href="glib-Basic-Types.html#gdouble">gdouble</a>.
+</p></div></div></div><table class="navigation" width="100%" summary="Navigation footer" cellpadding="2" cellspacing="0"><tr valign="middle"><td align="left"><a accesskey="p" href="glib-Basic-Types.html"><b>&lt;&lt; Basic Types</b></a></td><td align="right"><a accesskey="n" href="glib-Standard-Macros.html"><b>Standard Macros &gt;&gt;</b></a></td></tr></table></body></html>

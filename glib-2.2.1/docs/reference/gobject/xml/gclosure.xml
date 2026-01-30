@@ -1,0 +1,678 @@
+<refentry id="gobject-Closures">
+<refmeta>
+<refentrytitle>Closures</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GOBJECT Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>Closures</refname><refpurpose>Functions as first-class objects</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv><title>Synopsis</title>
+
+<synopsis>
+
+#include &lt;gobject.h&gt;
+
+
+#define     <link linkend="G-CLOSURE-NEEDS-MARSHAL-CAPS">G_CLOSURE_NEEDS_MARSHAL</link>         (closure)
+#define     <link linkend="G-CLOSURE-N-NOTIFIERS-CAPS">G_CLOSURE_N_NOTIFIERS</link>           (cl)
+#define     <link linkend="G-CCLOSURE-SWAP-DATA-CAPS">G_CCLOSURE_SWAP_DATA</link>            (cclosure)
+#define     <link linkend="G-CALLBACK-CAPS">G_CALLBACK</link>                      (f)
+void        (<link linkend="GCallback">*GCallback</link>)                    (void);
+struct      <link linkend="GClosure">GClosure</link>;
+#define     <link linkend="G-TYPE-CLOSURE-CAPS">G_TYPE_CLOSURE</link>
+struct      <link linkend="GCClosure">GCClosure</link>;
+void        (<link linkend="GClosureMarshal">*GClosureMarshal</link>)              (<link linkend="GClosure">GClosure</link> *closure,
+                                             <link linkend="GValue">GValue</link> *return_value,
+                                             <link linkend="guint">guint</link> n_param_values,
+                                             const <link linkend="GValue">GValue</link> *param_values,
+                                             <link linkend="gpointer">gpointer</link> invocation_hint,
+                                             <link linkend="gpointer">gpointer</link> marshal_data);
+void        (<link linkend="GClosureNotify">*GClosureNotify</link>)               (<link linkend="gpointer">gpointer</link> data,
+                                             <link linkend="GClosure">GClosure</link> *closure);
+struct      <link linkend="GClosureNotifyData">GClosureNotifyData</link>;
+<link linkend="GClosure">GClosure</link>*   <link linkend="g-cclosure-new">g_cclosure_new</link>                  (<link linkend="GCallback">GCallback</link> callback_func,
+                                             <link linkend="gpointer">gpointer</link> user_data,
+                                             <link linkend="GClosureNotify">GClosureNotify</link> destroy_data);
+<link linkend="GClosure">GClosure</link>*   <link linkend="g-cclosure-new-swap">g_cclosure_new_swap</link>             (<link linkend="GCallback">GCallback</link> callback_func,
+                                             <link linkend="gpointer">gpointer</link> user_data,
+                                             <link linkend="GClosureNotify">GClosureNotify</link> destroy_data);
+<link linkend="GClosure">GClosure</link>*   <link linkend="g-cclosure-new-object">g_cclosure_new_object</link>           (<link linkend="GCallback">GCallback</link> callback_func,
+                                             <link linkend="GObject">GObject</link> *object);
+<link linkend="GClosure">GClosure</link>*   <link linkend="g-cclosure-new-object-swap">g_cclosure_new_object_swap</link>      (<link linkend="GCallback">GCallback</link> callback_func,
+                                             <link linkend="GObject">GObject</link> *object);
+<link linkend="GClosure">GClosure</link>*   <link linkend="g-closure-new-object">g_closure_new_object</link>            (<link linkend="guint">guint</link> sizeof_closure,
+                                             <link linkend="GObject">GObject</link> *object);
+<link linkend="GClosure">GClosure</link>*   <link linkend="g-closure-ref">g_closure_ref</link>                   (<link linkend="GClosure">GClosure</link> *closure);
+void        <link linkend="g-closure-sink">g_closure_sink</link>                  (<link linkend="GClosure">GClosure</link> *closure);
+void        <link linkend="g-closure-unref">g_closure_unref</link>                 (<link linkend="GClosure">GClosure</link> *closure);
+void        <link linkend="g-closure-invoke">g_closure_invoke</link>                (<link linkend="GClosure">GClosure</link> *closure,
+                                             <link linkend="GValue">GValue</link> *return_value,
+                                             <link linkend="guint">guint</link> n_param_values,
+                                             const <link linkend="GValue">GValue</link> *param_values,
+                                             <link linkend="gpointer">gpointer</link> invocation_hint);
+void        <link linkend="g-closure-invalidate">g_closure_invalidate</link>            (<link linkend="GClosure">GClosure</link> *closure);
+void        <link linkend="g-closure-add-finalize-notifier">g_closure_add_finalize_notifier</link> (<link linkend="GClosure">GClosure</link> *closure,
+                                             <link linkend="gpointer">gpointer</link> notify_data,
+                                             <link linkend="GClosureNotify">GClosureNotify</link> notify_func);
+void        <link linkend="g-closure-add-invalidate-notifier">g_closure_add_invalidate_notifier</link>
+                                            (<link linkend="GClosure">GClosure</link> *closure,
+                                             <link linkend="gpointer">gpointer</link> notify_data,
+                                             <link linkend="GClosureNotify">GClosureNotify</link> notify_func);
+void        <link linkend="g-closure-remove-finalize-notifier">g_closure_remove_finalize_notifier</link>
+                                            (<link linkend="GClosure">GClosure</link> *closure,
+                                             <link linkend="gpointer">gpointer</link> notify_data,
+                                             <link linkend="GClosureNotify">GClosureNotify</link> notify_func);
+void        <link linkend="g-closure-remove-invalidate-notifier">g_closure_remove_invalidate_notifier</link>
+                                            (<link linkend="GClosure">GClosure</link> *closure,
+                                             <link linkend="gpointer">gpointer</link> notify_data,
+                                             <link linkend="GClosureNotify">GClosureNotify</link> notify_func);
+<link linkend="GClosure">GClosure</link>*   <link linkend="g-closure-new-simple">g_closure_new_simple</link>            (<link linkend="guint">guint</link> sizeof_closure,
+                                             <link linkend="gpointer">gpointer</link> data);
+void        <link linkend="g-closure-set-marshal">g_closure_set_marshal</link>           (<link linkend="GClosure">GClosure</link> *closure,
+                                             <link linkend="GClosureMarshal">GClosureMarshal</link> marshal);
+void        <link linkend="g-closure-add-marshal-guards">g_closure_add_marshal_guards</link>    (<link linkend="GClosure">GClosure</link> *closure,
+                                             <link linkend="gpointer">gpointer</link> pre_marshal_data,
+                                             <link linkend="GClosureNotify">GClosureNotify</link> pre_marshal_notify,
+                                             <link linkend="gpointer">gpointer</link> post_marshal_data,
+                                             <link linkend="GClosureNotify">GClosureNotify</link> post_marshal_notify);
+void        <link linkend="g-closure-set-meta-marshal">g_closure_set_meta_marshal</link>      (<link linkend="GClosure">GClosure</link> *closure,
+                                             <link linkend="gpointer">gpointer</link> marshal_data,
+                                             <link linkend="GClosureMarshal">GClosureMarshal</link> meta_marshal);
+void        <link linkend="g-source-set-closure">g_source_set_closure</link>            (<link linkend="GSource">GSource</link> *source,
+                                             <link linkend="GClosure">GClosure</link> *closure);
+#define     <link linkend="G-TYPE-IO-CHANNEL-CAPS">G_TYPE_IO_CHANNEL</link>
+#define     <link linkend="G-TYPE-IO-CONDITION-CAPS">G_TYPE_IO_CONDITION</link>
+
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+<refsect1>
+<title>Description</title>
+<para>
+
+</para>
+</refsect1>
+
+<refsect1>
+<title>Details</title>
+<refsect2>
+<title><anchor id="G-CLOSURE-NEEDS-MARSHAL-CAPS"/>G_CLOSURE_NEEDS_MARSHAL()</title>
+<programlisting>#define	G_CLOSURE_NEEDS_MARSHAL(closure) (((GClosure*) (closure))-&gt;marshal == NULL)
+</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>closure</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="G-CLOSURE-N-NOTIFIERS-CAPS"/>G_CLOSURE_N_NOTIFIERS()</title>
+<programlisting>#define     G_CLOSURE_N_NOTIFIERS(cl)</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>cl</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="G-CCLOSURE-SWAP-DATA-CAPS"/>G_CCLOSURE_SWAP_DATA()</title>
+<programlisting>#define	G_CCLOSURE_SWAP_DATA(cclosure)	 (((GClosure*) (closure))-&gt;derivative_flag)
+</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>cclosure</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="G-CALLBACK-CAPS"/>G_CALLBACK()</title>
+<programlisting>#define	G_CALLBACK(f)			 ((GCallback) (f))
+</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>f</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="GCallback"/>GCallback ()</title>
+<programlisting>void        (*GCallback)                    (void);</programlisting>
+<para>
+
+</para></refsect2>
+<refsect2>
+<title><anchor id="GClosure"/>struct GClosure</title>
+<programlisting>struct GClosure {
+
+
+};
+</programlisting>
+<para>
+
+</para><variablelist role="struct">
+<varlistentry>
+<term><link linkend="guint">guint</link> <structfield>in_marshal</structfield> : 1</term>
+<listitem><simpara>
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="guint">guint</link> <structfield>is_invalid</structfield> : 1</term>
+<listitem><simpara>Indicates whether the closure has been invalidated by <link linkend="g-closure-invalidate">g_closure_invalidate</link>()
+
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="G-TYPE-CLOSURE-CAPS"/>G_TYPE_CLOSURE</title>
+<programlisting>#define	G_TYPE_CLOSURE		(g_closure_get_type ())
+</programlisting>
+<para>
+The <link linkend="GType">GType</link> for <link linkend="GClosure">GClosure</link>.
+</para></refsect2>
+<refsect2>
+<title><anchor id="GCClosure"/>struct GCClosure</title>
+<programlisting>struct GCClosure {
+
+  GClosure	closure;
+  gpointer	callback;
+};
+</programlisting>
+<para>
+
+</para></refsect2>
+<refsect2>
+<title><anchor id="GClosureMarshal"/>GClosureMarshal ()</title>
+<programlisting>void        (*GClosureMarshal)              (<link linkend="GClosure">GClosure</link> *closure,
+                                             <link linkend="GValue">GValue</link> *return_value,
+                                             <link linkend="guint">guint</link> n_param_values,
+                                             const <link linkend="GValue">GValue</link> *param_values,
+                                             <link linkend="gpointer">gpointer</link> invocation_hint,
+                                             <link linkend="gpointer">gpointer</link> marshal_data);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>closure</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>return_value</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>n_param_values</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>param_values</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>invocation_hint</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>marshal_data</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="GClosureNotify"/>GClosureNotify ()</title>
+<programlisting>void        (*GClosureNotify)               (<link linkend="gpointer">gpointer</link> data,
+                                             <link linkend="GClosure">GClosure</link> *closure);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>data</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>closure</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="GClosureNotifyData"/>struct GClosureNotifyData</title>
+<programlisting>struct GClosureNotifyData {
+
+  gpointer       data;
+  GClosureNotify notify;
+};
+</programlisting>
+<para>
+
+</para></refsect2>
+<refsect2>
+<title><anchor id="g-cclosure-new"/>g_cclosure_new ()</title>
+<programlisting><link linkend="GClosure">GClosure</link>*   g_cclosure_new                  (<link linkend="GCallback">GCallback</link> callback_func,
+                                             <link linkend="gpointer">gpointer</link> user_data,
+                                             <link linkend="GClosureNotify">GClosureNotify</link> destroy_data);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>callback_func</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>destroy_data</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis> :</term><listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-cclosure-new-swap"/>g_cclosure_new_swap ()</title>
+<programlisting><link linkend="GClosure">GClosure</link>*   g_cclosure_new_swap             (<link linkend="GCallback">GCallback</link> callback_func,
+                                             <link linkend="gpointer">gpointer</link> user_data,
+                                             <link linkend="GClosureNotify">GClosureNotify</link> destroy_data);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>callback_func</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>destroy_data</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis> :</term><listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-cclosure-new-object"/>g_cclosure_new_object ()</title>
+<programlisting><link linkend="GClosure">GClosure</link>*   g_cclosure_new_object           (<link linkend="GCallback">GCallback</link> callback_func,
+                                             <link linkend="GObject">GObject</link> *object);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>callback_func</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>object</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis> :</term><listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-cclosure-new-object-swap"/>g_cclosure_new_object_swap ()</title>
+<programlisting><link linkend="GClosure">GClosure</link>*   g_cclosure_new_object_swap      (<link linkend="GCallback">GCallback</link> callback_func,
+                                             <link linkend="GObject">GObject</link> *object);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>callback_func</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>object</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis> :</term><listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-closure-new-object"/>g_closure_new_object ()</title>
+<programlisting><link linkend="GClosure">GClosure</link>*   g_closure_new_object            (<link linkend="guint">guint</link> sizeof_closure,
+                                             <link linkend="GObject">GObject</link> *object);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>sizeof_closure</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>object</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis> :</term><listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-closure-ref"/>g_closure_ref ()</title>
+<programlisting><link linkend="GClosure">GClosure</link>*   g_closure_ref                   (<link linkend="GClosure">GClosure</link> *closure);</programlisting>
+<para>
+Increment the reference count on a closure to force it staying
+alive while the caller holds a pointer to it.
+</para><variablelist role="params">
+<varlistentry><term><parameter>closure</parameter>&nbsp;:</term>
+<listitem><simpara><link linkend="GClosure">GClosure</link> to increment the reference count on
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis> :</term><listitem><simpara>The <parameter>closure</parameter> passed in, for convenience
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-closure-sink"/>g_closure_sink ()</title>
+<programlisting>void        g_closure_sink                  (<link linkend="GClosure">GClosure</link> *closure);</programlisting>
+<para>
+Take over the initial ownership of a closure.
+When closures are newly created, they get an initial reference count
+of 1, eventhough no caller has yet invoked <link linkend="g-closure-ref">g_closure_ref</link>() on the <parameter>closure</parameter>.
+Code entities that store closures for notification purposes are supposed
+to call this function, for example like this:
+<informalexample><programlisting>
+static GClosure *notify_closure = NULL;
+void
+foo_notify_set_closure (GClosure *closure)
+{
+  if (notify_closure)
+    g_closure_unref (notify_closure);
+  notify_closure = closure;
+  if (notify_closure)
+    {
+      g_closure_ref (notify_closure);
+      g_closure_sink (notify_closure);
+    }
+}
+</programlisting></informalexample>
+Because <link linkend="g-closure-sink">g_closure_sink</link>() may decrement the reference count of a closure
+(if it hasn't been called on <parameter>closure</parameter> yet) just like <link linkend="g-closure-unref">g_closure_unref</link>(),
+<link linkend="g-closure-ref">g_closure_ref</link>() should be called prior to this function.
+</para><variablelist role="params">
+<varlistentry><term><parameter>closure</parameter>&nbsp;:</term>
+<listitem><simpara><link linkend="GClosure">GClosure</link> to decrement the initial reference count on, if it's
+          still being held
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-closure-unref"/>g_closure_unref ()</title>
+<programlisting>void        g_closure_unref                 (<link linkend="GClosure">GClosure</link> *closure);</programlisting>
+<para>
+Decrement the reference count of a closure after it was
+previously incremented by the same caller. The closure
+will most likely be destroyed and freed after this function
+returns.
+</para><variablelist role="params">
+<varlistentry><term><parameter>closure</parameter>&nbsp;:</term>
+<listitem><simpara><link linkend="GClosure">GClosure</link> to decrement the reference count on
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-closure-invoke"/>g_closure_invoke ()</title>
+<programlisting>void        g_closure_invoke                (<link linkend="GClosure">GClosure</link> *closure,
+                                             <link linkend="GValue">GValue</link> *return_value,
+                                             <link linkend="guint">guint</link> n_param_values,
+                                             const <link linkend="GValue">GValue</link> *param_values,
+                                             <link linkend="gpointer">gpointer</link> invocation_hint);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>closure</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>return_value</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>n_param_values</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>param_values</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>invocation_hint</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-closure-invalidate"/>g_closure_invalidate ()</title>
+<programlisting>void        g_closure_invalidate            (<link linkend="GClosure">GClosure</link> *closure);</programlisting>
+<para>
+This function sets a flag on the closure to indicate that it's
+calling environment has become invalid, and thus causes any future
+invocations of <link linkend="g-closure-invoke">g_closure_invoke</link>() on this <parameter>closure</parameter> to be ignored.
+Also, invalidation notifiers installed on the closure will be called
+at this point, and since invalidation notifiers may unreference
+the closure, <parameter>closure</parameter> should be considered an invalidated pointer
+atfer this function, unles <link linkend="g-closure-ref">g_closure_ref</link>() was called beforehand.
+</para><variablelist role="params">
+<varlistentry><term><parameter>closure</parameter>&nbsp;:</term>
+<listitem><simpara>GClosure to invalidate
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-closure-add-finalize-notifier"/>g_closure_add_finalize_notifier ()</title>
+<programlisting>void        g_closure_add_finalize_notifier (<link linkend="GClosure">GClosure</link> *closure,
+                                             <link linkend="gpointer">gpointer</link> notify_data,
+                                             <link linkend="GClosureNotify">GClosureNotify</link> notify_func);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>closure</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>notify_data</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>notify_func</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-closure-add-invalidate-notifier"/>g_closure_add_invalidate_notifier ()</title>
+<programlisting>void        g_closure_add_invalidate_notifier
+                                            (<link linkend="GClosure">GClosure</link> *closure,
+                                             <link linkend="gpointer">gpointer</link> notify_data,
+                                             <link linkend="GClosureNotify">GClosureNotify</link> notify_func);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>closure</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>notify_data</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>notify_func</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-closure-remove-finalize-notifier"/>g_closure_remove_finalize_notifier ()</title>
+<programlisting>void        g_closure_remove_finalize_notifier
+                                            (<link linkend="GClosure">GClosure</link> *closure,
+                                             <link linkend="gpointer">gpointer</link> notify_data,
+                                             <link linkend="GClosureNotify">GClosureNotify</link> notify_func);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>closure</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>notify_data</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>notify_func</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-closure-remove-invalidate-notifier"/>g_closure_remove_invalidate_notifier ()</title>
+<programlisting>void        g_closure_remove_invalidate_notifier
+                                            (<link linkend="GClosure">GClosure</link> *closure,
+                                             <link linkend="gpointer">gpointer</link> notify_data,
+                                             <link linkend="GClosureNotify">GClosureNotify</link> notify_func);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>closure</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>notify_data</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>notify_func</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-closure-new-simple"/>g_closure_new_simple ()</title>
+<programlisting><link linkend="GClosure">GClosure</link>*   g_closure_new_simple            (<link linkend="guint">guint</link> sizeof_closure,
+                                             <link linkend="gpointer">gpointer</link> data);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>sizeof_closure</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>data</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis> :</term><listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-closure-set-marshal"/>g_closure_set_marshal ()</title>
+<programlisting>void        g_closure_set_marshal           (<link linkend="GClosure">GClosure</link> *closure,
+                                             <link linkend="GClosureMarshal">GClosureMarshal</link> marshal);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>closure</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>marshal</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-closure-add-marshal-guards"/>g_closure_add_marshal_guards ()</title>
+<programlisting>void        g_closure_add_marshal_guards    (<link linkend="GClosure">GClosure</link> *closure,
+                                             <link linkend="gpointer">gpointer</link> pre_marshal_data,
+                                             <link linkend="GClosureNotify">GClosureNotify</link> pre_marshal_notify,
+                                             <link linkend="gpointer">gpointer</link> post_marshal_data,
+                                             <link linkend="GClosureNotify">GClosureNotify</link> post_marshal_notify);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>closure</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>pre_marshal_data</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>pre_marshal_notify</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>post_marshal_data</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>post_marshal_notify</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-closure-set-meta-marshal"/>g_closure_set_meta_marshal ()</title>
+<programlisting>void        g_closure_set_meta_marshal      (<link linkend="GClosure">GClosure</link> *closure,
+                                             <link linkend="gpointer">gpointer</link> marshal_data,
+                                             <link linkend="GClosureMarshal">GClosureMarshal</link> meta_marshal);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>closure</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>marshal_data</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>meta_marshal</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-source-set-closure"/>g_source_set_closure ()</title>
+<programlisting>void        g_source_set_closure            (<link linkend="GSource">GSource</link> *source,
+                                             <link linkend="GClosure">GClosure</link> *closure);</programlisting>
+<para>
+Set the callback for a source as a <link linkend="GClosure">GClosure</link>.
+</para>
+<para>
+If the source is not one of the standard GLib types, the <parameter>closure_callback</parameter>
+and <parameter>closure_marshal</parameter> fields of the GSourceFuncs structure must have been
+filled in with pointers to appropriate functions.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>source</parameter>&nbsp;:</term>
+<listitem><simpara> the source
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>closure</parameter>&nbsp;:</term>
+<listitem><simpara> a <link linkend="GClosure">GClosure</link>
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="G-TYPE-IO-CHANNEL-CAPS"/>G_TYPE_IO_CHANNEL</title>
+<programlisting>#define G_TYPE_IO_CHANNEL (g_io_channel_get_type ())
+</programlisting>
+<para>
+The <link linkend="GType">GType</link> for <link linkend="GIOChannel">GIOChannel</link>.
+</para></refsect2>
+<refsect2>
+<title><anchor id="G-TYPE-IO-CONDITION-CAPS"/>G_TYPE_IO_CONDITION</title>
+<programlisting>#define G_TYPE_IO_CONDITION (g_io_condition_get_type ())
+</programlisting>
+<para>
+The <link linkend="GType">GType</link> for <link linkend="GIOCondition">GIOCondition</link>.
+</para></refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>

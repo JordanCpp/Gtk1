@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Compiling the GLib package</title><meta name="generator" content="DocBook XSL Stylesheets V1.50.0"><meta name="generator" content="GTK-Doc V1.0 (XML mode)"><style type="text/css">
+        .synopsis, .classsynopsis {
+            background: #eeeeee;
+            border: solid 1px #aaaaaa;
+            padding: 0.5em;
+        }
+        .programlisting {
+            background: #eeeeff;
+            border: solid 1px #aaaaff;
+            padding: 0.5em;
+        }
+        .variablelist {
+            padding: 4px;
+            margin-left: 3em;
+        }
+        .navigation {
+            background: #ffeeee;
+            border: solid 1px #ffaaaa;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+        .navigation a {
+            color: #770000;
+        }
+        .navigation a:visited {
+            color: #550000;
+        }
+        .navigation .title {
+            font-size: 200%;
+        }
+      </style><link rel="home" href="index.html" title="GLib Reference Manual"><link rel="up" href="glib.html" title="GLib Overview"><link rel="previous" href="glib.html" title="GLib Overview"><link rel="next" href="glib-compiling.html" title="Compiling GLib Applications"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><table class="navigation" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2"><tr valign="middle"><td><a accesskey="p" href="glib.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td><td><a accesskey="u" href="glib.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td><td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td><th width="100%" align="center">GLib Reference Manual</th><td><a accesskey="n" href="glib-compiling.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td></tr></table><div class="refentry"><a name="glib-building"></a><div class="titlepage"></div><div class="refnamediv"><h2>Compiling the GLib package</h2><p>Compiling the GLib Package &#8212; 
+How to compile GLib itself
+</p></div><div class="refsect1"><a name="building"></a><h2>Building the Library on UNIX</h2><p>
+        On UNIX, GLib uses the standard GNU build system,
+        using autoconf for package
+        configuration and resolving portability issues,
+        automake for building makefiles
+        that comply with the GNU Coding Standards, and
+        libtool for building shared
+        libraries on multiple platforms.  The normal sequence for
+        compiling and installing the GLib library is thus:
+
+        </p><div class="literallayout"><p><br>
+          <b><tt>./configure</tt></b><br>
+          <b><tt>make</tt></b><br>
+          <b><tt>make install</tt></b><br>
+        </p></div><p>
+      </p><p>
+        The standard options provided by GNU
+        autoconf may be passed to the
+        <b>configure</b> script.  Please see the
+        autoconf documentation or run
+        <b>./configure --help</b> for information about
+        the standard options.
+      </p></div><div class="refsect1"><a name="extra-configuration-options"></a><h2>Extra Configuration Options</h2><p>
+        In addition to the normal options, the
+        <b>configure</b> script in the GTK+
+        library supports these additional arguments:
+
+        </p><div class="cmdsynopsis"><p><tt>configure</tt>  [--enable-debug=[no|minimum|yes]] [--disable-gc-friendly | --enable-gc-friendly] [--disable-mem-pools | --enable-mem-pools] [--disable-threads | --enable-threads] [--with-threads=[none|posix|dce|solaris|win32]] [--disable-included-printf | --enable-included-printf] [--disable-gtk-doc | --enable-gtk-doc]</p></div><p>
+      </p><p><b><tt>--enable-debug</tt>. </b>
+         Turns on various amounts of debugging support. Setting this to 'no'
+         disables g_assert(), g_return_if_fail(), g_return_val_if_fail() and
+         all cast checks between different object types. Setting it to 'minimum'         disables only cast checks. Setting it to 'yes' enables
+         runtime debugging.
+         The default is 'minimum'.
+         Note that 'no' is fast, but dangerous as it tends to destabilize
+         even mostly bug-free software by changing the effect of many bugs
+         from simple warnings into fatal crashes. Thus
+         <tt>--enable-debug=no</tt> should <span class="emphasis"><em>not</em></span>
+         be used for stable releases of gtk+.
+        </p><p><b><tt>--disable-gc-friendly</tt> and
+          <tt>--enable-gc-friendly</tt>. </b>
+          When enabled all memory freed by the application,
+          but retained by GLib for performance reasons
+          is set to zero, thus making deployed garbage
+          collection or memory profiling tools detect
+          unlinked memory correctly. This will make GLib
+          slightly slower and is thus disabled by default.
+        </p><p><b><tt>--disable-mem-pools</tt> and
+          <tt>--enable-mem-pools</tt>. </b>
+        Many small chunks of memory are often allocated via collective pools
+        in GLib and are cached after release to speed up reallocations.
+        For sparse memory systems this behaviour is often inferior, so
+        memory pools can be disabled to avoid excessive caching and force
+        atomic maintenance of chunks through the <tt>g_malloc()</tt>
+        and <tt>g_free()</tt> functions. Code currently affected by 
+        this:
+        <div class="itemizedlist"><ul type="disc"><li><p>
+         GList, GSList,
+         GNode allocations
+        </p></li><li><p>
+        GMemChunks become basically non-effective
+        </p></li><li><p>
+         GSignal disables all caching (potentially 
+         very slow)
+        </p></li><li><p>
+         GType doesn't honour the 
+         GTypeInfo 
+         <i><tt>n_preallocs</tt></i> field anymore
+        </p></li><li><p>
+         the GBSearchArray flag 
+         <tt>G_BSEARCH_ALIGN_POWER2</tt> becomes non-functional
+        </p></li></ul></div>
+      </p><p><b><tt>--disable-threads</tt> and
+          <tt>--enable-threads</tt>. </b>
+           Do not compile GLib to be multi thread safe. GLib
+           will be slightly faster then. This is however not
+           recommended, as many programs rely on GLib being
+           multi thread safe.
+        </p><p><b><tt>--with-threads</tt>. </b>
+          Specify a thread implementation to use.
+          <div class="itemizedlist"><ul type="disc"><li><p>
+                'posix' and 'dce' can be used interchangeable
+                to mean the different versions of posix
+                threads. configure tries to find out, which
+                one is installed.
+              </p></li><li><p>
+                'solaris' uses the native Solaris thread implementation.
+              </p></li><li><p>
+                'none' means that GLib will be thread safe,
+                but does not have a default thread
+                implementation. This has to be supplied to
+                g_thread_init() by the programmer.
+              </p></li></ul></div>
+
+        </p><p><b><tt>--disable-included-printf</tt> and
+          <tt>--enable-included-printf</tt>. </b>
+          By default the <b>configure</b> script will try
+          to auto-detect whether the C library provides a suitable set
+	  of <tt>printf()</tt> functions. In detail, 
+	  <b>configure</b> checks that the semantics of
+          <tt>snprintf()</tt> are as specified by C99 and
+	  that positional parameters as specified in the Single Unix
+	  Specification are supported. If this not the case, GLib will
+	  include an implementation of the <tt>printf()</tt> 
+          family.
+          These options can be used to explicitly control whether
+          an implementation fo the <tt>printf()</tt> family
+          should be included or not.
+        </p><p><b><tt>--disable-gtk-doc</tt> and
+          <tt>--enable-gtk-doc</tt>. </b>
+          By default the <b>configure</b> script will try
+          to auto-detect whether the
+          gtk-doc package is installed.  If
+          it is, then it will use it to extract and build the
+          documentation for the GLib library.  These options
+          can be used to explicitly control whether
+          gtk-doc should be
+          used or not.  If it is not used, the distributed,
+          pre-generated HTML files will be installed instead of
+          building them on your machine.
+        </p></div></div><table class="navigation" width="100%" summary="Navigation footer" cellpadding="2" cellspacing="0"><tr valign="middle"><td align="left"><a accesskey="p" href="glib.html"><b>&lt;&lt; GLib Overview</b></a></td><td align="right"><a accesskey="n" href="glib-compiling.html"><b>Compiling GLib Applications &gt;&gt;</b></a></td></tr></table></body></html>

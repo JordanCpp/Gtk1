@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Varargs Value Collection</title><meta name="generator" content="DocBook XSL Stylesheets V1.50.0"><meta name="generator" content="GTK-Doc V1.0 (XML mode)"><style type="text/css">
+        .synopsis, .classsynopsis {
+            background: #eeeeee;
+            border: solid 1px #aaaaaa;
+            padding: 0.5em;
+        }
+        .programlisting {
+            background: #eeeeff;
+            border: solid 1px #aaaaff;
+            padding: 0.5em;
+        }
+        .variablelist {
+            padding: 4px;
+            margin-left: 3em;
+        }
+        .navigation {
+            background: #ffeeee;
+            border: solid 1px #ffaaaa;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+        .navigation a {
+            color: #770000;
+        }
+        .navigation a:visited {
+            color: #550000;
+        }
+        .navigation .title {
+            font-size: 200%;
+        }
+      </style><link rel="home" href="index.html" title="GObject Reference Manual"><link rel="up" href="rn01.html" title="API Reference"><link rel="previous" href="gobject-Standard-Parameter-and-Value-Types.html" title="Parameters and Values"><link rel="next" href="gobject-GParamSpec.html" title="GParamSpec"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><table class="navigation" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2"><tr valign="middle"><td><a accesskey="p" href="gobject-Standard-Parameter-and-Value-Types.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td><td><a accesskey="u" href="rn01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td><td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td><th width="100%" align="center">GObject Reference Manual</th><td><a accesskey="n" href="gobject-GParamSpec.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td></tr></table><div class="refentry"><a name="gobject-Varargs-Value-Collection"></a><div class="titlepage"></div><div class="refnamediv"><h2>Varargs Value Collection</h2><p>Varargs Value Collection &#8212; Converting varargs to generic values</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><pre class="synopsis">
+
+#include &lt;gobject.h&gt;
+
+
+union       <a href="gobject-Varargs-Value-Collection.html#GTypeCValue">GTypeCValue</a>;
+#define     <a href="gobject-Varargs-Value-Collection.html#G-VALUE-COLLECT-CAPS">G_VALUE_COLLECT</a>                 (value, var_args, flags, __error)
+#define     <a href="gobject-Varargs-Value-Collection.html#G-VALUE-LCOPY-CAPS">G_VALUE_LCOPY</a>                   (value, var_args, flags, __error)
+#define     <a href="gobject-Varargs-Value-Collection.html#G-VALUE-COLLECT-FORMAT-MAX-LENGTH-CAPS">G_VALUE_COLLECT_FORMAT_MAX_LENGTH</a>
+</pre></div><div class="refsect1"><h2>Description</h2><p>
+
+</p></div><div class="refsect1"><h2>Details</h2><div class="refsect2"><h3><a name="GTypeCValue"></a>union GTypeCValue</h3><pre class="programlisting">union GTypeCValue
+{
+  gint     v_int;
+  glong    v_long;
+  gint64   v_int64;
+  gdouble  v_double;
+  gpointer v_pointer;
+};
+</pre><p>
+
+</p></div><hr><div class="refsect2"><h3><a name="G-VALUE-COLLECT-CAPS"></a>G_VALUE_COLLECT()</h3><pre class="programlisting">#define     G_VALUE_COLLECT(value, var_args, flags, __error)</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>value</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>var_args</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>flags</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>__error</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-VALUE-LCOPY-CAPS"></a>G_VALUE_LCOPY()</h3><pre class="programlisting">#define     G_VALUE_LCOPY(value, var_args, flags, __error)</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>value</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>var_args</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>flags</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>__error</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-VALUE-COLLECT-FORMAT-MAX-LENGTH-CAPS"></a>G_VALUE_COLLECT_FORMAT_MAX_LENGTH</h3><pre class="programlisting">#define	G_VALUE_COLLECT_FORMAT_MAX_LENGTH	(8)
+</pre><p>
+
+</p></div></div></div><table class="navigation" width="100%" summary="Navigation footer" cellpadding="2" cellspacing="0"><tr valign="middle"><td align="left"><a accesskey="p" href="gobject-Standard-Parameter-and-Value-Types.html"><b>&lt;&lt; Parameters and Values</b></a></td><td align="right"><a accesskey="n" href="gobject-GParamSpec.html"><b>GParamSpec &gt;&gt;</b></a></td></tr></table></body></html>

@@ -1,0 +1,110 @@
+<refentry id="gobject-Varargs-Value-Collection">
+<refmeta>
+<refentrytitle>Varargs Value Collection</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GOBJECT Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>Varargs Value Collection</refname><refpurpose>Converting varargs to generic values</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv><title>Synopsis</title>
+
+<synopsis>
+
+#include &lt;gobject.h&gt;
+
+
+union       <link linkend="GTypeCValue">GTypeCValue</link>;
+#define     <link linkend="G-VALUE-COLLECT-CAPS">G_VALUE_COLLECT</link>                 (value, var_args, flags, __error)
+#define     <link linkend="G-VALUE-LCOPY-CAPS">G_VALUE_LCOPY</link>                   (value, var_args, flags, __error)
+#define     <link linkend="G-VALUE-COLLECT-FORMAT-MAX-LENGTH-CAPS">G_VALUE_COLLECT_FORMAT_MAX_LENGTH</link>
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+<refsect1>
+<title>Description</title>
+<para>
+
+</para>
+</refsect1>
+
+<refsect1>
+<title>Details</title>
+<refsect2>
+<title><anchor id="GTypeCValue"/>union GTypeCValue</title>
+<programlisting>union GTypeCValue
+{
+  gint     v_int;
+  glong    v_long;
+  gint64   v_int64;
+  gdouble  v_double;
+  gpointer v_pointer;
+};
+</programlisting>
+<para>
+
+</para></refsect2>
+<refsect2>
+<title><anchor id="G-VALUE-COLLECT-CAPS"/>G_VALUE_COLLECT()</title>
+<programlisting>#define     G_VALUE_COLLECT(value, var_args, flags, __error)</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>value</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>var_args</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>flags</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>__error</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="G-VALUE-LCOPY-CAPS"/>G_VALUE_LCOPY()</title>
+<programlisting>#define     G_VALUE_LCOPY(value, var_args, flags, __error)</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>value</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>var_args</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>flags</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>__error</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="G-VALUE-COLLECT-FORMAT-MAX-LENGTH-CAPS"/>G_VALUE_COLLECT_FORMAT_MAX_LENGTH</title>
+<programlisting>#define	G_VALUE_COLLECT_FORMAT_MAX_LENGTH	(8)
+</programlisting>
+<para>
+
+</para></refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>

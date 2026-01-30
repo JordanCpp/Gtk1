@@ -1,0 +1,252 @@
+<refentry id="gobject-GTypeModule">
+<refmeta>
+<refentrytitle>GTypeModule</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GOBJECT Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>GTypeModule</refname><refpurpose>Type loading modules</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv><title>Synopsis</title>
+
+<synopsis>
+
+#include &lt;gobject.h&gt;
+
+
+struct      <link linkend="GTypeModule">GTypeModule</link>;
+struct      <link linkend="GTypeModuleClass">GTypeModuleClass</link>;
+<link linkend="gboolean">gboolean</link>    <link linkend="g-type-module-use">g_type_module_use</link>               (<link linkend="GTypeModule">GTypeModule</link> *module);
+void        <link linkend="g-type-module-unuse">g_type_module_unuse</link>             (<link linkend="GTypeModule">GTypeModule</link> *module);
+void        <link linkend="g-type-module-set-name">g_type_module_set_name</link>          (<link linkend="GTypeModule">GTypeModule</link> *module,
+                                             const <link linkend="gchar">gchar</link> *name);
+<link linkend="GType">GType</link>       <link linkend="g-type-module-register-type">g_type_module_register_type</link>     (<link linkend="GTypeModule">GTypeModule</link> *module,
+                                             <link linkend="GType">GType</link> parent_type,
+                                             const <link linkend="gchar">gchar</link> *type_name,
+                                             const <link linkend="GTypeInfo">GTypeInfo</link> *type_info,
+                                             <link linkend="GTypeFlags">GTypeFlags</link> flags);
+void        <link linkend="g-type-module-add-interface">g_type_module_add_interface</link>     (<link linkend="GTypeModule">GTypeModule</link> *module,
+                                             <link linkend="GType">GType</link> instance_type,
+                                             <link linkend="GType">GType</link> interface_type,
+                                             const <link linkend="GInterfaceInfo">GInterfaceInfo</link> *interface_info);
+
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+<refsect1>
+<title>Description</title>
+<para>
+<link linkend="GTypeModule">GTypeModule</link> provides a simple implementation of the <link linkend="GTypePlugin">GTypePlugin</link>
+interface. The model of <link linkend="GTypeModule">GTypeModule</link> is a dynamically loaded module
+which implements some number of types and interface
+implementations. When the module is loaded, it registers its types
+and interfaces using <link linkend="g-type-module-register-type">g_type_module_register_type</link>() and
+<link linkend="g-type-module-add-interface">g_type_module_add_interface</link>().  As long as any instances of these
+types and interface implementations are in use, the module is kept
+loaded. When the types and interfaces are gone, the module may be
+unloaded. If the types and interfaces become used again, the module
+will be reloaded.
+</para>
+<para>
+Keeping track of whether the module should be loaded or not is done by
+using a use count - it starts at zero, and whenever it is greater than
+zero, the module is loaded. The use count is maintained internally by
+the type system, but also can be explicitly controlled by
+<link linkend="g-type-module-use">g_type_module_use</link>() and <link linkend="g-type-module-unuse">g_type_module_unuse</link>(). Typically, when loading
+a module for the first type, <link linkend="g-type-module-use">g_type_module_use</link>() will be used to load
+it so that it can initialize its types. At some later point, when the
+module no longer needs to be loaded except for the type
+implementations it contains, <link linkend="g-type-module-unuse">g_type_module_unuse</link>() is called.
+</para>
+<para>
+<link linkend="GTypeModule">GTypeModule</link> does not actually provide any implementation of module
+loading and unloading. To create a particular module type you must
+derive from <link linkend="GTypeModule">GTypeModule</link> and implement the load and unload functions
+in <link linkend="GTypeModuleClass">GTypeModuleClass</link>.
+</para>
+</refsect1>
+
+<refsect1>
+<title>Details</title>
+<refsect2>
+<title><anchor id="GTypeModule"/>struct GTypeModule</title>
+<programlisting>struct GTypeModule {
+
+  GObject parent_instance;
+
+  guint use_count;
+  GSList *type_infos;
+  GSList *interface_infos;
+  gchar *name;
+};
+</programlisting>
+<para>
+
+</para></refsect2>
+<refsect2>
+<title><anchor id="GTypeModuleClass"/>struct GTypeModuleClass</title>
+<programlisting>struct GTypeModuleClass {
+
+  GObjectClass parent_class;
+
+  gboolean (* load)   (GTypeModule *module);
+  void     (* unload) (GTypeModule *module);
+
+  /* Padding for future expansion */
+  void (*reserved1) (void);
+  void (*reserved2) (void);
+  void (*reserved3) (void);
+  void (*reserved4) (void);
+};
+</programlisting>
+<para>
+
+</para></refsect2>
+<refsect2>
+<title><anchor id="g-type-module-use"/>g_type_module_use ()</title>
+<programlisting><link linkend="gboolean">gboolean</link>    g_type_module_use               (<link linkend="GTypeModule">GTypeModule</link> *module);</programlisting>
+<para>
+Increases the use count of a <link linkend="GTypeModule">GTypeModule</link> by one. If the
+use count was zero before, the plugin will be loaded.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>module</parameter>&nbsp;:</term>
+<listitem><simpara> a <link linkend="GTypeModule">GTypeModule</link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis> :</term><listitem><simpara> <literal>FALSE</literal> if the plugin needed to be loaded and
+              loading the plugin failed.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-type-module-unuse"/>g_type_module_unuse ()</title>
+<programlisting>void        g_type_module_unuse             (<link linkend="GTypeModule">GTypeModule</link> *module);</programlisting>
+<para>
+Decreases the use count of a <link linkend="GTypeModule">GTypeModule</link> by one. If the
+result is zero, the module will be unloaded. (However, the
+<link linkend="GTypeModule">GTypeModule</link> will not be freed, and types associated with the
+<link linkend="GTypeModule">GTypeModule</link> are not unregistered. Once a <link linkend="GTypeModule">GTypeModule</link> is 
+initialized, it must exist forever.)</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>module</parameter>&nbsp;:</term>
+<listitem><simpara> a <link linkend="GTypeModule">GTypeModule</link>
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-type-module-set-name"/>g_type_module_set_name ()</title>
+<programlisting>void        g_type_module_set_name          (<link linkend="GTypeModule">GTypeModule</link> *module,
+                                             const <link linkend="gchar">gchar</link> *name);</programlisting>
+<para>
+Sets the name for a <link linkend="GTypeModule">GTypeModule</link></para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>module</parameter>&nbsp;:</term>
+<listitem><simpara> a <link linkend="GTypeModule">GTypeModule</link>.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>name</parameter>&nbsp;:</term>
+<listitem><simpara> a human-readable name to use in error messages.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-type-module-register-type"/>g_type_module_register_type ()</title>
+<programlisting><link linkend="GType">GType</link>       g_type_module_register_type     (<link linkend="GTypeModule">GTypeModule</link> *module,
+                                             <link linkend="GType">GType</link> parent_type,
+                                             const <link linkend="gchar">gchar</link> *type_name,
+                                             const <link linkend="GTypeInfo">GTypeInfo</link> *type_info,
+                                             <link linkend="GTypeFlags">GTypeFlags</link> flags);</programlisting>
+<para>
+Looks up or registers a type that is implemented with a particular
+type plugin. If a type with name <parameter>type_name</parameter> is already registered,
+the <link linkend="GType">GType</link> identifier for the type is returned, otherwise the type
+is newly registered, and the resulting <link linkend="GType">GType</link> identifier returned.
+</para>
+<para>
+As long as any instances of the type exist, the type plugin will
+not be unloaded.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>module</parameter>&nbsp;:</term>
+<listitem><simpara>  a <link linkend="GTypeModule">GTypeModule</link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>parent_type</parameter>&nbsp;:</term>
+<listitem><simpara>    the type for the parent class
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>type_name</parameter>&nbsp;:</term>
+<listitem><simpara>      name for the type
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>type_info</parameter>&nbsp;:</term>
+<listitem><simpara>      type information structure
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>flags</parameter>&nbsp;:</term>
+<listitem><simpara>          flags field providing details about the type           
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis> :</term><listitem><simpara> the type ID for the class.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-type-module-add-interface"/>g_type_module_add_interface ()</title>
+<programlisting>void        g_type_module_add_interface     (<link linkend="GTypeModule">GTypeModule</link> *module,
+                                             <link linkend="GType">GType</link> instance_type,
+                                             <link linkend="GType">GType</link> interface_type,
+                                             const <link linkend="GInterfaceInfo">GInterfaceInfo</link> *interface_info);</programlisting>
+<para>
+Registers an additional interface for a type, whose interface
+lives in the given type plugin. If the interface was already registered
+for the type in this plugin, nothing will be done. 
+</para>
+<para>
+As long as any instances of the type exist, the type plugin will
+not be unloaded.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>module</parameter>&nbsp;:</term>
+<listitem><simpara> a <link linkend="GTypeModule">GTypeModule</link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>instance_type</parameter>&nbsp;:</term>
+<listitem><simpara> type to which to add the interface.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>interface_type</parameter>&nbsp;:</term>
+<listitem><simpara> interface type to add
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>interface_info</parameter>&nbsp;:</term>
+<listitem><simpara> type information structure
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+
+
+
+<refsect1>
+<title>See Also</title>
+<para>
+<variablelist>
+
+<varlistentry>
+<term><link linkend="GTypePlugin">GTypePlugin</link></term>
+<listitem><para>The abstract type loader interface.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><link linkend="GModule">GModule</link></term>
+<listitem><para>Portable mechanism for dynamically loaded modules.</para></listitem>
+</varlistentry>
+
+</variablelist>
+</para>
+</refsect1>
+
+</refentry>

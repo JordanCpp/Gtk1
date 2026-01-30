@@ -1,0 +1,15 @@
+2002-11-14  Perry Rapp
+ - Added resource to libcharset.dll.
+ - Revised version info of iconv & libcharset.
+
+2002-06-21  Perry Rapp
+ - Commented RESOURCE back in to lib/Makefile.msvc
+
+2002-06-15  Perry Rapp
+ - Fixed some incorrect info in README about iconv.m4
+ - Fixed msvc makefiles for debug info
+ - Added a locale declaration so compiles under Win32
+ - Fixed lib/gentranslit.c to compile under Win32, and gave it MSVC6 project.
+ - Started to add more transliteration entries for monotonic & polytonic Greek.
+
+

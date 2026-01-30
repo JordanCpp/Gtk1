@@ -1,0 +1,2173 @@
+This is gettext.info, produced by makeinfo version 4.0 from
+gettext.texi.
+
+INFO-DIR-SECTION GNU Gettext Utilities
+START-INFO-DIR-ENTRY
+* Gettext: (gettext).                           GNU gettext utilities.
+* gettextize: (gettext)gettextize Invocation.   Prepare a package for gettext.
+* msgfmt: (gettext)msgfmt Invocation.           Make MO files out of PO files.
+* msgmerge: (gettext)msgmerge Invocation.       Update two PO files into one.
+* xgettext: (gettext)xgettext Invocation.       Extract strings into a PO file.
+END-INFO-DIR-ENTRY
+
+   This file provides documentation for GNU `gettext' utilities.  It
+also serves as a reference for the free Translation Project.
+
+   Copyright (C) 1995, 1996, 1997, 1998, 2001 Free Software Foundation,
+Inc.
+
+   Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+   Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, provided that
+the entire resulting derived work is distributed under the terms of a
+permission notice identical to this one.
+
+   Permission is granted to copy and distribute translations of this
+manual into another language, under the above conditions for modified
+versions, except that this permission notice may be stated in a
+translation approved by the Foundation.
+
+
+File: gettext.info,  Node: Organization,  Next: Information Flow,  Prev: Discussions,  Up: Translators
+
+Organization
+============
+
+   On a larger scale, the true solution would be to organize some kind
+of fairly precise set up in which volunteers could participate.  I gave
+some thought to this idea lately, and realize there will be some touchy
+points.  I thought of writing to Richard Stallman to launch such a
+project, but feel it might be good to shake out the ideas between
+ourselves first.  Most probably that Linux International has some
+experience in the field already, or would like to orchestrate the
+volunteer work, maybe.  Food for thought, in any case!
+
+   I guess we have to setup something early, somehow, that will help
+many possible contributors of the same language to interlock and avoid
+work duplication, and further be put in contact for solving together
+problems particular to their tongue (in most languages, there are many
+difficulties peculiar to translating technical English).  My Swedish
+contributor acknowledged these difficulties, and I'm well aware of them
+for French.
+
+   This is surely not a technical issue, but we should manage so the
+effort of locale contributors be maximally useful, despite the national
+team layer interface between contributors and maintainers.
+
+   The Translation Project needs some setup for coordinating language
+coordinators.  Localizing evolving programs will surely become a
+permanent and continuous activity in the free software community, once
+well started.  The setup should be minimally completed and tested
+before GNU `gettext' becomes an official reality.  The e-mail address
+`translation@iro.umontreal.ca' has been setup for receiving offers from
+volunteers and general e-mail on these topics.  This address reaches
+the Translation Project coordinator.
+
+* Menu:
+
+* Central Coordination::        Central Coordination
+* National Teams::              National Teams
+* Mailing Lists::               Mailing Lists
+
+
+File: gettext.info,  Node: Central Coordination,  Next: National Teams,  Prev: Organization,  Up: Organization
+
+Central Coordination
+--------------------
+
+   I also think GNU will need sooner than it thinks, that someone setup
+a way to organize and coordinate these groups.  Some kind of group of
+groups.  My opinion is that it would be good that GNU delegates this
+task to a small group of collaborating volunteers, shortly.  Perhaps in
+`gnu.announce' a list of this national committee's can be published.
+
+   My role as coordinator would simply be to refer to Ulrich any German
+speaking volunteer interested to localization of free software
+packages, and maybe helping national groups to initially organize,
+while maintaining national registries for until national groups are
+ready to take over.  In fact, the coordinator should ease volunteers to
+get in contact with one another for creating national teams, which
+should then select one coordinator per language, or country
+(regionalized language).  If well done, the coordination should be
+useful without being an overwhelming task, the time to put delegations
+in place.
+
+
+File: gettext.info,  Node: National Teams,  Next: Mailing Lists,  Prev: Central Coordination,  Up: Organization
+
+National Teams
+--------------
+
+   I suggest we look for volunteer coordinators/editors for individual
+languages.  These people will scan contributions of translation files
+for various programs, for their own languages, and will ensure high and
+uniform standards of diction.
+
+   From my current experience with other people in these days, those who
+provide localizations are very enthusiastic about the process, and are
+more interested in the localization process than in the program they
+localize, and want to do many programs, not just one.  This seems to
+confirm that having a coordinator/editor for each language is a good
+idea.
+
+   We need to choose someone who is good at writing clear and concise
+prose in the language in question.  That is hard--we can't check it
+ourselves.  So we need to ask a few people to judge each others'
+writing and select the one who is best.
+
+   I announce my prerelease to a few dozen people, and you would not
+believe all the discussions it generated already.  I shudder to think
+what will happen when this will be launched, for true, officially,
+world wide.  Who am I to arbitrate between two Czekolsovak users
+contradicting each other, for example?
+
+   I assume that your German is not much better than my French so that
+I would not be able to judge about these formulations.  What I would
+suggest is that for each language there is a group for people who
+maintain the PO files and judge about changes.  I suspect there will be
+cultural differences between how such groups of people will behave.
+Some will have relaxed ways, reach consensus easily, and have anyone of
+the group relate to the maintainers, while others will fight to death,
+organize heavy administrations up to national standards, and use strict
+channels.
+
+   The German team is putting out a good example.  Right now, they are
+maybe half a dozen people revising translations of each other and
+discussing the linguistic issues.  I do not even have all the names.
+Ulrich Drepper is taking care of coordinating the German team.  He
+subscribed to all my pretest lists, so I do not even have to warn him
+specifically of incoming releases.
+
+   I'm sure, that is a good idea to get teams for each language working
+on translations. That will make the translations better and more
+consistent.
+
+* Menu:
+
+* Sub-Cultures::                Sub-Cultures
+* Organizational Ideas::        Organizational Ideas
+
+
+File: gettext.info,  Node: Sub-Cultures,  Next: Organizational Ideas,  Prev: National Teams,  Up: National Teams
+
+Sub-Cultures
+............
+
+   Taking French for example, there are a few sub-cultures around
+computers which developed diverging vocabularies.  Picking volunteers
+here and there without addressing this problem in an organized way,
+soon in the project, might produce a distasteful mix of
+internationalized programs, and possibly trigger endless quarrels among
+those who really care.
+
+   Keeping some kind of unity in the way French localization of
+internationalized programs is achieved is a difficult (and delicate)
+job.  Knowing the latin character of French people (:-), if we take this
+the wrong way, we could end up nowhere, or spoil a lot of energies.
+Maybe we should begin to address this problem seriously _before_ GNU
+`gettext' become officially published.  And I suspect that this means
+soon!
+
+
+File: gettext.info,  Node: Organizational Ideas,  Prev: Sub-Cultures,  Up: National Teams
+
+Organizational Ideas
+....................
+
+   I expect the next big changes after the official release.  Please
+note that I use the German translation of the short GPL message.  We
+need to set a few good examples before the localization goes out for
+true in the free software community.  Here are a few points to discuss:
+
+   * Each group should have one FTP server (at least one master).
+
+   * The files on the server should reflect the latest version (of
+     course!) and it should also contain a RCS directory with the
+     corresponding archives (I don't have this now).
+
+   * There should also be a ChangeLog file (this is more useful than the
+     RCS archive but can be generated automatically from the later by
+     Emacs).
+
+   * A "core group" should judge about questionable changes (for now
+     this group consists solely by me but I ask some others
+     occasionally; this also seems to work).
+
+
+
+File: gettext.info,  Node: Mailing Lists,  Prev: National Teams,  Up: Organization
+
+Mailing Lists
+-------------
+
+   If we get any inquiries about GNU `gettext', send them on to:
+
+     `translation@iro.umontreal.ca'
+
+   The `*-pretest' lists are quite useful to me, maybe the idea could
+be generalized to many GNU, and non-GNU packages.  But each maintainer
+his/her way!
+
+   Franc,ois, we have a mechanism in place here at `gnu.ai.mit.edu' to
+track teams, support mailing lists for them and log members.  We have a
+slight preference that you use it.  If this is OK with you, I can get
+you clued in.
+
+   Things are changing!  A few years ago, when Daniel Fekete and I
+asked for a mailing list for GNU localization, nested at the FSF, we
+were politely invited to organize it anywhere else, and so did we.  For
+communicating with my pretesters, I later made a handful of mailing
+lists located at iro.umontreal.ca and administrated by `majordomo'.
+These lists have been _very_ dependable so far...
+
+   I suspect that the German team will organize itself a mailing list
+located in Germany, and so forth for other countries.  But before they
+organize for true, it could surely be useful to offer mailing lists
+located at the FSF to each national team.  So yes, please explain me
+how I should proceed to create and handle them.
+
+   We should create temporary mailing lists, one per country, to help
+people organize.  Temporary, because once regrouped and structured, it
+would be fair the volunteers from country bring back _their_ list in
+there and manage it as they want.  My feeling is that, in the long run,
+each team should run its own list, from within their country.  There
+also should be some central list to which all teams could subscribe as
+they see fit, as long as each team is represented in it.
+
+
+File: gettext.info,  Node: Information Flow,  Prev: Organization,  Up: Translators
+
+Information Flow
+================
+
+   There will surely be some discussion about this messages after the
+packages are finally released.  If people now send you some proposals
+for better messages, how do you proceed?  Jim, please note that right
+now, as I put forward nearly a dozen of localizable programs, I receive
+both the translations and the coordination concerns about them.
+
+   If I put one of my things to pretest, Ulrich receives the
+announcement and passes it on to the German team, who make last minute
+revisions.  Then he submits the translation files to me _as the
+maintainer_.  For free packages I do not maintain, I would not even
+hear about it.  This scheme could be made to work for the whole
+Translation Project, I think.  For security reasons, maybe Ulrich
+(national coordinators, in fact) should update central registry kept at
+the Translation Project (Jim, me, or Len's recruits) once in a while.
+
+   In December/January, I was aggressively ready to internationalize
+all of GNU, giving myself the duty of one small GNU package per week or
+so, taking many weeks or months for bigger packages.  But it does not
+work this way.  I first did all the things I'm responsible for.  I've
+nothing against some missionary work on other maintainers, but I'm also
+loosing a lot of energy over it--same debates over again.
+
+   And when the first localized packages are released we'll get a lot of
+responses about ugly translations :-).  Surely, and we need to have
+beforehand a fairly good idea about how to handle the information flow
+between the national teams and the package maintainers.
+
+   Please start saving somewhere a quick history of each PO file.  I
+know for sure that the file format will change, allowing for comments.
+It would be nice that each file has a kind of log, and references for
+those who want to submit comments or gripes, or otherwise contribute.
+I sent a proposal for a fast and flexible format, but it is not
+receiving acceptance yet by the GNU deciders.  I'll tell you when I
+have more information about this.
+
+
+File: gettext.info,  Node: Maintainers,  Next: Conclusion,  Prev: Translators,  Up: Top
+
+The Maintainer's View
+*********************
+
+   The maintainer of a package has many responsibilities.  One of them
+is ensuring that the package will install easily on many platforms, and
+that the magic we described earlier (*note Users::) will work for
+installers and end users.
+
+   Of course, there are many possible ways by which GNU `gettext' might
+be integrated in a distribution, and this chapter does not cover them
+in all generality.  Instead, it details one possible approach which is
+especially adequate for many free software distributions following GNU
+standards, or even better, Gnits standards, because GNU `gettext' is
+purposely for helping the internationalization of the whole GNU
+project, and as many other good free packages as possible.  So, the
+maintainer's view presented here presumes that the package already has
+a `configure.in' file and uses GNU Autoconf.
+
+   Nevertheless, GNU `gettext' may surely be useful for free packages
+not following GNU standards and conventions, but the maintainers of such
+packages might have to show imagination and initiative in organizing
+their distributions so `gettext' work for them in all situations.
+There are surely many, out there.
+
+   Even if `gettext' methods are now stabilizing, slight adjustments
+might be needed between successive `gettext' versions, so you should
+ideally revise this chapter in subsequent releases, looking for changes.
+
+* Menu:
+
+* Flat and Non-Flat::           Flat or Non-Flat Directory Structures
+* Prerequisites::               Prerequisite Works
+* gettextize Invocation::       Invoking the `gettextize' Program
+* Adjusting Files::             Files You Must Create or Alter
+
+
+File: gettext.info,  Node: Flat and Non-Flat,  Next: Prerequisites,  Prev: Maintainers,  Up: Maintainers
+
+Flat or Non-Flat Directory Structures
+=====================================
+
+   Some free software packages are distributed as `tar' files which
+unpack in a single directory, these are said to be "flat" distributions.
+Other free software packages have a one level hierarchy of
+subdirectories, using for example a subdirectory named `doc/' for the
+Texinfo manual and man pages, another called `lib/' for holding
+functions meant to replace or complement C libraries, and a
+subdirectory `src/' for holding the proper sources for the package.
+These other distributions are said to be "non-flat".
+
+   We cannot say much about flat distributions.  A flat directory
+structure has the disadvantage of increasing the difficulty of updating
+to a new version of GNU `gettext'.  Also, if you have many PO files,
+this could somewhat pollute your single directory.  Also, GNU
+`gettext''s libintl sources consist of C sources, shell scripts, `sed'
+scripts and complicated Makefile rules, which don't fit well into an
+existing flat structure.  For these reasons, we recommend to use
+non-flat approach in this case as well.
+
+   Maybe because GNU `gettext' itself has a non-flat structure, we have
+more experience with this approach, and this is what will be described
+in the remaining of this chapter.  Some maintainers might use this as
+an opportunity to unflatten their package structure.
+
+
+File: gettext.info,  Node: Prerequisites,  Next: gettextize Invocation,  Prev: Flat and Non-Flat,  Up: Maintainers
+
+Prerequisite Works
+==================
+
+   There are some works which are required for using GNU `gettext' in
+one of your package.  These works have some kind of generality that
+escape the point by point descriptions used in the remainder of this
+chapter.  So, we describe them here.
+
+   * Before attempting to use `gettextize' you should install some
+     other packages first.  Ensure that recent versions of GNU `m4',
+     GNU Autoconf and GNU `gettext' are already installed at your site,
+     and if not, proceed to do this first.  If you got to install these
+     things, beware that GNU `m4' must be fully installed before GNU
+     Autoconf is even _configured_.
+
+     To further ease the task of a package maintainer the `automake'
+     package was designed and implemented.  GNU `gettext' now uses this
+     tool and the `Makefile's in the `intl/' and `po/' therefore know
+     about all the goals necessary for using `automake' and `libintl'
+     in one project.
+
+     Those four packages are only needed to you, as a maintainer; the
+     installers of your own package and end users do not really need
+     any of GNU `m4', GNU Autoconf, GNU `gettext', or GNU `automake'
+     for successfully installing and running your package, with messages
+     properly translated.  But this is not completely true if you
+     provide internationalized shell scripts within your own package:
+     GNU `gettext' shall then be installed at the user site if the end
+     users want to see the translation of shell script messages.
+
+   * Your package should use Autoconf and have a `configure.in' file.
+     If it does not, you have to learn how.  The Autoconf documentation
+     is quite well written, it is a good idea that you print it and get
+     familiar with it.
+
+   * Your C sources should have already been modified according to
+     instructions given earlier in this manual.  *Note Sources::.
+
+   * Your `po/' directory should receive all PO files submitted to you
+     by the translator teams, each having `LL.po' as a name.  This is
+     not usually easy to get translation work done before your package
+     gets internationalized and available!  Since the cycle has to
+     start somewhere, the easiest for the maintainer is to start with
+     absolutely no PO files, and wait until various translator teams
+     get interested in your package, and submit PO files.
+
+
+   It is worth adding here a few words about how the maintainer should
+ideally behave with PO files submissions.  As a maintainer, your role is
+to authentify the origin of the submission as being the representative
+of the appropriate translating teams of the Translation Project (forward
+the submission to `translation@iro.umontreal.ca' in case of doubt), to
+ensure that the PO file format is not severely broken and does not
+prevent successful installation, and for the rest, to merely to put
+these PO files in `po/' for distribution.
+
+   As a maintainer, you do not have to take on your shoulders the
+responsibility of checking if the translations are adequate or
+complete, and should avoid diving into linguistic matters.  Translation
+teams drive themselves and are fully responsible of their linguistic
+choices for the Translation Project.  Keep in mind that translator
+teams are _not_ driven by maintainers.  You can help by carefully
+redirecting all communications and reports from users about linguistic
+matters to the appropriate translation team, or explain users how to
+reach or join their team.  The simplest might be to send them the
+`ABOUT-NLS' file.
+
+   Maintainers should _never ever_ apply PO file bug reports
+themselves, short-cutting translation teams.  If some translator has
+difficulty to get some of her points through her team, it should not be
+an issue for her to directly negotiate translations with maintainers.
+Teams ought to settle their problems themselves, if any.  If you, as a
+maintainer, ever think there is a real problem with a team, please
+never try to _solve_ a team's problem on your own.
+
+
+File: gettext.info,  Node: gettextize Invocation,  Next: Adjusting Files,  Prev: Prerequisites,  Up: Maintainers
+
+Invoking the `gettextize' Program
+=================================
+
+   Some files are consistently and identically needed in every package
+internationalized through GNU `gettext'.  As a matter of convenience,
+the `gettextize' program puts all these files right in your package.
+This program has the following synopsis:
+
+     gettextize [ OPTION... ] [ DIRECTORY ]
+
+and accepts the following options:
+
+`-c'
+`--copy'
+     Copy the needed files instead of making symbolic links.  Using
+     links would allow the package to always use the latest `gettext'
+     code available on the system, but it might disturb some mechanism
+     the maintainer is used to apply to the sources.  Because running
+     `gettextize' is easy there shouldn't be problems with using copies.
+
+`-f'
+`--force'
+     Force replacement of files which already exist.
+
+`-h'
+`--help'
+     Display this help and exit.
+
+`--version'
+     Output version information and exit.
+
+   If DIRECTORY is given, this is the top level directory of a package
+to prepare for using GNU `gettext'.  If not given, it is assumed that
+the current directory is the top level directory of such a package.
+
+   The program `gettextize' provides the following files.  However, no
+existing file will be replaced unless the option `--force' (`-f') is
+specified.
+
+  1. The `ABOUT-NLS' file is copied in the main directory of your
+     package, the one being at the top level.  This file gives the main
+     indications about how to install and use the Native Language
+     Support features of your program.  You might elect to use a more
+     recent copy of this `ABOUT-NLS' file than the one provided through
+     `gettextize', if you have one handy.  You may also fetch a more
+     recent copy of file `ABOUT-NLS' from Translation Project sites,
+     and from most GNU archive sites.
+
+  2. A `po/' directory is created for eventually holding all
+     translation files, but initially only containing the file
+     `po/Makefile.in.in' from the GNU `gettext' distribution.  (beware
+     the double `.in' in the file name). If the `po/' directory already
+     exists, it will be preserved along with the files it contains, and
+     only `Makefile.in.in' will be overwritten.
+
+  3. A `intl/' directory is created and filled with most of the files
+     originally in the `intl/' directory of the GNU `gettext'
+     distribution.  Also, if option `--force' (`-f') is given, the
+     `intl/' directory is emptied first.
+
+
+   If your site support symbolic links, `gettextize' will not actually
+copy the files into your package, but establish symbolic links instead.
+This avoids duplicating the disk space needed in all packages.  Merely
+using the `-h' option while creating the `tar' archive of your
+distribution will resolve each link by an actual copy in the
+distribution archive.  So, to insist, you really should use `-h' option
+with `tar' within your `dist' goal of your main `Makefile.in'.
+
+   It is interesting to understand that most new files for supporting
+GNU `gettext' facilities in one package go in `intl/' and `po/'
+subdirectories.  One distinction between these two directories is that
+`intl/' is meant to be completely identical in all packages using GNU
+`gettext', while all newly created files, which have to be different,
+go into `po/'.  There is a common `Makefile.in.in' in `po/', because
+the `po/' directory needs its own `Makefile', and it has been designed
+so it can be identical in all packages.
+
+
+File: gettext.info,  Node: Adjusting Files,  Prev: gettextize Invocation,  Up: Maintainers
+
+Files You Must Create or Alter
+==============================
+
+   Besides files which are automatically added through `gettextize',
+there are many files needing revision for properly interacting with GNU
+`gettext'.  If you are closely following GNU standards for Makefile
+engineering and auto-configuration, the adaptations should be easier to
+achieve.  Here is a point by point description of the changes needed in
+each.
+
+   So, here comes a list of files, each one followed by a description of
+all alterations it needs.  Many examples are taken out from the GNU
+`gettext' 0.10.40 distribution itself.  You may indeed refer to the
+source code of the GNU `gettext' package, as it is intended to be a
+good example and master implementation for using its own functionality.
+
+* Menu:
+
+* po/POTFILES.in::              `POTFILES.in' in `po/'
+* configure.in::                `configure.in' at top level
+* config.guess::                `config.guess', `config.sub' at top level
+* aclocal::                     `aclocal.m4' at top level
+* acconfig::                    `acconfig.h' at top level
+* Makefile::                    `Makefile.in' at top level
+* src/Makefile::                `Makefile.in' in `src/'
+
+
+File: gettext.info,  Node: po/POTFILES.in,  Next: configure.in,  Prev: Adjusting Files,  Up: Adjusting Files
+
+`POTFILES.in' in `po/'
+----------------------
+
+   The `po/' directory should receive a file named `POTFILES.in'.  This
+file tells which files, among all program sources, have marked strings
+needing translation.  Here is an example of such a file:
+
+     # List of source files containing translatable strings.
+     # Copyright (C) 1995 Free Software Foundation, Inc.
+     
+     # Common library files
+     lib/error.c
+     lib/getopt.c
+     lib/xmalloc.c
+     
+     # Package source files
+     src/gettext.c
+     src/msgfmt.c
+     src/xgettext.c
+
+Hash-marked comments and white lines are ignored.  All other lines list
+those source files containing strings marked for translation (*note
+Mark Keywords::), in a notation relative to the top level of your whole
+distribution, rather than the location of the `POTFILES.in' file itself.
+
+
+File: gettext.info,  Node: configure.in,  Next: config.guess,  Prev: po/POTFILES.in,  Up: Adjusting Files
+
+`configure.in' at top level
+---------------------------
+
+  1. Declare the package and version.
+
+     This is done by a set of lines like these:
+
+          PACKAGE=gettext
+          VERSION=0.10.40
+          AC_DEFINE_UNQUOTED(PACKAGE, "$PACKAGE")
+          AC_DEFINE_UNQUOTED(VERSION, "$VERSION")
+          AC_SUBST(PACKAGE)
+          AC_SUBST(VERSION)
+
+     Of course, you replace `gettext' with the name of your package,
+     and `0.10.40' by its version numbers, exactly as they should
+     appear in the packaged `tar' file name of your distribution
+     (`gettext-0.10.40.tar.gz', here).
+
+  2. Declare the available translations.
+
+     This is done by defining `ALL_LINGUAS' to the white separated,
+     quoted list of available languages, in a single line, like this:
+
+          ALL_LINGUAS="de fr"
+
+     This example means that German and French PO files are available,
+     so that these languages are currently supported by your package.
+     If you want to further restrict, at installation time, the set of
+     installed languages, this should not be done by modifying
+     `ALL_LINGUAS' in `configure.in', but rather by using the `LINGUAS'
+     environment variable (*note Installers::).
+
+  3. Check for internationalization support.
+
+     Here is the main `m4' macro for triggering internationalization
+     support.  Just add this line to `configure.in':
+
+          AM_GNU_GETTEXT
+
+     This call is purposely simple, even if it generates a lot of
+     configure time checking and actions.
+
+  4. Have output files created.
+
+     The `AC_OUTPUT' directive, at the end of your `configure.in' file,
+     needs to be modified in two ways:
+
+          AC_OUTPUT([EXISTING CONFIGURATION FILES intl/Makefile po/Makefile.in],
+          EXISTING ADDITIONAL ACTIONS])
+
+     The modification to the first argument to `AC_OUTPUT' asks for
+     substitution in the `intl/' and `po/' directories.  Note the `.in'
+     suffix used for `po/' only.  This is because the distributed file
+     is really `po/Makefile.in.in'.
+
+
+
+File: gettext.info,  Node: config.guess,  Next: aclocal,  Prev: configure.in,  Up: Adjusting Files
+
+`config.guess', `config.sub' at top level
+-----------------------------------------
+
+   You need to add the GNU `config.guess' and `config.sub' files to
+your distribution.  They are needed because the `intl/' directory has
+platform dependent support for determining the locale's character
+encoding and therefore needs to identify the platform.
+
+   You can obtain the newest version of `config.guess' and `config.sub'
+from `ftp://ftp.gnu.org/pub/gnu/config/'.  Less recent versions are
+also contained in the GNU `automake' and GNU `libtool' packages.
+
+   Normally, `config.guess' and `config.sub' are put at the top level
+of a distribution.  But it is also possible to put them in a
+subdirectory, altogether with other configuration support files like
+`install-sh', `ltconfig', `ltmain.sh', `mkinstalldirs' or `missing'.
+All you need to do, other than moving the files, is to add the
+following line to your `configure.in'.
+
+     AC_CONFIG_AUX_DIR([SUBDIR])
+
+
+File: gettext.info,  Node: aclocal,  Next: acconfig,  Prev: config.guess,  Up: Adjusting Files
+
+`aclocal.m4' at top level
+-------------------------
+
+   If you do not have an `aclocal.m4' file in your distribution, the
+simplest is to concatenate the files `codeset.m4', `gettext.m4',
+`glibc21.m4', `iconv.m4', `isc-posix.m4', `lcmessage.m4', `progtest.m4'
+from GNU `gettext''s `m4/' directory into a single file.
+
+   If you already have an `aclocal.m4' file, then you will have to
+merge the said macro files into your `aclocal.m4'.  Note that if you
+are upgrading from a previous release of GNU `gettext', you should most
+probably _replace_ the macros (`AM_GNU_GETTEXT', `AM_WITH_NLS', etc.),
+as they usually change a little from one release of GNU `gettext' to
+the next.  Their contents may vary as we get more experience with
+strange systems out there.
+
+   These macros check for the internationalization support functions
+and related informations.  Hopefully, once stabilized, these macros
+might be integrated in the standard Autoconf set, because this piece of
+`m4' code will be the same for all projects using GNU `gettext'.
+
+
+File: gettext.info,  Node: acconfig,  Next: Makefile,  Prev: aclocal,  Up: Adjusting Files
+
+`acconfig.h' at top level
+-------------------------
+
+   Earlier GNU `gettext' releases required to put definitions for
+`ENABLE_NLS', `HAVE_GETTEXT' and `HAVE_LC_MESSAGES', `HAVE_STPCPY',
+`PACKAGE' and `VERSION' into an `acconfig.h' file.  This is not needed
+any more; you can remove them from your `acconfig.h' file unless your
+package uses them independently from the `intl/' directory.
+
+
+File: gettext.info,  Node: Makefile,  Next: src/Makefile,  Prev: acconfig,  Up: Adjusting Files
+
+`Makefile.in' at top level
+--------------------------
+
+   Here are a few modifications you need to make to your main, top-level
+`Makefile.in' file.
+
+  1. Add the following lines near the beginning of your `Makefile.in',
+     so the `dist:' goal will work properly (as explained further down):
+
+          PACKAGE = @PACKAGE@
+          VERSION = @VERSION@
+
+  2. Add file `ABOUT-NLS' to the `DISTFILES' definition, so the file
+     gets distributed.
+
+  3. Wherever you process subdirectories in your `Makefile.in', be sure
+     you also process dir subdirectories `intl' and `po'.  Special
+     rules in the `Makefiles' take care for the case where no
+     internationalization is wanted.
+
+     If you are using Makefiles, either generated by automake, or
+     hand-written so they carefully follow the GNU coding standards,
+     the effected goals for which the new subdirectories must be
+     handled include `installdirs', `install', `uninstall', `clean',
+     `distclean'.
+
+     Here is an example of a canonical order of processing.  In this
+     example, we also define `SUBDIRS' in `Makefile.in' for it to be
+     further used in the `dist:' goal.
+
+          SUBDIRS = doc intl lib src @POSUB@
+
+     Note that you must arrange for `make' to descend into the `intl'
+     directory before descending into other directories containing code
+     which make use of the `libintl.h' header file.  For this reason,
+     here we mention `intl' before `lib' and `src'.
+
+     that you will have to adapt to your own package.
+
+  4. A delicate point is the `dist:' goal, as both `intl/Makefile' and
+     `po/Makefile' will later assume that the proper directory has been
+     set up from the main `Makefile'.  Here is an example at what the
+     `dist:' goal might look like:
+
+          distdir = $(PACKAGE)-$(VERSION)
+          dist: Makefile
+          	rm -fr $(distdir)
+          	mkdir $(distdir)
+          	chmod 777 $(distdir)
+          	for file in $(DISTFILES); do \
+          	  ln $$file $(distdir) 2>/dev/null || cp -p $$file $(distdir); \
+          	done
+          	for subdir in $(SUBDIRS); do \
+          	  mkdir $(distdir)/$$subdir || exit 1; \
+          	  chmod 777 $(distdir)/$$subdir; \
+          	  (cd $$subdir && $(MAKE) $@) || exit 1; \
+          	done
+          	tar chozf $(distdir).tar.gz $(distdir)
+          	rm -fr $(distdir)
+
+
+
+File: gettext.info,  Node: src/Makefile,  Prev: Makefile,  Up: Adjusting Files
+
+`Makefile.in' in `src/'
+-----------------------
+
+   Some of the modifications made in the main `Makefile.in' will also
+be needed in the `Makefile.in' from your package sources, which we
+assume here to be in the `src/' subdirectory.  Here are all the
+modifications needed in `src/Makefile.in':
+
+  1. In view of the `dist:' goal, you should have these lines near the
+     beginning of `src/Makefile.in':
+
+          PACKAGE = @PACKAGE@
+          VERSION = @VERSION@
+
+  2. If not done already, you should guarantee that `top_srcdir' gets
+     defined.  This will serve for `cpp' include files.  Just add the
+     line:
+
+          top_srcdir = @top_srcdir@
+
+  3. You might also want to define `subdir' as `src', later allowing
+     for almost uniform `dist:' goals in all your `Makefile.in'.  At
+     list, the `dist:' goal below assume that you used:
+
+          subdir = src
+
+  4. The `main' function of your program will normally call
+     `bindtextdomain' (see *note Triggering::), like this:
+
+          bindtextdomain (PACKAGE, LOCALEDIR);
+
+     To make LOCALEDIR known to the program, add the following lines to
+     Makefile.in:
+
+          datadir = @datadir@
+          localedir = $(datadir)/locale
+          DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
+
+     Note that `@datadir@' defaults to `$(prefix)/share', thus
+     `$(localedir)' defaults to `$(prefix)/share/locale'.
+
+  5. You should ensure that the final linking will use `@INTLLIBS@' as
+     a library.  An easy way to achieve this is to manage that it gets
+     into `LIBS', like this:
+
+          LIBS = @INTLLIBS@ @LIBS@
+
+     In most packages internationalized with GNU `gettext', one will
+     find a directory `lib/' in which a library containing some helper
+     functions will be build.  (You need at least the few functions
+     which the GNU `gettext' Library itself needs.)  However some of
+     the functions in the `lib/' also give messages to the user which
+     of course should be translated, too.  Taking care of this it is
+     not enough to place the support library (say `libsupport.a') just
+     between the `@INTLLIBS@' and `@LIBS@' in the above example.
+     Instead one has to write this:
+
+          LIBS = ../lib/libsupport.a @INTLLIBS@ ../lib/libsupport.a @LIBS@
+
+  6. You should also ensure that directory `intl/' will be searched for
+     C preprocessor include files in all circumstances.  So, you have to
+     manage so both `-I../intl' and `-I$(top_srcdir)/intl' will be
+     given to the C compiler.
+
+  7. Your `dist:' goal has to conform with others.  Here is a
+     reasonable definition for it:
+
+          distdir = ../$(PACKAGE)-$(VERSION)/$(subdir)
+          dist: Makefile $(DISTFILES)
+          	for file in $(DISTFILES); do \
+          	  ln $$file $(distdir) 2>/dev/null || cp -p $$file $(distdir); \
+          	done
+
+
+
+File: gettext.info,  Node: Conclusion,  Next: Language Codes,  Prev: Maintainers,  Up: Top
+
+Concluding Remarks
+******************
+
+   We would like to conclude this GNU `gettext' manual by presenting an
+history of the Translation Project so far.  We finally give a few
+pointers for those who want to do further research or readings about
+Native Language Support matters.
+
+* Menu:
+
+* History::                     History of GNU `gettext'
+* References::                  Related Readings
+
+
+File: gettext.info,  Node: History,  Next: References,  Prev: Conclusion,  Up: Conclusion
+
+History of GNU `gettext'
+========================
+
+   Internationalization concerns and algorithms have been informally
+and casually discussed for years in GNU, sometimes around GNU `libc',
+maybe around the incoming `Hurd', or otherwise (nobody clearly
+remembers).  And even then, when the work started for real, this was
+somewhat independently of these previous discussions.
+
+   This all began in July 1994, when Patrick D'Cruze had the idea and
+initiative of internationalizing version 3.9.2 of GNU `fileutils'.  He
+then asked Jim Meyering, the maintainer, how to get those changes
+folded into an official release.  That first draft was full of
+`#ifdef's and somewhat disconcerting, and Jim wanted to find nicer
+ways.  Patrick and Jim shared some tries and experimentations in this
+area.  Then, feeling that this might eventually have a deeper impact on
+GNU, Jim wanted to know what standards were, and contacted Richard
+Stallman, who very quickly and verbally described an overall design for
+what was meant to become `glocale', at that time.
+
+   Jim implemented `glocale' and got a lot of exhausting feedback from
+Patrick and Richard, of course, but also from Mitchum DSouza (who wrote
+a `catgets'-like package), Roland McGrath, maybe David MacKenzie,
+Franc,ois Pinard, and Paul Eggert, all pushing and pulling in various
+directions, not always compatible, to the extent that after a couple of
+test releases, `glocale' was torn apart.
+
+   While Jim took some distance and time and became dad for a second
+time, Roland wanted to get GNU `libc' internationalized, and got Ulrich
+Drepper involved in that project.  Instead of starting from `glocale',
+Ulrich rewrote something from scratch, but more conformant to the set
+of guidelines who emerged out of the `glocale' effort.  Then, Ulrich
+got people from the previous forum to involve themselves into this new
+project, and the switch from `glocale' to what was first named
+`msgutils', renamed `nlsutils', and later `gettext', became officially
+accepted by Richard in May 1995 or so.
+
+   Let's summarize by saying that Ulrich Drepper wrote GNU `gettext' in
+April 1995.  The first official release of the package, including PO
+mode, occurred in July 1995, and was numbered 0.7.  Other people
+contributed to the effort by providing a discussion forum around
+Ulrich, writing little pieces of code, or testing.  These are quoted in
+the `THANKS' file which comes with the GNU `gettext' distribution.
+
+   While this was being done, Franc,ois adapted half a dozen of GNU
+packages to `glocale' first, then later to `gettext', putting them in
+pretest, so providing along the way an effective user environment for
+fine tuning the evolving tools.  He also took the responsibility of
+organizing and coordinating the Translation Project.  After nearly a
+year of informal exchanges between people from many countries,
+translator teams started to exist in May 1995, through the creation and
+support by Patrick D'Cruze of twenty unmoderated mailing lists for that
+many native languages, and two moderated lists: one for reaching all
+teams at once, the other for reaching all willing maintainers of
+internationalized free software packages.
+
+   Franc,ois also wrote PO mode in June 1995 with the collaboration of
+Greg McGary, as a kind of contribution to Ulrich's package.  He also
+gave a hand with the GNU `gettext' Texinfo manual.
+
+
+File: gettext.info,  Node: References,  Prev: History,  Up: Conclusion
+
+Related Readings
+================
+
+   Eugene H. Dorr (`dorre@well.com') maintains an interesting
+bibliography on internationalization matters, called
+`Internationalization Reference List', which is available as:
+     ftp://ftp.ora.com/pub/examples/nutshell/ujip/doc/i18n-books.txt
+
+   Michael Gschwind (`mike@vlsivie.tuwien.ac.at') maintains a
+Frequently Asked Questions (FAQ) list, entitled `Programming for
+Internationalisation'.  This FAQ discusses writing programs which can
+handle different language conventions, character sets, etc.; and is
+applicable to all character set encodings, with particular emphasis on
+ISO 8859-1.  It is regularly published in Usenet groups
+`comp.unix.questions', `comp.std.internat',
+`comp.software.international', `comp.lang.c', `comp.windows.x',
+`comp.std.c', `comp.answers' and `news.answers'.  The home location of
+this document is:
+     ftp://ftp.vlsivie.tuwien.ac.at/pub/8bit/ISO-programming
+
+   Patrick D'Cruze (`pdcruze@li.org') wrote a tutorial about NLS
+matters, and Jochen Hein (`Hein@student.tu-clausthal.de') took over the
+responsibility of maintaining it.  It may be found as:
+     ftp://sunsite.unc.edu/pub/Linux/utils/nls/catalogs/Incoming/...
+          ...locale-tutorial-0.8.txt.gz
+
+This site is mirrored in:
+     ftp://ftp.ibp.fr/pub/linux/sunsite/
+
+   A French version of the same tutorial should be findable at:
+     ftp://ftp.ibp.fr/pub/linux/french/docs/
+
+together with French translations of many Linux-related documents.
+
+
+File: gettext.info,  Node: Language Codes,  Next: Country Codes,  Prev: Conclusion,  Up: Top
+
+Language Codes
+**************
+
+   The ISO 639 standard defines two character codes for many languages.
+All abbreviations for languages used in the Translation Project should
+come from this standard.
+
+`aa'
+     Afar.
+
+`ab'
+     Abkhazian.
+
+`ae'
+     Avestan.
+
+`af'
+     Afrikaans.
+
+`am'
+     Amharic.
+
+`ar'
+     Arabic.
+
+`as'
+     Assamese.
+
+`ay'
+     Aymara.
+
+`az'
+     Azerbaijani.
+
+`ba'
+     Bashkir.
+
+`be'
+     Byelorussian; Belarusian.
+
+`bg'
+     Bulgarian.
+
+`bh'
+     Bihari.
+
+`bi'
+     Bislama.
+
+`bn'
+     Bengali; Bangla.
+
+`bo'
+     Tibetan.
+
+`br'
+     Breton.
+
+`bs'
+     Bosnian.
+
+`ca'
+     Catalan.
+
+`ce'
+     Chechen.
+
+`ch'
+     Chamorro.
+
+`co'
+     Corsican.
+
+`cs'
+     Czech.
+
+`cu'
+     Church Slavic.
+
+`cv'
+     Chuvash.
+
+`cy'
+     Welsh.
+
+`da'
+     Danish.
+
+`de'
+     German.
+
+`dz'
+     Dzongkha; Bhutani.
+
+`el'
+     Greek.
+
+`en'
+     English.
+
+`eo'
+     Esperanto.
+
+`es'
+     Spanish.
+
+`et'
+     Estonian.
+
+`eu'
+     Basque.
+
+`fa'
+     Persian.
+
+`fi'
+     Finnish.
+
+`fj'
+     Fijian; Fiji.
+
+`fo'
+     Faroese.
+
+`fr'
+     French.
+
+`fy'
+     Frisian.
+
+`ga'
+     Irish.
+
+`gd'
+     Scots; Gaelic.
+
+`gl'
+     Gallegan; Galician.
+
+`gn'
+     Guarani.
+
+`gu'
+     Gujarati.
+
+`gv'
+     Manx.
+
+`ha'
+     Hausa (?).
+
+`he'
+     Hebrew (formerly iw).
+
+`hi'
+     Hindi.
+
+`ho'
+     Hiri Motu.
+
+`hr'
+     Croatian.
+
+`hu'
+     Hungarian.
+
+`hy'
+     Armenian.
+
+`hz'
+     Herero.
+
+`ia'
+     Interlingua.
+
+`id'
+     Indonesian (formerly in).
+
+`ie'
+     Interlingue.
+
+`ik'
+     Inupiak.
+
+`is'
+     Icelandic.
+
+`it'
+     Italian.
+
+`iu'
+     Inuktitut.
+
+`ja'
+     Japanese.
+
+`jw'
+     Javanese.
+
+`ka'
+     Georgian.
+
+`ki'
+     Kikuyu.
+
+`kj'
+     Kuanyama.
+
+`kk'
+     Kazakh.
+
+`kl'
+     Kalaallisut; Greenlandic.
+
+`km'
+     Khmer; Cambodian.
+
+`kn'
+     Kannada.
+
+`ko'
+     Korean.
+
+`ks'
+     Kashmiri.
+
+`ku'
+     Kurdish.
+
+`kv'
+     Komi.
+
+`kw'
+     Cornish.
+
+`ky'
+     Kirghiz.
+
+`la'
+     Latin.
+
+`lb'
+     Letzeburgesch.
+
+`ln'
+     Lingala.
+
+`lo'
+     Lao; Laotian.
+
+`lt'
+     Lithuanian.
+
+`lv'
+     Latvian; Lettish.
+
+`mg'
+     Malagasy.
+
+`mh'
+     Marshall.
+
+`mi'
+     Maori.
+
+`mk'
+     Macedonian.
+
+`ml'
+     Malayalam.
+
+`mn'
+     Mongolian.
+
+`mo'
+     Moldavian.
+
+`mr'
+     Marathi.
+
+`ms'
+     Malay.
+
+`mt'
+     Maltese.
+
+`my'
+     Burmese.
+
+`na'
+     Nauru.
+
+`nb'
+     Norwegian Bokmaal.
+
+`nd'
+     Ndebele, North.
+
+`ne'
+     Nepali.
+
+`ng'
+     Ndonga.
+
+`nl'
+     Dutch.
+
+`nn'
+     Norwegian Nynorsk.
+
+`no'
+     Norwegian.
+
+`nr'
+     Ndebele, South.
+
+`nv'
+     Navajo.
+
+`ny'
+     Chichewa; Nyanja.
+
+`oc'
+     Occitan; Provenc,al.
+
+`om'
+     (Afan) Oromo.
+
+`or'
+     Oriya.
+
+`os'
+     Ossetian; Ossetic.
+
+`pa'
+     Panjabi; Punjabi.
+
+`pi'
+     Pali.
+
+`pl'
+     Polish.
+
+`ps'
+     Pashto, Pushto.
+
+`pt'
+     Portuguese.
+
+`qu'
+     Quechua.
+
+`rm'
+     Rhaeto-Romance.
+
+`rn'
+     Rundi; Kirundi.
+
+`ro'
+     Romanian.
+
+`ru'
+     Russian.
+
+`rw'
+     Kinyarwanda.
+
+`sa'
+     Sanskrit.
+
+`sc'
+     Sardinian.
+
+`sd'
+     Sindhi.
+
+`se'
+     Northern Sami.
+
+`sg'
+     Sango; Sangro.
+
+`si'
+     Sinhalese.
+
+`sk'
+     Slovak.
+
+`sl'
+     Slovenian.
+
+`sm'
+     Samoan.
+
+`sn'
+     Shona.
+
+`so'
+     Somali.
+
+`sq'
+     Albanian.
+
+`sr'
+     Serbian.
+
+`ss'
+     Swati; Siswati.
+
+`st'
+     Sesotho; Sotho, Southern.
+
+`su'
+     Sundanese.
+
+`sv'
+     Swedish.
+
+`sw'
+     Swahili.
+
+`ta'
+     Tamil.
+
+`te'
+     Telugu.
+
+`tg'
+     Tajik.
+
+`th'
+     Thai.
+
+`ti'
+     Tigrinya.
+
+`tk'
+     Turkmen.
+
+`tl'
+     Tagalog.
+
+`tn'
+     Tswana; Setswana.
+
+`to'
+     Tonga (?).
+
+`tr'
+     Turkish.
+
+`ts'
+     Tsonga.
+
+`tt'
+     Tatar.
+
+`tw'
+     Twi.
+
+`ty'
+     Tahitian.
+
+`ug'
+     Uighur.
+
+`uk'
+     Ukrainian.
+
+`ur'
+     Urdu.
+
+`uz'
+     Uzbek.
+
+`vi'
+     Vietnamese.
+
+`vo'
+     Volapu"k; Volapuk.
+
+`wo'
+     Wolof.
+
+`xh'
+     Xhosa.
+
+`yi'
+     Yiddish (formerly ji).
+
+`yo'
+     Yoruba.
+
+`za'
+     Zhuang.
+
+`zh'
+     Chinese.
+
+`zu'
+     Zulu.
+
+
+File: gettext.info,  Node: Country Codes,  Prev: Language Codes,  Up: Top
+
+Country Codes
+*************
+
+   The ISO 3166 standard defines two character codes for many countries
+and territories.  All abbreviations for countries used in the
+Translation Project should come from this standard.
+
+`AD'
+     Andorra.
+
+`AE'
+     United Arab Emirates.
+
+`AF'
+     Afghanistan.
+
+`AG'
+     Antigua and Barbuda.
+
+`AI'
+     Anguilla.
+
+`AL'
+     Albania.
+
+`AM'
+     Armenia.
+
+`AN'
+     Netherlands Antilles.
+
+`AO'
+     Angola.
+
+`AQ'
+     Antarctica.
+
+`AR'
+     Argentina.
+
+`AS'
+     Samoa (American).
+
+`AT'
+     Austria.
+
+`AU'
+     Australia.
+
+`AW'
+     Aruba.
+
+`AZ'
+     Azerbaijan.
+
+`BA'
+     Bosnia and Herzegovina.
+
+`BB'
+     Barbados.
+
+`BD'
+     Bangladesh.
+
+`BE'
+     Belgium.
+
+`BF'
+     Burkina Faso.
+
+`BG'
+     Bulgaria.
+
+`BH'
+     Bahrain.
+
+`BI'
+     Burundi.
+
+`BJ'
+     Benin.
+
+`BM'
+     Bermuda.
+
+`BN'
+     Brunei.
+
+`BO'
+     Bolivia.
+
+`BR'
+     Brazil.
+
+`BS'
+     Bahamas.
+
+`BT'
+     Bhutan.
+
+`BV'
+     Bouvet Island.
+
+`BW'
+     Botswana.
+
+`BY'
+     Belarus.
+
+`BZ'
+     Belize.
+
+`CA'
+     Canada.
+
+`CC'
+     Cocos (Keeling) Islands.
+
+`CD'
+     Congo (Dem. Rep.).
+
+`CF'
+     Central African Rep..
+
+`CG'
+     Congo (Rep.).
+
+`CH'
+     Switzerland.
+
+`CI'
+     Cote d'Ivoire.
+
+`CK'
+     Cook Islands.
+
+`CL'
+     Chile.
+
+`CM'
+     Cameroon.
+
+`CN'
+     China.
+
+`CO'
+     Colombia.
+
+`CR'
+     Costa Rica.
+
+`CU'
+     Cuba.
+
+`CV'
+     Cape Verde.
+
+`CX'
+     Christmas Island.
+
+`CY'
+     Cyprus.
+
+`CZ'
+     Czech Republic.
+
+`DE'
+     Germany.
+
+`DJ'
+     Djibouti.
+
+`DK'
+     Denmark.
+
+`DM'
+     Dominica.
+
+`DO'
+     Dominican Republic.
+
+`DZ'
+     Algeria.
+
+`EC'
+     Ecuador.
+
+`EE'
+     Estonia.
+
+`EG'
+     Egypt.
+
+`EH'
+     Western Sahara.
+
+`ER'
+     Eritrea.
+
+`ES'
+     Spain.
+
+`ET'
+     Ethiopia.
+
+`FI'
+     Finland.
+
+`FJ'
+     Fiji.
+
+`FK'
+     Falkland Islands.
+
+`FM'
+     Micronesia.
+
+`FO'
+     Faeroe Islands.
+
+`FR'
+     France.
+
+`GA'
+     Gabon.
+
+`GB'
+     Britain (UK).
+
+`GD'
+     Grenada.
+
+`GE'
+     Georgia.
+
+`GF'
+     French Guiana.
+
+`GH'
+     Ghana.
+
+`GI'
+     Gibraltar.
+
+`GL'
+     Greenland.
+
+`GM'
+     Gambia.
+
+`GN'
+     Guinea.
+
+`GP'
+     Guadeloupe.
+
+`GQ'
+     Equatorial Guinea.
+
+`GR'
+     Greece.
+
+`GS'
+     South Georgia and the South Sandwich Islands.
+
+`GT'
+     Guatemala.
+
+`GU'
+     Guam.
+
+`GW'
+     Guinea-Bissau.
+
+`GY'
+     Guyana.
+
+`HK'
+     Hong Kong.
+
+`HM'
+     Heard Island and McDonald Islands.
+
+`HN'
+     Honduras.
+
+`HR'
+     Croatia.
+
+`HT'
+     Haiti.
+
+`HU'
+     Hungary.
+
+`ID'
+     Indonesia.
+
+`IE'
+     Ireland.
+
+`IL'
+     Israel.
+
+`IN'
+     India.
+
+`IO'
+     British Indian Ocean Territory.
+
+`IQ'
+     Iraq.
+
+`IR'
+     Iran.
+
+`IS'
+     Iceland.
+
+`IT'
+     Italy.
+
+`JM'
+     Jamaica.
+
+`JO'
+     Jordan.
+
+`JP'
+     Japan.
+
+`KE'
+     Kenya.
+
+`KG'
+     Kyrgyzstan.
+
+`KH'
+     Cambodia.
+
+`KI'
+     Kiribati.
+
+`KM'
+     Comoros.
+
+`KN'
+     St Kitts and Nevis.
+
+`KP'
+     Korea (North).
+
+`KR'
+     Korea (South).
+
+`KW'
+     Kuwait.
+
+`KY'
+     Cayman Islands.
+
+`KZ'
+     Kazakhstan.
+
+`LA'
+     Laos.
+
+`LB'
+     Lebanon.
+
+`LC'
+     St Lucia.
+
+`LI'
+     Liechtenstein.
+
+`LK'
+     Sri Lanka.
+
+`LR'
+     Liberia.
+
+`LS'
+     Lesotho.
+
+`LT'
+     Lithuania.
+
+`LU'
+     Luxembourg.
+
+`LV'
+     Latvia.
+
+`LY'
+     Libya.
+
+`MA'
+     Morocco.
+
+`MC'
+     Monaco.
+
+`MD'
+     Moldova.
+
+`MG'
+     Madagascar.
+
+`MH'
+     Marshall Islands.
+
+`MK'
+     Macedonia.
+
+`ML'
+     Mali.
+
+`MM'
+     Myanmar (Burma).
+
+`MN'
+     Mongolia.
+
+`MO'
+     Macao.
+
+`MP'
+     Northern Mariana Islands.
+
+`MQ'
+     Martinique.
+
+`MR'
+     Mauritania.
+
+`MS'
+     Montserrat.
+
+`MT'
+     Malta.
+
+`MU'
+     Mauritius.
+
+`MV'
+     Maldives.
+
+`MW'
+     Malawi.
+
+`MX'
+     Mexico.
+
+`MY'
+     Malaysia.
+
+`MZ'
+     Mozambique.
+
+`NA'
+     Namibia.
+
+`NC'
+     New Caledonia.
+
+`NE'
+     Niger.
+
+`NF'
+     Norfolk Island.
+
+`NG'
+     Nigeria.
+
+`NI'
+     Nicaragua.
+
+`NL'
+     Netherlands.
+
+`NO'
+     Norway.
+
+`NP'
+     Nepal.
+
+`NR'
+     Nauru.
+
+`NU'
+     Niue.
+
+`NZ'
+     New Zealand.
+
+`OM'
+     Oman.
+
+`PA'
+     Panama.
+
+`PE'
+     Peru.
+
+`PF'
+     French Polynesia.
+
+`PG'
+     Papua New Guinea.
+
+`PH'
+     Philippines.
+
+`PK'
+     Pakistan.
+
+`PL'
+     Poland.
+
+`PM'
+     St Pierre and Miquelon.
+
+`PN'
+     Pitcairn.
+
+`PR'
+     Puerto Rico.
+
+`PS'
+     Palestine.
+
+`PT'
+     Portugal.
+
+`PW'
+     Palau.
+
+`PY'
+     Paraguay.
+
+`QA'
+     Qatar.
+
+`RE'
+     Reunion.
+
+`RO'
+     Romania.
+
+`RU'
+     Russia.
+
+`RW'
+     Rwanda.
+
+`SA'
+     Saudi Arabia.
+
+`SB'
+     Solomon Islands.
+
+`SC'
+     Seychelles.
+
+`SD'
+     Sudan.
+
+`SE'
+     Sweden.
+
+`SG'
+     Singapore.
+
+`SH'
+     St Helena.
+
+`SI'
+     Slovenia.
+
+`SJ'
+     Svalbard and Jan Mayen.
+
+`SK'
+     Slovakia.
+
+`SL'
+     Sierra Leone.
+
+`SM'
+     San Marino.
+
+`SN'
+     Senegal.
+
+`SO'
+     Somalia.
+
+`SR'
+     Suriname.
+
+`ST'
+     Sao Tome and Principe.
+
+`SV'
+     El Salvador.
+
+`SY'
+     Syria.
+
+`SZ'
+     Swaziland.
+
+`TC'
+     Turks and Caicos Is.
+
+`TD'
+     Chad.
+
+`TF'
+     French Southern and Antarctic Lands.
+
+`TG'
+     Togo.
+
+`TH'
+     Thailand.
+
+`TJ'
+     Tajikistan.
+
+`TK'
+     Tokelau.
+
+`TM'
+     Turkmenistan.
+
+`TN'
+     Tunisia.
+
+`TO'
+     Tonga.
+
+`TP'
+     East Timor.
+
+`TR'
+     Turkey.
+
+`TT'
+     Trinidad and Tobago.
+
+`TV'
+     Tuvalu.
+
+`TW'
+     Taiwan.
+
+`TZ'
+     Tanzania.
+
+`UA'
+     Ukraine.
+
+`UG'
+     Uganda.
+
+`UM'
+     US minor outlying islands.
+
+`US'
+     United States.
+
+`UY'
+     Uruguay.
+
+`UZ'
+     Uzbekistan.
+
+`VA'
+     Vatican City.
+
+`VC'
+     St Vincent.
+
+`VE'
+     Venezuela.
+
+`VG'
+     Virgin Islands (UK).
+
+`VI'
+     Virgin Islands (US).
+
+`VN'
+     Vietnam.
+
+`VU'
+     Vanuatu.
+
+`WF'
+     Wallis and Futuna.
+
+`WS'
+     Samoa (Western).
+
+`YE'
+     Yemen.
+
+`YT'
+     Mayotte.
+
+`YU'
+     Yugoslavia.
+
+`ZA'
+     South Africa.
+
+`ZM'
+     Zambia.
+
+`ZW'
+     Zimbabwe.
+
+

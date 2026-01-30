@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Memory Allocators</title><meta name="generator" content="DocBook XSL Stylesheets V1.50.0"><meta name="generator" content="GTK-Doc V1.0 (XML mode)"><style type="text/css">
+        .synopsis, .classsynopsis {
+            background: #eeeeee;
+            border: solid 1px #aaaaaa;
+            padding: 0.5em;
+        }
+        .programlisting {
+            background: #eeeeff;
+            border: solid 1px #aaaaff;
+            padding: 0.5em;
+        }
+        .variablelist {
+            padding: 4px;
+            margin-left: 3em;
+        }
+        .navigation {
+            background: #ffeeee;
+            border: solid 1px #ffaaaa;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+        .navigation a {
+            color: #770000;
+        }
+        .navigation a:visited {
+            color: #550000;
+        }
+        .navigation .title {
+            font-size: 200%;
+        }
+      </style><link rel="home" href="index.html" title="GLib Reference Manual"><link rel="up" href="glib-data-types.html" title="GLib Data Types"><link rel="previous" href="glib-Caches.html" title="Caches"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><table class="navigation" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2"><tr valign="middle"><td><a accesskey="p" href="glib-Caches.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td><td><a accesskey="u" href="glib-data-types.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td><td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td><th width="100%" align="center">GLib Reference Manual</th></tr></table><div class="refentry"><a name="glib-Memory-Allocators"></a><div class="titlepage"></div><div class="refnamediv"><h2>Memory Allocators</h2><p>Memory Allocators &#8212; allocates chunks of memory for <a href="glib-Doubly-Linked-Lists.html#GList">GList</a>, <a href="glib-Singly-Linked-Lists.html#GSList">GSList</a> and <a href="glib-N-ary-Trees.html#GNode">GNode</a>.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><pre class="synopsis">
+
+#include &lt;glib.h&gt;
+
+
+struct      <a href="glib-Memory-Allocators.html#GAllocator">GAllocator</a>;
+<a href="glib-Memory-Allocators.html#GAllocator">GAllocator</a>* <a href="glib-Memory-Allocators.html#g-allocator-new">g_allocator_new</a>                 (const <a href="glib-Basic-Types.html#gchar">gchar</a> *name,
+                                             <a href="glib-Basic-Types.html#guint">guint</a> n_preallocs);
+void        <a href="glib-Memory-Allocators.html#g-allocator-free">g_allocator_free</a>                (<a href="glib-Memory-Allocators.html#GAllocator">GAllocator</a> *allocator);
+
+</pre></div><div class="refsect1"><h2>Description</h2><p>
+The <a href="glib-Memory-Allocators.html#GAllocator">GAllocator</a> is used as an efficient way to allocate small pieces of
+memory for use with the <a href="glib-Doubly-Linked-Lists.html#GList">GList</a>, <a href="glib-Singly-Linked-Lists.html#GSList">GSList</a> and <a href="glib-N-ary-Trees.html#GNode">GNode</a> data structures.
+It uses a <a href="glib-Memory-Chunks.html#GMemChunk">GMemChunk</a> so elements are allocated in groups, rather than
+individually.
+</p><p>
+The <a href="glib-Doubly-Linked-Lists.html#GList">GList</a>, <a href="glib-Singly-Linked-Lists.html#GSList">GSList</a> and <a href="glib-N-ary-Trees.html#GNode">GNode</a> implementations create default <a href="glib-Memory-Allocators.html#GAllocator">GAllocator</a>
+objects, which are probably sufficient for most purposes. These default
+allocators use blocks of 128 elements.
+</p><p>
+To use your own <a href="glib-Memory-Allocators.html#GAllocator">GAllocator</a>, create it with <a href="glib-Memory-Allocators.html#g-allocator-new">g_allocator_new</a>(). Then
+use <a href="glib-Doubly-Linked-Lists.html#g-list-push-allocator">g_list_push_allocator</a>(), <a href="glib-Singly-Linked-Lists.html#g-slist-push-allocator">g_slist_push_allocator</a>() or
+<a href="glib-N-ary-Trees.html#g-node-push-allocator">g_node_push_allocator</a>() before any code which allocates new <a href="glib-Doubly-Linked-Lists.html#GList">GList</a>, <a href="glib-Singly-Linked-Lists.html#GSList">GSList</a>
+or <a href="glib-N-ary-Trees.html#GNode">GNode</a> elements respectively. After allocating the new elements, you must
+use <a href="glib-Doubly-Linked-Lists.html#g-list-pop-allocator">g_list_pop_allocator</a>(), <a href="glib-Singly-Linked-Lists.html#g-slist-pop-allocator">g_slist_pop_allocator</a>() or <a href="glib-N-ary-Trees.html#g-node-pop-allocator">g_node_pop_allocator</a>()
+to restore the previous allocators.
+</p><p>
+Note that you cannot use the same allocator for <a href="glib-Doubly-Linked-Lists.html#GList">GList</a>, <a href="glib-Singly-Linked-Lists.html#GSList">GSList</a> and <a href="glib-N-ary-Trees.html#GNode">GNode</a>
+elements. Each must use separate allocators.
+</p></div><div class="refsect1"><h2>Details</h2><div class="refsect2"><h3><a name="GAllocator"></a>struct GAllocator</h3><pre class="programlisting">struct GAllocator;</pre><p>
+The GAllocator struct contains private data. and should only be accessed
+using the following functions.
+</p></div><hr><div class="refsect2"><h3><a name="g-allocator-new"></a>g_allocator_new ()</h3><pre class="programlisting"><a href="glib-Memory-Allocators.html#GAllocator">GAllocator</a>* g_allocator_new                 (const <a href="glib-Basic-Types.html#gchar">gchar</a> *name,
+                                             <a href="glib-Basic-Types.html#guint">guint</a> n_preallocs);</pre><p>
+Creates a new <a href="glib-Memory-Allocators.html#GAllocator">GAllocator</a>.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>name</tt></i> :</span></td><td>the name of the <a href="glib-Memory-Allocators.html#GAllocator">GAllocator</a>. This name is used to set the name of the
+<a href="glib-Memory-Chunks.html#GMemChunk">GMemChunk</a> used by the <a href="glib-Memory-Allocators.html#GAllocator">GAllocator</a>, and is only used for debugging.
+</td></tr><tr><td><span class="term"><i><tt>n_preallocs</tt></i> :</span></td><td>the number of elements in each block of memory allocated.
+Larger blocks mean less calls to <a href="glib-Memory-Allocation.html#g-malloc">g_malloc</a>(), but some memory may be wasted.
+(GLib uses 128 elements per block by default.) The value must be between 1
+and 65535.
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>a new <a href="glib-Memory-Allocators.html#GAllocator">GAllocator</a>.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-allocator-free"></a>g_allocator_free ()</h3><pre class="programlisting">void        g_allocator_free                (<a href="glib-Memory-Allocators.html#GAllocator">GAllocator</a> *allocator);</pre><p>
+Frees all of the memory allocated by the <a href="glib-Memory-Allocators.html#GAllocator">GAllocator</a>.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>allocator</tt></i> :</span></td><td>a <a href="glib-Memory-Allocators.html#GAllocator">GAllocator</a>.
+
+
+</td></tr></tbody></table></div></div></div></div><table class="navigation" width="100%" summary="Navigation footer" cellpadding="2" cellspacing="0"><tr valign="middle"><td align="left"><a accesskey="p" href="glib-Caches.html"><b>&lt;&lt; Caches</b></a></td><td align="right"></td></tr></table></body></html>

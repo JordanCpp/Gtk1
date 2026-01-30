@@ -1,0 +1,237 @@
+<refentry id="gobject-GTypePlugin">
+<refmeta>
+<refentrytitle>GTypePlugin</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GOBJECT Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>GTypePlugin</refname><refpurpose>An interface for dynamically loadable types</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv><title>Synopsis</title>
+
+<synopsis>
+
+#include &lt;gobject.h&gt;
+
+
+struct      <link linkend="GTypePlugin">GTypePlugin</link>;
+struct      <link linkend="GTypePluginClass">GTypePluginClass</link>;
+void        (<link linkend="GTypePluginUse">*GTypePluginUse</link>)               (<link linkend="GTypePlugin">GTypePlugin</link> *plugin);
+void        (<link linkend="GTypePluginUnuse">*GTypePluginUnuse</link>)             (<link linkend="GTypePlugin">GTypePlugin</link> *plugin);
+void        (<link linkend="GTypePluginCompleteTypeInfo">*GTypePluginCompleteTypeInfo</link>)  (<link linkend="GTypePlugin">GTypePlugin</link> *plugin,
+                                             <link linkend="GType">GType</link> g_type,
+                                             <link linkend="GTypeInfo">GTypeInfo</link> *info,
+                                             <link linkend="GTypeValueTable">GTypeValueTable</link> *value_table);
+void        (<link linkend="GTypePluginCompleteInterfaceInfo">*GTypePluginCompleteInterfaceInfo</link>)
+                                            (<link linkend="GTypePlugin">GTypePlugin</link> *plugin,
+                                             <link linkend="GType">GType</link> instance_type,
+                                             <link linkend="GType">GType</link> interface_type,
+                                             <link linkend="GInterfaceInfo">GInterfaceInfo</link> *info);
+void        <link linkend="g-type-plugin-use">g_type_plugin_use</link>               (<link linkend="GTypePlugin">GTypePlugin</link> *plugin);
+void        <link linkend="g-type-plugin-unuse">g_type_plugin_unuse</link>             (<link linkend="GTypePlugin">GTypePlugin</link> *plugin);
+void        <link linkend="g-type-plugin-complete-type-info">g_type_plugin_complete_type_info</link>
+                                            (<link linkend="GTypePlugin">GTypePlugin</link> *plugin,
+                                             <link linkend="GType">GType</link> g_type,
+                                             <link linkend="GTypeInfo">GTypeInfo</link> *info,
+                                             <link linkend="GTypeValueTable">GTypeValueTable</link> *value_table);
+void        <link linkend="g-type-plugin-complete-interface-info">g_type_plugin_complete_interface_info</link>
+                                            (<link linkend="GTypePlugin">GTypePlugin</link> *plugin,
+                                             <link linkend="GType">GType</link> instance_type,
+                                             <link linkend="GType">GType</link> interface_type,
+                                             <link linkend="GInterfaceInfo">GInterfaceInfo</link> *info);
+
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+<refsect1>
+<title>Description</title>
+<para>
+
+</para>
+</refsect1>
+
+<refsect1>
+<title>Details</title>
+<refsect2>
+<title><anchor id="GTypePlugin"/>struct GTypePlugin</title>
+<programlisting>struct GTypePlugin;</programlisting>
+<para>
+
+</para></refsect2>
+<refsect2>
+<title><anchor id="GTypePluginClass"/>struct GTypePluginClass</title>
+<programlisting>struct GTypePluginClass {
+
+  GTypeInterface		   base_iface;
+  
+  GTypePluginUse		   use_plugin;
+  GTypePluginUnuse		   unuse_plugin;
+  GTypePluginCompleteTypeInfo	   complete_type_info;
+  GTypePluginCompleteInterfaceInfo complete_interface_info;
+};
+</programlisting>
+<para>
+
+</para></refsect2>
+<refsect2>
+<title><anchor id="GTypePluginUse"/>GTypePluginUse ()</title>
+<programlisting>void        (*GTypePluginUse)               (<link linkend="GTypePlugin">GTypePlugin</link> *plugin);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>plugin</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="GTypePluginUnuse"/>GTypePluginUnuse ()</title>
+<programlisting>void        (*GTypePluginUnuse)             (<link linkend="GTypePlugin">GTypePlugin</link> *plugin);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>plugin</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="GTypePluginCompleteTypeInfo"/>GTypePluginCompleteTypeInfo ()</title>
+<programlisting>void        (*GTypePluginCompleteTypeInfo)  (<link linkend="GTypePlugin">GTypePlugin</link> *plugin,
+                                             <link linkend="GType">GType</link> g_type,
+                                             <link linkend="GTypeInfo">GTypeInfo</link> *info,
+                                             <link linkend="GTypeValueTable">GTypeValueTable</link> *value_table);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>plugin</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>g_type</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>info</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>value_table</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="GTypePluginCompleteInterfaceInfo"/>GTypePluginCompleteInterfaceInfo ()</title>
+<programlisting>void        (*GTypePluginCompleteInterfaceInfo)
+                                            (<link linkend="GTypePlugin">GTypePlugin</link> *plugin,
+                                             <link linkend="GType">GType</link> instance_type,
+                                             <link linkend="GType">GType</link> interface_type,
+                                             <link linkend="GInterfaceInfo">GInterfaceInfo</link> *info);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>plugin</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>instance_type</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>interface_type</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>info</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-type-plugin-use"/>g_type_plugin_use ()</title>
+<programlisting>void        g_type_plugin_use               (<link linkend="GTypePlugin">GTypePlugin</link> *plugin);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>plugin</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-type-plugin-unuse"/>g_type_plugin_unuse ()</title>
+<programlisting>void        g_type_plugin_unuse             (<link linkend="GTypePlugin">GTypePlugin</link> *plugin);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>plugin</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-type-plugin-complete-type-info"/>g_type_plugin_complete_type_info ()</title>
+<programlisting>void        g_type_plugin_complete_type_info
+                                            (<link linkend="GTypePlugin">GTypePlugin</link> *plugin,
+                                             <link linkend="GType">GType</link> g_type,
+                                             <link linkend="GTypeInfo">GTypeInfo</link> *info,
+                                             <link linkend="GTypeValueTable">GTypeValueTable</link> *value_table);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>plugin</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>g_type</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>info</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>value_table</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="g-type-plugin-complete-interface-info"/>g_type_plugin_complete_interface_info ()</title>
+<programlisting>void        g_type_plugin_complete_interface_info
+                                            (<link linkend="GTypePlugin">GTypePlugin</link> *plugin,
+                                             <link linkend="GType">GType</link> instance_type,
+                                             <link linkend="GType">GType</link> interface_type,
+                                             <link linkend="GInterfaceInfo">GInterfaceInfo</link> *info);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>plugin</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>instance_type</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>interface_type</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>info</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>

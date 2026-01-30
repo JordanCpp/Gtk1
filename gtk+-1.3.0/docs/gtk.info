@@ -1,0 +1,151 @@
+This is gtk.info, produced by makeinfo version 3.12s from gtk.texi.
+
+   This file documents GTK, the GIMP Toolkit
+
+   Copyright (C) 1996 Peter Mattis Copyright (C) 1997 Peter Mattis
+
+   Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies
+
+   Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, provided that the
+entire resulting derived work is distributed under the terms of a
+permission notice identical to this one.
+
+   Permission is granted to copy and distribute translations of this
+manual into another language, under the above conditions for modified
+versions, except that this permission notice may be stated in a
+translation approved by Peter Mattis.
+
+INFO-DIR-SECTION User Interface Toolkit
+START-INFO-DIR-ENTRY
+* GTK: (gtk).		The GIMP Toolkit
+END-INFO-DIR-ENTRY
+
+
+Indirect:
+gtk.info-1: 953
+gtk.info-2: 49889
+gtk.info-3: 99068
+gtk.info-4: 148332
+gtk.info-5: 198097
+gtk.info-6: 205440
+
+Tag Table:
+(Indirect)
+Node: Top953
+Node: Copying1765
+Node: Overview3306
+Node: Types4865
+Node: Type introduction6007
+Node: Basics13816
+Node: Simple types22146
+Node: Enumerations and flags24084
+Node: Strings24229
+Node: Boxed types24343
+Node: Callbacks24452
+Node: Composite types24565
+Node: Objects24670
+Node: Signals29740
+Node: Widgets44531
+Node: GtkAlignment49889
+Node: GtkArrow53125
+Node: GtkAspectFrame55429
+Node: GtkBin57056
+Node: GtkBox58305
+Node: GtkButtonBox64551
+Node: GtkButton69359
+Node: GtkCheckButton71303
+Node: GtkCheckMenuItem73062
+Node: GtkCList74977
+Node: GtkColorSelection82326
+Node: GtkCombo84747
+Node: GtkContainer86357
+Node: GtkCTree89078
+Node: GtkCurve93577
+Node: GtkGammaCurve95158
+Node: GtkDialog96568
+Node: GtkDrawingArea97714
+Node: GtkEntry99068
+Node: GtkEventBox102250
+Node: GtkFileSelection103304
+Node: GtkFixed104629
+Node: GtkFrame105765
+Node: GtkGamma107104
+Node: GtkHBox108038
+Node: GtkHButtonBox109501
+Node: GtkHPaned110836
+Node: GtkHRuler111768
+Node: GtkHScale112728
+Node: GtkHScrollbar113713
+Node: GtkHSeparator114758
+Node: GtkImage115781
+Node: GtkInputDialog116985
+Node: GtkItem118229
+Node: GtkLabel119253
+Node: GtkList120583
+Node: GtkListItem122585
+Node: GtkMenu123942
+Node: GtkMenuBar125536
+Node: GtkMenuItem126810
+Node: GtkMenuShell128842
+Node: GtkMisc130089
+Node: GtkNotebook131103
+Node: GtkOptionMenu133057
+Node: GtkPaned134461
+Node: GtkPixmap135495
+Node: GtkPreview136618
+Node: GtkProgressBar138895
+Node: GtkRadioButton140152
+Node: GtkRadioMenuItem141712
+Node: GtkRange143079
+Node: GtkRuler145164
+Node: GtkScale146361
+Node: GtkScrollbar147528
+Node: GtkScrolledWindow148332
+Node: GtkSeparator149941
+Node: GtkStatusbar150748
+Node: GtkTable151912
+Node: GtkText153972
+Node: GtkToggleButton155710
+Node: GtkToolbar157617
+Node: GtkTooltips160071
+Node: GtkTree161528
+Node: GtkTreeItem163486
+Node: GtkVBox165147
+Node: GtkVButtonBox166653
+Node: GtkViewport167986
+Node: GtkVPaned169369
+Node: GtkVRuler170327
+Node: GtkVScale171283
+Node: GtkVScrollbar172264
+Node: GtkVSeparator173359
+Node: GtkWidget174363
+Node: GtkWindow181071
+Node: Other Objects186610
+Node: GtkAcceleratorTable187004
+Node: GtkAdjustment188201
+Node: GtkGC189184
+Node: GtkData189523
+Node: GtkStyle190221
+Node: Miscellaneous190373
+Node: Initialization and exit190954
+Node: Customization192510
+Node: Menu Factories193636
+Node: Tree Factories193793
+Node: Tool Tips193946
+Node: Resource Files194118
+Node: Standard Macros194252
+Node: Examples195884
+Node: Simple196241
+Node: Hello World198097
+Node: Hello World II198761
+Node: Hello World III199663
+Node: Object Implementation200884
+Node: Signal Implementation205141
+Node: Widget Implementation205294
+Node: Function Index205440
+Node: Concept Index250662
+
+End Tag Table

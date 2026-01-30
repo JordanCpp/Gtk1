@@ -1,0 +1,815 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>GObject</title><meta name="generator" content="DocBook XSL Stylesheets V1.50.0"><meta name="generator" content="GTK-Doc V1.0 (XML mode)"><style type="text/css">
+        .synopsis, .classsynopsis {
+            background: #eeeeee;
+            border: solid 1px #aaaaaa;
+            padding: 0.5em;
+        }
+        .programlisting {
+            background: #eeeeff;
+            border: solid 1px #aaaaff;
+            padding: 0.5em;
+        }
+        .variablelist {
+            padding: 4px;
+            margin-left: 3em;
+        }
+        .navigation {
+            background: #ffeeee;
+            border: solid 1px #ffaaaa;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+        .navigation a {
+            color: #770000;
+        }
+        .navigation a:visited {
+            color: #550000;
+        }
+        .navigation .title {
+            font-size: 200%;
+        }
+      </style><link rel="home" href="index.html" title="GObject Reference Manual"><link rel="up" href="rn01.html" title="API Reference"><link rel="previous" href="gobject-GTypeModule.html" title="GTypeModule"><link rel="next" href="gobject-Enumeration-and-Flag-Types.html" title="Enums and Flags"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><table class="navigation" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2"><tr valign="middle"><td><a accesskey="p" href="gobject-GTypeModule.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td><td><a accesskey="u" href="rn01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td><td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td><th width="100%" align="center">GObject Reference Manual</th><td><a accesskey="n" href="gobject-Enumeration-and-Flag-Types.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td></tr></table><div class="refentry"><a name="gobject-The-Base-Object-Type"></a><div class="titlepage"></div><div class="refnamediv"><h2>GObject</h2><p>GObject &#8212; The base object type</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><pre class="synopsis">
+
+#include &lt;gobject.h&gt;
+
+
+struct      <a href="gobject-The-Base-Object-Type.html#GObject">GObject</a>;
+struct      <a href="gobject-The-Base-Object-Type.html#GObjectClass">GObjectClass</a>;
+void        (<a href="gobject-The-Base-Object-Type.html#GObjectGetPropertyFunc">*GObjectGetPropertyFunc</a>)       (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a
+href="../glib/glib-Basic-Types.html#guint"
+>guint</a> property_id,
+                                             <a href="gobject-Generic-values.html#GValue">GValue</a> *value,
+                                             <a href="gobject-GParamSpec.html#GParamSpec">GParamSpec</a> *pspec);
+void        (<a href="gobject-The-Base-Object-Type.html#GObjectSetPropertyFunc">*GObjectSetPropertyFunc</a>)       (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a
+href="../glib/glib-Basic-Types.html#guint"
+>guint</a> property_id,
+                                             const <a href="gobject-Generic-values.html#GValue">GValue</a> *value,
+                                             <a href="gobject-GParamSpec.html#GParamSpec">GParamSpec</a> *pspec);
+void        (<a href="gobject-The-Base-Object-Type.html#GObjectFinalizeFunc">*GObjectFinalizeFunc</a>)          (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object);
+#define     <a href="gobject-The-Base-Object-Type.html#G-TYPE-IS-OBJECT-CAPS">G_TYPE_IS_OBJECT</a>                (type)
+#define     <a href="gobject-The-Base-Object-Type.html#G-OBJECT-CAPS">G_OBJECT</a>                        (object)
+#define     <a href="gobject-The-Base-Object-Type.html#G-IS-OBJECT-CAPS">G_IS_OBJECT</a>                     (object)
+#define     <a href="gobject-The-Base-Object-Type.html#G-OBJECT-CLASS-CAPS">G_OBJECT_CLASS</a>                  (class)
+#define     <a href="gobject-The-Base-Object-Type.html#G-IS-OBJECT-CLASS-CAPS">G_IS_OBJECT_CLASS</a>               (class)
+#define     <a href="gobject-The-Base-Object-Type.html#G-OBJECT-GET-CLASS-CAPS">G_OBJECT_GET_CLASS</a>              (object)
+#define     <a href="gobject-The-Base-Object-Type.html#G-OBJECT-TYPE-CAPS">G_OBJECT_TYPE</a>                   (object)
+#define     <a href="gobject-The-Base-Object-Type.html#G-OBJECT-TYPE-NAME-CAPS">G_OBJECT_TYPE_NAME</a>              (object)
+#define     <a href="gobject-The-Base-Object-Type.html#G-OBJECT-CLASS-TYPE-CAPS">G_OBJECT_CLASS_TYPE</a>             (class)
+#define     <a href="gobject-The-Base-Object-Type.html#G-OBJECT-CLASS-NAME-CAPS">G_OBJECT_CLASS_NAME</a>             (class)
+void        <a href="gobject-The-Base-Object-Type.html#g-object-class-install-property">g_object_class_install_property</a> (<a href="gobject-The-Base-Object-Type.html#GObjectClass">GObjectClass</a> *oclass,
+                                             <a
+href="../glib/glib-Basic-Types.html#guint"
+>guint</a> property_id,
+                                             <a href="gobject-GParamSpec.html#GParamSpec">GParamSpec</a> *pspec);
+<a href="gobject-GParamSpec.html#GParamSpec">GParamSpec</a>* <a href="gobject-The-Base-Object-Type.html#g-object-class-find-property">g_object_class_find_property</a>    (<a href="gobject-The-Base-Object-Type.html#GObjectClass">GObjectClass</a> *oclass,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *property_name);
+<a href="gobject-GParamSpec.html#GParamSpec">GParamSpec</a>** <a href="gobject-The-Base-Object-Type.html#g-object-class-list-properties">g_object_class_list_properties</a> (<a href="gobject-The-Base-Object-Type.html#GObjectClass">GObjectClass</a> *oclass,
+                                             <a
+href="../glib/glib-Basic-Types.html#guint"
+>guint</a> *n_properties);
+<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a>    <a href="gobject-The-Base-Object-Type.html#g-object-new">g_object_new</a>                    (<a href="gobject-GType.html#GType">GType</a> object_type,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *first_property_name,
+                                             ...);
+<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a>    <a href="gobject-The-Base-Object-Type.html#g-object-newv">g_object_newv</a>                   (<a href="gobject-GType.html#GType">GType</a> object_type,
+                                             <a
+href="../glib/glib-Basic-Types.html#guint"
+>guint</a> n_parameters,
+                                             <a href="gobject-The-Base-Object-Type.html#GParameter">GParameter</a> *parameters);
+struct      <a href="gobject-The-Base-Object-Type.html#GParameter">GParameter</a>;
+<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a>    <a href="gobject-The-Base-Object-Type.html#g-object-ref">g_object_ref</a>                    (<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> object);
+void        <a href="gobject-The-Base-Object-Type.html#g-object-unref">g_object_unref</a>                  (<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> object);
+void        (<a href="gobject-The-Base-Object-Type.html#GWeakNotify">*GWeakNotify</a>)                  (<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> data,
+                                             <a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *where_the_object_was);
+void        <a href="gobject-The-Base-Object-Type.html#g-object-weak-ref">g_object_weak_ref</a>               (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a href="gobject-The-Base-Object-Type.html#GWeakNotify">GWeakNotify</a> notify,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> data);
+void        <a href="gobject-The-Base-Object-Type.html#g-object-weak-unref">g_object_weak_unref</a>             (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a href="gobject-The-Base-Object-Type.html#GWeakNotify">GWeakNotify</a> notify,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> data);
+void        <a href="gobject-The-Base-Object-Type.html#g-object-add-weak-pointer">g_object_add_weak_pointer</a>       (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> *weak_pointer_location);
+void        <a href="gobject-The-Base-Object-Type.html#g-object-remove-weak-pointer">g_object_remove_weak_pointer</a>    (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> *weak_pointer_location);
+<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a>    <a href="gobject-The-Base-Object-Type.html#g-object-connect">g_object_connect</a>                (<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *signal_spec,
+                                             ...);
+void        <a href="gobject-The-Base-Object-Type.html#g-object-disconnect">g_object_disconnect</a>             (<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *signal_spec,
+                                             ...);
+void        <a href="gobject-The-Base-Object-Type.html#g-object-set">g_object_set</a>                    (<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *first_property_name,
+                                             ...);
+void        <a href="gobject-The-Base-Object-Type.html#g-object-get">g_object_get</a>                    (<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *first_property_name,
+                                             ...);
+void        <a href="gobject-The-Base-Object-Type.html#g-object-notify">g_object_notify</a>                 (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *property_name);
+void        <a href="gobject-The-Base-Object-Type.html#g-object-freeze-notify">g_object_freeze_notify</a>          (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object);
+void        <a href="gobject-The-Base-Object-Type.html#g-object-thaw-notify">g_object_thaw_notify</a>            (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object);
+<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a>    <a href="gobject-The-Base-Object-Type.html#g-object-get-data">g_object_get_data</a>               (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *key);
+void        <a href="gobject-The-Base-Object-Type.html#g-object-set-data">g_object_set_data</a>               (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *key,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> data);
+void        <a href="gobject-The-Base-Object-Type.html#g-object-set-data-full">g_object_set_data_full</a>          (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *key,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> data,
+                                             <a
+href="../glib/glib-Datasets.html#GDestroyNotify"
+>GDestroyNotify</a> destroy);
+<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a>    <a href="gobject-The-Base-Object-Type.html#g-object-steal-data">g_object_steal_data</a>             (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *key);
+<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a>    <a href="gobject-The-Base-Object-Type.html#g-object-get-qdata">g_object_get_qdata</a>              (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a
+href="../glib/glib-Quarks.html#GQuark"
+>GQuark</a> quark);
+void        <a href="gobject-The-Base-Object-Type.html#g-object-set-qdata">g_object_set_qdata</a>              (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a
+href="../glib/glib-Quarks.html#GQuark"
+>GQuark</a> quark,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> data);
+void        <a href="gobject-The-Base-Object-Type.html#g-object-set-qdata-full">g_object_set_qdata_full</a>         (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a
+href="../glib/glib-Quarks.html#GQuark"
+>GQuark</a> quark,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> data,
+                                             <a
+href="../glib/glib-Datasets.html#GDestroyNotify"
+>GDestroyNotify</a> destroy);
+<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a>    <a href="gobject-The-Base-Object-Type.html#g-object-steal-qdata">g_object_steal_qdata</a>            (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a
+href="../glib/glib-Quarks.html#GQuark"
+>GQuark</a> quark);
+void        <a href="gobject-The-Base-Object-Type.html#g-object-set-property">g_object_set_property</a>           (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *property_name,
+                                             const <a href="gobject-Generic-values.html#GValue">GValue</a> *value);
+void        <a href="gobject-The-Base-Object-Type.html#g-object-get-property">g_object_get_property</a>           (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *property_name,
+                                             <a href="gobject-Generic-values.html#GValue">GValue</a> *value);
+<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a>*    <a href="gobject-The-Base-Object-Type.html#g-object-new-valist">g_object_new_valist</a>             (<a href="gobject-GType.html#GType">GType</a> object_type,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *first_property_name,
+                                             va_list var_args);
+void        <a href="gobject-The-Base-Object-Type.html#g-object-set-valist">g_object_set_valist</a>             (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *first_property_name,
+                                             va_list var_args);
+void        <a href="gobject-The-Base-Object-Type.html#g-object-get-valist">g_object_get_valist</a>             (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *first_property_name,
+                                             va_list var_args);
+void        <a href="gobject-The-Base-Object-Type.html#g-object-watch-closure">g_object_watch_closure</a>          (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a href="gobject-Closures.html#GClosure">GClosure</a> *closure);
+void        <a href="gobject-The-Base-Object-Type.html#g-object-run-dispose">g_object_run_dispose</a>            (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object);
+#define     <a href="gobject-The-Base-Object-Type.html#G-OBJECT-WARN-INVALID-PSPEC-CAPS">G_OBJECT_WARN_INVALID_PSPEC</a>     (object, pname, property_id, pspec)
+#define     <a href="gobject-The-Base-Object-Type.html#G-OBJECT-WARN-INVALID-PROPERTY-ID-CAPS">G_OBJECT_WARN_INVALID_PROPERTY_ID</a>(object, property_id, pspec)
+
+</pre></div><div class="refsect1"><h2>Description</h2><p>
+
+</p></div><div class="refsect1"><h2>Details</h2><div class="refsect2"><h3><a name="GObject"></a>struct GObject</h3><pre class="programlisting">struct GObject {
+
+  GTypeInstance g_type_instance;
+  
+};
+</pre><p>
+All the fields in the GObject structure are private to the <a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> implementation
+and should never be accessed directly.
+</p></div><hr><div class="refsect2"><h3><a name="GObjectClass"></a>struct GObjectClass</h3><pre class="programlisting">struct GObjectClass {
+
+  GTypeClass   g_type_class;
+
+};
+</pre><p>
+
+</p></div><hr><div class="refsect2"><h3><a name="GObjectGetPropertyFunc"></a>GObjectGetPropertyFunc ()</h3><pre class="programlisting">void        (*GObjectGetPropertyFunc)       (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a
+href="../glib/glib-Basic-Types.html#guint"
+>guint</a> property_id,
+                                             <a href="gobject-Generic-values.html#GValue">GValue</a> *value,
+                                             <a href="gobject-GParamSpec.html#GParamSpec">GParamSpec</a> *pspec);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>property_id</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>value</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>pspec</tt></i> :</span></td><td>
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="GObjectSetPropertyFunc"></a>GObjectSetPropertyFunc ()</h3><pre class="programlisting">void        (*GObjectSetPropertyFunc)       (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a
+href="../glib/glib-Basic-Types.html#guint"
+>guint</a> property_id,
+                                             const <a href="gobject-Generic-values.html#GValue">GValue</a> *value,
+                                             <a href="gobject-GParamSpec.html#GParamSpec">GParamSpec</a> *pspec);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>property_id</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>value</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>pspec</tt></i> :</span></td><td>
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="GObjectFinalizeFunc"></a>GObjectFinalizeFunc ()</h3><pre class="programlisting">void        (*GObjectFinalizeFunc)          (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-TYPE-IS-OBJECT-CAPS"></a>G_TYPE_IS_OBJECT()</h3><pre class="programlisting">#define G_TYPE_IS_OBJECT(type)      (G_TYPE_FUNDAMENTAL (type) == G_TYPE_OBJECT)
+</pre><p>
+Return a boolean value of <tt>FALSE</tt> or <tt>TRUE</tt> indicating whether
+the passed in type id is a <tt>G_TYPE_OBJECT</tt> or derived from it.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>type</tt></i> :</span></td><td>Type id to check for is a <tt>G_TYPE_OBJECT</tt> relationship.
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td><tt>FALSE</tt> or <tt>TRUE</tt>, indicating whether <i><tt>type</tt></i> is a <tt>G_TYPE_OBJECT</tt>.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-OBJECT-CAPS"></a>G_OBJECT()</h3><pre class="programlisting">#define G_OBJECT(object)            (G_TYPE_CHECK_INSTANCE_CAST ((object), G_TYPE_OBJECT, GObject))
+</pre><p>
+Cast a <a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> or derived pointer into a (GObject*) pointer.
+Depending on the current debugging level, this function may invoke
+certain runtime checks to identify invalid casts.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>Object which is subject to casting.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-IS-OBJECT-CAPS"></a>G_IS_OBJECT()</h3><pre class="programlisting">#define G_IS_OBJECT(object)         (G_TYPE_CHECK_INSTANCE_TYPE ((object), G_TYPE_OBJECT))
+</pre><p>
+Check whether a valid <a href="gobject-GType.html#GTypeInstance">GTypeInstance</a> pointer is of type <tt>G_TYPE_OBJECT</tt>.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>Instance to check for being a <tt>G_TYPE_OBJECT</tt>.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-OBJECT-CLASS-CAPS"></a>G_OBJECT_CLASS()</h3><pre class="programlisting">#define G_OBJECT_CLASS(class)       (G_TYPE_CHECK_CLASS_CAST ((class), G_TYPE_OBJECT, GObjectClass))
+</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>class</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-IS-OBJECT-CLASS-CAPS"></a>G_IS_OBJECT_CLASS()</h3><pre class="programlisting">#define G_IS_OBJECT_CLASS(class)    (G_TYPE_CHECK_CLASS_TYPE ((class), G_TYPE_OBJECT))
+</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>class</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-OBJECT-GET-CLASS-CAPS"></a>G_OBJECT_GET_CLASS()</h3><pre class="programlisting">#define G_OBJECT_GET_CLASS(object)  (G_TYPE_INSTANCE_GET_CLASS ((object), G_TYPE_OBJECT, GObjectClass))
+</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-OBJECT-TYPE-CAPS"></a>G_OBJECT_TYPE()</h3><pre class="programlisting">#define G_OBJECT_TYPE(object)       (G_TYPE_FROM_INSTANCE (object))
+</pre><p>
+Return the type id of an object.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>Object to return the type id for.
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>Type id of <i><tt>object</tt></i>.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-OBJECT-TYPE-NAME-CAPS"></a>G_OBJECT_TYPE_NAME()</h3><pre class="programlisting">#define G_OBJECT_TYPE_NAME(object)  (g_type_name (G_OBJECT_TYPE (object)))
+</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-OBJECT-CLASS-TYPE-CAPS"></a>G_OBJECT_CLASS_TYPE()</h3><pre class="programlisting">#define G_OBJECT_CLASS_TYPE(class)  (G_TYPE_FROM_CLASS (class))
+</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>class</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-OBJECT-CLASS-NAME-CAPS"></a>G_OBJECT_CLASS_NAME()</h3><pre class="programlisting">#define G_OBJECT_CLASS_NAME(class)  (g_type_name (G_OBJECT_CLASS_TYPE (class)))
+</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>class</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-class-install-property"></a>g_object_class_install_property ()</h3><pre class="programlisting">void        g_object_class_install_property (<a href="gobject-The-Base-Object-Type.html#GObjectClass">GObjectClass</a> *oclass,
+                                             <a
+href="../glib/glib-Basic-Types.html#guint"
+>guint</a> property_id,
+                                             <a href="gobject-GParamSpec.html#GParamSpec">GParamSpec</a> *pspec);</pre><p>
+Installs a new property. This is usually done in the class initializer.</p><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>oclass</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>property_id</tt></i> :</span></td><td> the id for the new property
+</td></tr><tr><td><span class="term"><i><tt>pspec</tt></i> :</span></td><td> the <a href="gobject-GParamSpec.html#GParamSpec">GParamSpec</a> for the new property
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-class-find-property"></a>g_object_class_find_property ()</h3><pre class="programlisting"><a href="gobject-GParamSpec.html#GParamSpec">GParamSpec</a>* g_object_class_find_property    (<a href="gobject-The-Base-Object-Type.html#GObjectClass">GObjectClass</a> *oclass,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *property_name);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>oclass</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>property_name</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-class-list-properties"></a>g_object_class_list_properties ()</h3><pre class="programlisting"><a href="gobject-GParamSpec.html#GParamSpec">GParamSpec</a>** g_object_class_list_properties (<a href="gobject-The-Base-Object-Type.html#GObjectClass">GObjectClass</a> *oclass,
+                                             <a
+href="../glib/glib-Basic-Types.html#guint"
+>guint</a> *n_properties);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>oclass</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>n_properties</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-new"></a>g_object_new ()</h3><pre class="programlisting"><a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a>    g_object_new                    (<a href="gobject-GType.html#GType">GType</a> object_type,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *first_property_name,
+                                             ...);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object_type</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>first_property_name</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>...</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-newv"></a>g_object_newv ()</h3><pre class="programlisting"><a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a>    g_object_newv                   (<a href="gobject-GType.html#GType">GType</a> object_type,
+                                             <a
+href="../glib/glib-Basic-Types.html#guint"
+>guint</a> n_parameters,
+                                             <a href="gobject-The-Base-Object-Type.html#GParameter">GParameter</a> *parameters);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object_type</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>n_parameters</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>parameters</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="GParameter"></a>struct GParameter</h3><pre class="programlisting">struct GParameter {
+
+  const gchar *name;
+  GValue       value;
+};
+</pre><p>
+
+</p></div><hr><div class="refsect2"><h3><a name="g-object-ref"></a>g_object_ref ()</h3><pre class="programlisting"><a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a>    g_object_ref                    (<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> object);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-unref"></a>g_object_unref ()</h3><pre class="programlisting">void        g_object_unref                  (<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> object);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="GWeakNotify"></a>GWeakNotify ()</h3><pre class="programlisting">void        (*GWeakNotify)                  (<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> data,
+                                             <a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *where_the_object_was);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>data</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>where_the_object_was</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-weak-ref"></a>g_object_weak_ref ()</h3><pre class="programlisting">void        g_object_weak_ref               (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a href="gobject-The-Base-Object-Type.html#GWeakNotify">GWeakNotify</a> notify,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> data);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>notify</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>data</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-weak-unref"></a>g_object_weak_unref ()</h3><pre class="programlisting">void        g_object_weak_unref             (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a href="gobject-The-Base-Object-Type.html#GWeakNotify">GWeakNotify</a> notify,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> data);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>notify</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>data</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-add-weak-pointer"></a>g_object_add_weak_pointer ()</h3><pre class="programlisting">void        g_object_add_weak_pointer       (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> *weak_pointer_location);</pre><p>
+Adds a weak reference from weak_pointer to <i><tt>object</tt></i> to indicate that
+the pointer located at <i><tt>weak_pointer_location</tt></i> is only valid during the 
+lifetime of <i><tt>object</tt></i>. When the <i><tt>object</tt></i> is finalized, <i><tt>weak_pointer</tt></i> will 
+be set to <tt>NULL</tt>.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>The object that should be weak referenced.
+</td></tr><tr><td><span class="term"><i><tt>weak_pointer_location</tt></i> :</span></td><td>The memory address of a pointer.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-remove-weak-pointer"></a>g_object_remove_weak_pointer ()</h3><pre class="programlisting">void        g_object_remove_weak_pointer    (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> *weak_pointer_location);</pre><p>
+Removes a weak reference from <i><tt>object</tt></i> that was previously added
+using <a href="gobject-The-Base-Object-Type.html#g-object-add-weak-pointer">g_object_add_weak_pointer</a>(). The <i><tt>weak_pointer_location</tt></i> has
+to match the one used with <a href="gobject-The-Base-Object-Type.html#g-object-add-weak-pointer">g_object_add_weak_pointer</a>().
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>The object that is weak referenced.
+</td></tr><tr><td><span class="term"><i><tt>weak_pointer_location</tt></i> :</span></td><td>The memory address of a pointer.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-connect"></a>g_object_connect ()</h3><pre class="programlisting"><a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a>    g_object_connect                (<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *signal_spec,
+                                             ...);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>signal_spec</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>...</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-disconnect"></a>g_object_disconnect ()</h3><pre class="programlisting">void        g_object_disconnect             (<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *signal_spec,
+                                             ...);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>signal_spec</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>...</tt></i> :</span></td><td>
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-set"></a>g_object_set ()</h3><pre class="programlisting">void        g_object_set                    (<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *first_property_name,
+                                             ...);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>first_property_name</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>...</tt></i> :</span></td><td>
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-get"></a>g_object_get ()</h3><pre class="programlisting">void        g_object_get                    (<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *first_property_name,
+                                             ...);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>first_property_name</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>...</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-notify"></a>g_object_notify ()</h3><pre class="programlisting">void        g_object_notify                 (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *property_name);</pre><p>
+Emits a &quot;notify&quot; signal for the property <i><tt>property_name</tt></i> on <i><tt>object</tt></i>.</p><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td> a <a href="gobject-The-Base-Object-Type.html#GObject">GObject</a>
+</td></tr><tr><td><span class="term"><i><tt>property_name</tt></i> :</span></td><td> the name of a property installed on the class of <i><tt>object</tt></i>.
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-freeze-notify"></a>g_object_freeze_notify ()</h3><pre class="programlisting">void        g_object_freeze_notify          (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object);</pre><p>
+Stops emission of &quot;notify&quot; signals on <i><tt>object</tt></i>. The signals are
+queued until <a href="gobject-The-Base-Object-Type.html#g-object-thaw-notify">g_object_thaw_notify</a>() is called on <i><tt>object</tt></i>.</p><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td> a <a href="gobject-The-Base-Object-Type.html#GObject">GObject</a>
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-thaw-notify"></a>g_object_thaw_notify ()</h3><pre class="programlisting">void        g_object_thaw_notify            (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object);</pre><p>
+Reverts the effect of a previous call to <a href="gobject-The-Base-Object-Type.html#g-object-freeze-notify">g_object_freeze_notify</a>().
+This causes all queued &quot;notify&quot; signals on <i><tt>object</tt></i> to be emitted.</p><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td> a <a href="gobject-The-Base-Object-Type.html#GObject">GObject</a>
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-get-data"></a>g_object_get_data ()</h3><pre class="programlisting"><a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a>    g_object_get_data               (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *key);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>key</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-set-data"></a>g_object_set_data ()</h3><pre class="programlisting">void        g_object_set_data               (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *key,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> data);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>key</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>data</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-set-data-full"></a>g_object_set_data_full ()</h3><pre class="programlisting">void        g_object_set_data_full          (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *key,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> data,
+                                             <a
+href="../glib/glib-Datasets.html#GDestroyNotify"
+>GDestroyNotify</a> destroy);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>key</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>data</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>destroy</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-steal-data"></a>g_object_steal_data ()</h3><pre class="programlisting"><a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a>    g_object_steal_data             (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *key);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>key</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-get-qdata"></a>g_object_get_qdata ()</h3><pre class="programlisting"><a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a>    g_object_get_qdata              (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a
+href="../glib/glib-Quarks.html#GQuark"
+>GQuark</a> quark);</pre><p>
+This function gets back user data pointers stored via
+<a href="gobject-The-Base-Object-Type.html#g-object-set-qdata">g_object_set_qdata</a>().
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td> The GObject to get a stored user data pointer from
+</td></tr><tr><td><span class="term"><i><tt>quark</tt></i> :</span></td><td>  A <a
+href="../glib/glib-Quarks.html#GQuark"
+>GQuark</a>, naming the user data pointer
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>The user data pointer set, or <tt>NULL</tt>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-set-qdata"></a>g_object_set_qdata ()</h3><pre class="programlisting">void        g_object_set_qdata              (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a
+href="../glib/glib-Quarks.html#GQuark"
+>GQuark</a> quark,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> data);</pre><p>
+This sets an opaque, named pointer on an object.
+The name is specified through a <a
+href="../glib/glib-Quarks.html#GQuark"
+>GQuark</a> (retrived e.g. via
+<a
+href="../glib/glib-Quarks.html#g-quark-from-static-string"
+>g_quark_from_static_string</a>()), and the pointer
+can be gotten back from the <i><tt>object</tt></i> with <a href="gobject-The-Base-Object-Type.html#g-object-get-qdata">g_object_get_qdata</a>()
+until the <i><tt>object</tt></i> is finalized.
+Setting a previously set user data pointer, overrides (frees)
+the old pointer set, using <a
+href="../glib/glib-Standard-Macros.html#NULL-CAPS"
+>NULL</a> as pointer essentially
+removes the data stored.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>The GObject to set store a user data pointer
+</td></tr><tr><td><span class="term"><i><tt>quark</tt></i> :</span></td><td> A <a
+href="../glib/glib-Quarks.html#GQuark"
+>GQuark</a>, naming the user data pointer
+</td></tr><tr><td><span class="term"><i><tt>data</tt></i> :</span></td><td>  An opaque user data pointer
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-set-qdata-full"></a>g_object_set_qdata_full ()</h3><pre class="programlisting">void        g_object_set_qdata_full         (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a
+href="../glib/glib-Quarks.html#GQuark"
+>GQuark</a> quark,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> data,
+                                             <a
+href="../glib/glib-Datasets.html#GDestroyNotify"
+>GDestroyNotify</a> destroy);</pre><p>
+This function works like <a href="gobject-The-Base-Object-Type.html#g-object-set-qdata">g_object_set_qdata</a>(), but in addition,
+a void (*destroy) (gpointer) function may be specified which is
+called with <i><tt>data</tt></i> as argument when the <i><tt>object</tt></i> is finalized, or
+the data is being overwritten by a call to <a href="gobject-The-Base-Object-Type.html#g-object-set-qdata">g_object_set_qdata</a>()
+with the same <i><tt>quark</tt></i>.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td> The GObject to set store a user data pointer
+</td></tr><tr><td><span class="term"><i><tt>quark</tt></i> :</span></td><td>  A <a
+href="../glib/glib-Quarks.html#GQuark"
+>GQuark</a>, naming the user data pointer
+</td></tr><tr><td><span class="term"><i><tt>data</tt></i> :</span></td><td>   An opaque user data pointer
+</td></tr><tr><td><span class="term"><i><tt>destroy</tt></i> :</span></td><td>Function to invoke with <i><tt>data</tt></i> as argument, when <i><tt>data</tt></i> needs to be freed
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-steal-qdata"></a>g_object_steal_qdata ()</h3><pre class="programlisting"><a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a>    g_object_steal_qdata            (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a
+href="../glib/glib-Quarks.html#GQuark"
+>GQuark</a> quark);</pre><p>
+This function gets back user data pointers stored via
+<a href="gobject-The-Base-Object-Type.html#g-object-set-qdata">g_object_set_qdata</a>() and removes the <i><tt>data</tt></i> from object
+without invoking it's destroy() function (if any was
+set).
+Usually, calling this function is only required to update
+user data pointers with a destroy notifier, for example:
+<pre class="programlisting">
+void
+object_add_to_user_list (GObject     *object,
+                         const gchar *new_string)
+{
+  /* the quark, naming the object data */
+  GQuark quark_string_list = g_quark_from_static_string (&quot;my-string-list&quot;);
+  /* retrive the old string list */
+  GList *list = g_object_steal_qdata (object, quark_string_list);
+  
+  /* prepend new string */
+  list = g_list_prepend (list, g_strdup (new_string));
+  /* this changed 'list', so we need to set it again */
+  g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+}
+static void
+free_string_list (gpointer data)
+{
+  GList *node, *list = data;
+  
+  for (node = list; node; node = node-&gt;next)
+    g_free (node-&gt;data);
+  g_list_free (list);
+}
+</pre>
+Using <a href="gobject-The-Base-Object-Type.html#g-object-get-qdata">g_object_get_qdata</a>() in the above example, instead of <a href="gobject-The-Base-Object-Type.html#g-object-steal-qdata">g_object_steal_qdata</a>()
+would have left the destroy function set, and thus the partial string list would
+have been freed upon <a href="gobject-The-Base-Object-Type.html#g-object-set-qdata-full">g_object_set_qdata_full</a>().
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td> The GObject to get a stored user data pointer from
+</td></tr><tr><td><span class="term"><i><tt>quark</tt></i> :</span></td><td>  A <a
+href="../glib/glib-Quarks.html#GQuark"
+>GQuark</a>, naming the user data pointer
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>The user data pointer set, or <tt>NULL</tt>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-set-property"></a>g_object_set_property ()</h3><pre class="programlisting">void        g_object_set_property           (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *property_name,
+                                             const <a href="gobject-Generic-values.html#GValue">GValue</a> *value);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>property_name</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>value</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-get-property"></a>g_object_get_property ()</h3><pre class="programlisting">void        g_object_get_property           (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *property_name,
+                                             <a href="gobject-Generic-values.html#GValue">GValue</a> *value);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>property_name</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>value</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-new-valist"></a>g_object_new_valist ()</h3><pre class="programlisting"><a href="gobject-The-Base-Object-Type.html#GObject">GObject</a>*    g_object_new_valist             (<a href="gobject-GType.html#GType">GType</a> object_type,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *first_property_name,
+                                             va_list var_args);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object_type</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>first_property_name</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>var_args</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-set-valist"></a>g_object_set_valist ()</h3><pre class="programlisting">void        g_object_set_valist             (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *first_property_name,
+                                             va_list var_args);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>first_property_name</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>var_args</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-get-valist"></a>g_object_get_valist ()</h3><pre class="programlisting">void        g_object_get_valist             (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             const <a
+href="../glib/glib-Basic-Types.html#gchar"
+>gchar</a> *first_property_name,
+                                             va_list var_args);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>first_property_name</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>var_args</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-watch-closure"></a>g_object_watch_closure ()</h3><pre class="programlisting">void        g_object_watch_closure          (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object,
+                                             <a href="gobject-Closures.html#GClosure">GClosure</a> *closure);</pre><p>
+This function essentially limits the life time of the <i><tt>closure</tt></i>
+to the life time of the object. That is, when the object is finalized,
+the <i><tt>closure</tt></i> is invalidated by calling <a href="gobject-Closures.html#g-closure-invalidate">g_closure_invalidate</a>() on it,
+in order to prevent invocations of the closure with a finalized (non
+existing) object. Also, <a href="gobject-The-Base-Object-Type.html#g-object-ref">g_object_ref</a>() and <a href="gobject-The-Base-Object-Type.html#g-object-unref">g_object_unref</a>() are added
+as marshal guards to the <i><tt>closure</tt></i>, to ensure that an extra reference
+count is held on <i><tt>object</tt></i> during invocation of the <i><tt>closure</tt></i>.
+Usually, this function will be called on closures that use this <i><tt>object</tt></i>
+as closure data.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td> GObject restricting lifetime of <i><tt>closure</tt></i>
+</td></tr><tr><td><span class="term"><i><tt>closure</tt></i> :</span></td><td>GClosure to watch
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-object-run-dispose"></a>g_object_run_dispose ()</h3><pre class="programlisting">void        g_object_run_dispose            (<a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-OBJECT-WARN-INVALID-PSPEC-CAPS"></a>G_OBJECT_WARN_INVALID_PSPEC()</h3><pre class="programlisting">#define     G_OBJECT_WARN_INVALID_PSPEC(object, pname, property_id, pspec)</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>pname</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>property_id</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>pspec</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-OBJECT-WARN-INVALID-PROPERTY-ID-CAPS"></a>G_OBJECT_WARN_INVALID_PROPERTY_ID()</h3><pre class="programlisting">#define     G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec)</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>property_id</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>pspec</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div></div></div><table class="navigation" width="100%" summary="Navigation footer" cellpadding="2" cellspacing="0"><tr valign="middle"><td align="left"><a accesskey="p" href="gobject-GTypeModule.html"><b>&lt;&lt; GTypeModule</b></a></td><td align="right"><a accesskey="n" href="gobject-Enumeration-and-Flag-Types.html"><b>Enums and Flags &gt;&gt;</b></a></td></tr></table></body></html>

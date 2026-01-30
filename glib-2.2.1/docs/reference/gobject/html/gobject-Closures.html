@@ -1,0 +1,469 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Closures</title><meta name="generator" content="DocBook XSL Stylesheets V1.50.0"><meta name="generator" content="GTK-Doc V1.0 (XML mode)"><style type="text/css">
+        .synopsis, .classsynopsis {
+            background: #eeeeee;
+            border: solid 1px #aaaaaa;
+            padding: 0.5em;
+        }
+        .programlisting {
+            background: #eeeeff;
+            border: solid 1px #aaaaff;
+            padding: 0.5em;
+        }
+        .variablelist {
+            padding: 4px;
+            margin-left: 3em;
+        }
+        .navigation {
+            background: #ffeeee;
+            border: solid 1px #ffaaaa;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+        .navigation a {
+            color: #770000;
+        }
+        .navigation a:visited {
+            color: #550000;
+        }
+        .navigation .title {
+            font-size: 200%;
+        }
+      </style><link rel="home" href="index.html" title="GObject Reference Manual"><link rel="up" href="rn01.html" title="API Reference"><link rel="previous" href="gobject-Signals.html" title="Signals"><link rel="next" href="gobject-Value-arrays.html" title="Value arrays"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><table class="navigation" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2"><tr valign="middle"><td><a accesskey="p" href="gobject-Signals.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td><td><a accesskey="u" href="rn01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td><td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td><th width="100%" align="center">GObject Reference Manual</th><td><a accesskey="n" href="gobject-Value-arrays.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td></tr></table><div class="refentry"><a name="gobject-Closures"></a><div class="titlepage"></div><div class="refnamediv"><h2>Closures</h2><p>Closures &#8212; Functions as first-class objects</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><pre class="synopsis">
+
+#include &lt;gobject.h&gt;
+
+
+#define     <a href="gobject-Closures.html#G-CLOSURE-NEEDS-MARSHAL-CAPS">G_CLOSURE_NEEDS_MARSHAL</a>         (closure)
+#define     <a href="gobject-Closures.html#G-CLOSURE-N-NOTIFIERS-CAPS">G_CLOSURE_N_NOTIFIERS</a>           (cl)
+#define     <a href="gobject-Closures.html#G-CCLOSURE-SWAP-DATA-CAPS">G_CCLOSURE_SWAP_DATA</a>            (cclosure)
+#define     <a href="gobject-Closures.html#G-CALLBACK-CAPS">G_CALLBACK</a>                      (f)
+void        (<a href="gobject-Closures.html#GCallback">*GCallback</a>)                    (void);
+struct      <a href="gobject-Closures.html#GClosure">GClosure</a>;
+#define     <a href="gobject-Closures.html#G-TYPE-CLOSURE-CAPS">G_TYPE_CLOSURE</a>
+struct      <a href="gobject-Closures.html#GCClosure">GCClosure</a>;
+void        (<a href="gobject-Closures.html#GClosureMarshal">*GClosureMarshal</a>)              (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure,
+                                             <a href="gobject-Generic-values.html#GValue">GValue</a> *return_value,
+                                             <a
+href="../glib/glib-Basic-Types.html#guint"
+>guint</a> n_param_values,
+                                             const <a href="gobject-Generic-values.html#GValue">GValue</a> *param_values,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> invocation_hint,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> marshal_data);
+void        (<a href="gobject-Closures.html#GClosureNotify">*GClosureNotify</a>)               (<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> data,
+                                             <a href="gobject-Closures.html#GClosure">GClosure</a> *closure);
+struct      <a href="gobject-Closures.html#GClosureNotifyData">GClosureNotifyData</a>;
+<a href="gobject-Closures.html#GClosure">GClosure</a>*   <a href="gobject-Closures.html#g-cclosure-new">g_cclosure_new</a>                  (<a href="gobject-Closures.html#GCallback">GCallback</a> callback_func,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                             <a href="gobject-Closures.html#GClosureNotify">GClosureNotify</a> destroy_data);
+<a href="gobject-Closures.html#GClosure">GClosure</a>*   <a href="gobject-Closures.html#g-cclosure-new-swap">g_cclosure_new_swap</a>             (<a href="gobject-Closures.html#GCallback">GCallback</a> callback_func,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                             <a href="gobject-Closures.html#GClosureNotify">GClosureNotify</a> destroy_data);
+<a href="gobject-Closures.html#GClosure">GClosure</a>*   <a href="gobject-Closures.html#g-cclosure-new-object">g_cclosure_new_object</a>           (<a href="gobject-Closures.html#GCallback">GCallback</a> callback_func,
+                                             <a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object);
+<a href="gobject-Closures.html#GClosure">GClosure</a>*   <a href="gobject-Closures.html#g-cclosure-new-object-swap">g_cclosure_new_object_swap</a>      (<a href="gobject-Closures.html#GCallback">GCallback</a> callback_func,
+                                             <a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object);
+<a href="gobject-Closures.html#GClosure">GClosure</a>*   <a href="gobject-Closures.html#g-closure-new-object">g_closure_new_object</a>            (<a
+href="../glib/glib-Basic-Types.html#guint"
+>guint</a> sizeof_closure,
+                                             <a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object);
+<a href="gobject-Closures.html#GClosure">GClosure</a>*   <a href="gobject-Closures.html#g-closure-ref">g_closure_ref</a>                   (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure);
+void        <a href="gobject-Closures.html#g-closure-sink">g_closure_sink</a>                  (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure);
+void        <a href="gobject-Closures.html#g-closure-unref">g_closure_unref</a>                 (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure);
+void        <a href="gobject-Closures.html#g-closure-invoke">g_closure_invoke</a>                (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure,
+                                             <a href="gobject-Generic-values.html#GValue">GValue</a> *return_value,
+                                             <a
+href="../glib/glib-Basic-Types.html#guint"
+>guint</a> n_param_values,
+                                             const <a href="gobject-Generic-values.html#GValue">GValue</a> *param_values,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> invocation_hint);
+void        <a href="gobject-Closures.html#g-closure-invalidate">g_closure_invalidate</a>            (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure);
+void        <a href="gobject-Closures.html#g-closure-add-finalize-notifier">g_closure_add_finalize_notifier</a> (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> notify_data,
+                                             <a href="gobject-Closures.html#GClosureNotify">GClosureNotify</a> notify_func);
+void        <a href="gobject-Closures.html#g-closure-add-invalidate-notifier">g_closure_add_invalidate_notifier</a>
+                                            (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> notify_data,
+                                             <a href="gobject-Closures.html#GClosureNotify">GClosureNotify</a> notify_func);
+void        <a href="gobject-Closures.html#g-closure-remove-finalize-notifier">g_closure_remove_finalize_notifier</a>
+                                            (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> notify_data,
+                                             <a href="gobject-Closures.html#GClosureNotify">GClosureNotify</a> notify_func);
+void        <a href="gobject-Closures.html#g-closure-remove-invalidate-notifier">g_closure_remove_invalidate_notifier</a>
+                                            (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> notify_data,
+                                             <a href="gobject-Closures.html#GClosureNotify">GClosureNotify</a> notify_func);
+<a href="gobject-Closures.html#GClosure">GClosure</a>*   <a href="gobject-Closures.html#g-closure-new-simple">g_closure_new_simple</a>            (<a
+href="../glib/glib-Basic-Types.html#guint"
+>guint</a> sizeof_closure,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> data);
+void        <a href="gobject-Closures.html#g-closure-set-marshal">g_closure_set_marshal</a>           (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure,
+                                             <a href="gobject-Closures.html#GClosureMarshal">GClosureMarshal</a> marshal);
+void        <a href="gobject-Closures.html#g-closure-add-marshal-guards">g_closure_add_marshal_guards</a>    (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> pre_marshal_data,
+                                             <a href="gobject-Closures.html#GClosureNotify">GClosureNotify</a> pre_marshal_notify,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> post_marshal_data,
+                                             <a href="gobject-Closures.html#GClosureNotify">GClosureNotify</a> post_marshal_notify);
+void        <a href="gobject-Closures.html#g-closure-set-meta-marshal">g_closure_set_meta_marshal</a>      (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> marshal_data,
+                                             <a href="gobject-Closures.html#GClosureMarshal">GClosureMarshal</a> meta_marshal);
+void        <a href="gobject-Closures.html#g-source-set-closure">g_source_set_closure</a>            (<a
+href="../glib/glib-The-Main-Event-Loop.html#GSource"
+>GSource</a> *source,
+                                             <a href="gobject-Closures.html#GClosure">GClosure</a> *closure);
+#define     <a href="gobject-Closures.html#G-TYPE-IO-CHANNEL-CAPS">G_TYPE_IO_CHANNEL</a>
+#define     <a href="gobject-Closures.html#G-TYPE-IO-CONDITION-CAPS">G_TYPE_IO_CONDITION</a>
+
+</pre></div><div class="refsect1"><h2>Description</h2><p>
+
+</p></div><div class="refsect1"><h2>Details</h2><div class="refsect2"><h3><a name="G-CLOSURE-NEEDS-MARSHAL-CAPS"></a>G_CLOSURE_NEEDS_MARSHAL()</h3><pre class="programlisting">#define	G_CLOSURE_NEEDS_MARSHAL(closure) (((GClosure*) (closure))-&gt;marshal == NULL)
+</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>closure</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-CLOSURE-N-NOTIFIERS-CAPS"></a>G_CLOSURE_N_NOTIFIERS()</h3><pre class="programlisting">#define     G_CLOSURE_N_NOTIFIERS(cl)</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>cl</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-CCLOSURE-SWAP-DATA-CAPS"></a>G_CCLOSURE_SWAP_DATA()</h3><pre class="programlisting">#define	G_CCLOSURE_SWAP_DATA(cclosure)	 (((GClosure*) (closure))-&gt;derivative_flag)
+</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>cclosure</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-CALLBACK-CAPS"></a>G_CALLBACK()</h3><pre class="programlisting">#define	G_CALLBACK(f)			 ((GCallback) (f))
+</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>f</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="GCallback"></a>GCallback ()</h3><pre class="programlisting">void        (*GCallback)                    (void);</pre><p>
+
+</p></div><hr><div class="refsect2"><h3><a name="GClosure"></a>struct GClosure</h3><pre class="programlisting">struct GClosure {
+
+
+};
+</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><a
+href="../glib/glib-Basic-Types.html#guint"
+>guint</a> <i><tt>in_marshal</tt></i> : 1</span></td><td>
+</td></tr><tr><td><span class="term"><a
+href="../glib/glib-Basic-Types.html#guint"
+>guint</a> <i><tt>is_invalid</tt></i> : 1</span></td><td>Indicates whether the closure has been invalidated by <a href="gobject-Closures.html#g-closure-invalidate">g_closure_invalidate</a>()
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-TYPE-CLOSURE-CAPS"></a>G_TYPE_CLOSURE</h3><pre class="programlisting">#define	G_TYPE_CLOSURE		(g_closure_get_type ())
+</pre><p>
+The <a href="gobject-GType.html#GType">GType</a> for <a href="gobject-Closures.html#GClosure">GClosure</a>.
+</p></div><hr><div class="refsect2"><h3><a name="GCClosure"></a>struct GCClosure</h3><pre class="programlisting">struct GCClosure {
+
+  GClosure	closure;
+  gpointer	callback;
+};
+</pre><p>
+
+</p></div><hr><div class="refsect2"><h3><a name="GClosureMarshal"></a>GClosureMarshal ()</h3><pre class="programlisting">void        (*GClosureMarshal)              (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure,
+                                             <a href="gobject-Generic-values.html#GValue">GValue</a> *return_value,
+                                             <a
+href="../glib/glib-Basic-Types.html#guint"
+>guint</a> n_param_values,
+                                             const <a href="gobject-Generic-values.html#GValue">GValue</a> *param_values,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> invocation_hint,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> marshal_data);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>closure</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>return_value</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>n_param_values</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>param_values</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>invocation_hint</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>marshal_data</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="GClosureNotify"></a>GClosureNotify ()</h3><pre class="programlisting">void        (*GClosureNotify)               (<a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> data,
+                                             <a href="gobject-Closures.html#GClosure">GClosure</a> *closure);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>data</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>closure</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="GClosureNotifyData"></a>struct GClosureNotifyData</h3><pre class="programlisting">struct GClosureNotifyData {
+
+  gpointer       data;
+  GClosureNotify notify;
+};
+</pre><p>
+
+</p></div><hr><div class="refsect2"><h3><a name="g-cclosure-new"></a>g_cclosure_new ()</h3><pre class="programlisting"><a href="gobject-Closures.html#GClosure">GClosure</a>*   g_cclosure_new                  (<a href="gobject-Closures.html#GCallback">GCallback</a> callback_func,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                             <a href="gobject-Closures.html#GClosureNotify">GClosureNotify</a> destroy_data);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>callback_func</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>user_data</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>destroy_data</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-cclosure-new-swap"></a>g_cclosure_new_swap ()</h3><pre class="programlisting"><a href="gobject-Closures.html#GClosure">GClosure</a>*   g_cclosure_new_swap             (<a href="gobject-Closures.html#GCallback">GCallback</a> callback_func,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> user_data,
+                                             <a href="gobject-Closures.html#GClosureNotify">GClosureNotify</a> destroy_data);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>callback_func</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>user_data</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>destroy_data</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-cclosure-new-object"></a>g_cclosure_new_object ()</h3><pre class="programlisting"><a href="gobject-Closures.html#GClosure">GClosure</a>*   g_cclosure_new_object           (<a href="gobject-Closures.html#GCallback">GCallback</a> callback_func,
+                                             <a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>callback_func</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-cclosure-new-object-swap"></a>g_cclosure_new_object_swap ()</h3><pre class="programlisting"><a href="gobject-Closures.html#GClosure">GClosure</a>*   g_cclosure_new_object_swap      (<a href="gobject-Closures.html#GCallback">GCallback</a> callback_func,
+                                             <a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>callback_func</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-closure-new-object"></a>g_closure_new_object ()</h3><pre class="programlisting"><a href="gobject-Closures.html#GClosure">GClosure</a>*   g_closure_new_object            (<a
+href="../glib/glib-Basic-Types.html#guint"
+>guint</a> sizeof_closure,
+                                             <a href="gobject-The-Base-Object-Type.html#GObject">GObject</a> *object);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>sizeof_closure</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>object</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-closure-ref"></a>g_closure_ref ()</h3><pre class="programlisting"><a href="gobject-Closures.html#GClosure">GClosure</a>*   g_closure_ref                   (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure);</pre><p>
+Increment the reference count on a closure to force it staying
+alive while the caller holds a pointer to it.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>closure</tt></i> :</span></td><td><a href="gobject-Closures.html#GClosure">GClosure</a> to increment the reference count on
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>The <i><tt>closure</tt></i> passed in, for convenience
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-closure-sink"></a>g_closure_sink ()</h3><pre class="programlisting">void        g_closure_sink                  (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure);</pre><p>
+Take over the initial ownership of a closure.
+When closures are newly created, they get an initial reference count
+of 1, eventhough no caller has yet invoked <a href="gobject-Closures.html#g-closure-ref">g_closure_ref</a>() on the <i><tt>closure</tt></i>.
+Code entities that store closures for notification purposes are supposed
+to call this function, for example like this:
+</p><div class="informalexample"><pre class="programlisting">
+static GClosure *notify_closure = NULL;
+void
+foo_notify_set_closure (GClosure *closure)
+{
+  if (notify_closure)
+    g_closure_unref (notify_closure);
+  notify_closure = closure;
+  if (notify_closure)
+    {
+      g_closure_ref (notify_closure);
+      g_closure_sink (notify_closure);
+    }
+}
+</pre></div><p>
+Because <a href="gobject-Closures.html#g-closure-sink">g_closure_sink</a>() may decrement the reference count of a closure
+(if it hasn't been called on <i><tt>closure</tt></i> yet) just like <a href="gobject-Closures.html#g-closure-unref">g_closure_unref</a>(),
+<a href="gobject-Closures.html#g-closure-ref">g_closure_ref</a>() should be called prior to this function.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>closure</tt></i> :</span></td><td><a href="gobject-Closures.html#GClosure">GClosure</a> to decrement the initial reference count on, if it's
+          still being held
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-closure-unref"></a>g_closure_unref ()</h3><pre class="programlisting">void        g_closure_unref                 (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure);</pre><p>
+Decrement the reference count of a closure after it was
+previously incremented by the same caller. The closure
+will most likely be destroyed and freed after this function
+returns.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>closure</tt></i> :</span></td><td><a href="gobject-Closures.html#GClosure">GClosure</a> to decrement the reference count on
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-closure-invoke"></a>g_closure_invoke ()</h3><pre class="programlisting">void        g_closure_invoke                (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure,
+                                             <a href="gobject-Generic-values.html#GValue">GValue</a> *return_value,
+                                             <a
+href="../glib/glib-Basic-Types.html#guint"
+>guint</a> n_param_values,
+                                             const <a href="gobject-Generic-values.html#GValue">GValue</a> *param_values,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> invocation_hint);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>closure</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>return_value</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>n_param_values</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>param_values</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>invocation_hint</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-closure-invalidate"></a>g_closure_invalidate ()</h3><pre class="programlisting">void        g_closure_invalidate            (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure);</pre><p>
+This function sets a flag on the closure to indicate that it's
+calling environment has become invalid, and thus causes any future
+invocations of <a href="gobject-Closures.html#g-closure-invoke">g_closure_invoke</a>() on this <i><tt>closure</tt></i> to be ignored.
+Also, invalidation notifiers installed on the closure will be called
+at this point, and since invalidation notifiers may unreference
+the closure, <i><tt>closure</tt></i> should be considered an invalidated pointer
+atfer this function, unles <a href="gobject-Closures.html#g-closure-ref">g_closure_ref</a>() was called beforehand.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>closure</tt></i> :</span></td><td>GClosure to invalidate
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-closure-add-finalize-notifier"></a>g_closure_add_finalize_notifier ()</h3><pre class="programlisting">void        g_closure_add_finalize_notifier (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> notify_data,
+                                             <a href="gobject-Closures.html#GClosureNotify">GClosureNotify</a> notify_func);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>closure</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>notify_data</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>notify_func</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-closure-add-invalidate-notifier"></a>g_closure_add_invalidate_notifier ()</h3><pre class="programlisting">void        g_closure_add_invalidate_notifier
+                                            (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> notify_data,
+                                             <a href="gobject-Closures.html#GClosureNotify">GClosureNotify</a> notify_func);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>closure</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>notify_data</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>notify_func</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-closure-remove-finalize-notifier"></a>g_closure_remove_finalize_notifier ()</h3><pre class="programlisting">void        g_closure_remove_finalize_notifier
+                                            (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> notify_data,
+                                             <a href="gobject-Closures.html#GClosureNotify">GClosureNotify</a> notify_func);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>closure</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>notify_data</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>notify_func</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-closure-remove-invalidate-notifier"></a>g_closure_remove_invalidate_notifier ()</h3><pre class="programlisting">void        g_closure_remove_invalidate_notifier
+                                            (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> notify_data,
+                                             <a href="gobject-Closures.html#GClosureNotify">GClosureNotify</a> notify_func);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>closure</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>notify_data</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>notify_func</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-closure-new-simple"></a>g_closure_new_simple ()</h3><pre class="programlisting"><a href="gobject-Closures.html#GClosure">GClosure</a>*   g_closure_new_simple            (<a
+href="../glib/glib-Basic-Types.html#guint"
+>guint</a> sizeof_closure,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> data);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>sizeof_closure</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>data</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-closure-set-marshal"></a>g_closure_set_marshal ()</h3><pre class="programlisting">void        g_closure_set_marshal           (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure,
+                                             <a href="gobject-Closures.html#GClosureMarshal">GClosureMarshal</a> marshal);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>closure</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>marshal</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-closure-add-marshal-guards"></a>g_closure_add_marshal_guards ()</h3><pre class="programlisting">void        g_closure_add_marshal_guards    (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> pre_marshal_data,
+                                             <a href="gobject-Closures.html#GClosureNotify">GClosureNotify</a> pre_marshal_notify,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> post_marshal_data,
+                                             <a href="gobject-Closures.html#GClosureNotify">GClosureNotify</a> post_marshal_notify);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>closure</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>pre_marshal_data</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>pre_marshal_notify</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>post_marshal_data</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>post_marshal_notify</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-closure-set-meta-marshal"></a>g_closure_set_meta_marshal ()</h3><pre class="programlisting">void        g_closure_set_meta_marshal      (<a href="gobject-Closures.html#GClosure">GClosure</a> *closure,
+                                             <a
+href="../glib/glib-Basic-Types.html#gpointer"
+>gpointer</a> marshal_data,
+                                             <a href="gobject-Closures.html#GClosureMarshal">GClosureMarshal</a> meta_marshal);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>closure</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>marshal_data</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>meta_marshal</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-source-set-closure"></a>g_source_set_closure ()</h3><pre class="programlisting">void        g_source_set_closure            (<a
+href="../glib/glib-The-Main-Event-Loop.html#GSource"
+>GSource</a> *source,
+                                             <a href="gobject-Closures.html#GClosure">GClosure</a> *closure);</pre><p>
+Set the callback for a source as a <a href="gobject-Closures.html#GClosure">GClosure</a>.
+</p><p>
+If the source is not one of the standard GLib types, the <i><tt>closure_callback</tt></i>
+and <i><tt>closure_marshal</tt></i> fields of the GSourceFuncs structure must have been
+filled in with pointers to appropriate functions.</p><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>source</tt></i> :</span></td><td> the source
+</td></tr><tr><td><span class="term"><i><tt>closure</tt></i> :</span></td><td> a <a href="gobject-Closures.html#GClosure">GClosure</a>
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-TYPE-IO-CHANNEL-CAPS"></a>G_TYPE_IO_CHANNEL</h3><pre class="programlisting">#define G_TYPE_IO_CHANNEL (g_io_channel_get_type ())
+</pre><p>
+The <a href="gobject-GType.html#GType">GType</a> for <a
+href="../glib/glib-IO-Channels.html#GIOChannel"
+>GIOChannel</a>.
+</p></div><hr><div class="refsect2"><h3><a name="G-TYPE-IO-CONDITION-CAPS"></a>G_TYPE_IO_CONDITION</h3><pre class="programlisting">#define G_TYPE_IO_CONDITION (g_io_condition_get_type ())
+</pre><p>
+The <a href="gobject-GType.html#GType">GType</a> for <a
+href="../glib/glib-IO-Channels.html#GIOCondition"
+>GIOCondition</a>.
+</p></div></div></div><table class="navigation" width="100%" summary="Navigation footer" cellpadding="2" cellspacing="0"><tr valign="middle"><td align="left"><a accesskey="p" href="gobject-Signals.html"><b>&lt;&lt; Signals</b></a></td><td align="right"><a accesskey="n" href="gobject-Value-arrays.html"><b>Value arrays &gt;&gt;</b></a></td></tr></table></body></html>

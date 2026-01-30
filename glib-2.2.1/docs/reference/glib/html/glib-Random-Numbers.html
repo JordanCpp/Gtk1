@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Random Numbers</title><meta name="generator" content="DocBook XSL Stylesheets V1.50.0"><meta name="generator" content="GTK-Doc V1.0 (XML mode)"><style type="text/css">
+        .synopsis, .classsynopsis {
+            background: #eeeeee;
+            border: solid 1px #aaaaaa;
+            padding: 0.5em;
+        }
+        .programlisting {
+            background: #eeeeff;
+            border: solid 1px #aaaaff;
+            padding: 0.5em;
+        }
+        .variablelist {
+            padding: 4px;
+            margin-left: 3em;
+        }
+        .navigation {
+            background: #ffeeee;
+            border: solid 1px #ffaaaa;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+        .navigation a {
+            color: #770000;
+        }
+        .navigation a:visited {
+            color: #550000;
+        }
+        .navigation .title {
+            font-size: 200%;
+        }
+      </style><link rel="home" href="index.html" title="GLib Reference Manual"><link rel="up" href="glib-utilities.html" title="GLib Utilities"><link rel="previous" href="glib-Date-and-Time-Functions.html" title="Date and Time Functions"><link rel="next" href="glib-Hook-Functions.html" title="Hook Functions"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><table class="navigation" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2"><tr valign="middle"><td><a accesskey="p" href="glib-Date-and-Time-Functions.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td><td><a accesskey="u" href="glib-utilities.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td><td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td><th width="100%" align="center">GLib Reference Manual</th><td><a accesskey="n" href="glib-Hook-Functions.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td></tr></table><div class="refentry"><a name="glib-Random-Numbers"></a><div class="titlepage"></div><div class="refnamediv"><h2>Random Numbers</h2><p>Random Numbers &#8212; pseudo-random number generator.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><pre class="synopsis">
+
+#include &lt;glib.h&gt;
+
+
+struct      <a href="glib-Random-Numbers.html#GRand">GRand</a>;
+<a href="glib-Random-Numbers.html#GRand">GRand</a>*      <a href="glib-Random-Numbers.html#g-rand-new-with-seed">g_rand_new_with_seed</a>            (<a href="glib-Basic-Types.html#guint32">guint32</a> seed);
+<a href="glib-Random-Numbers.html#GRand">GRand</a>*      <a href="glib-Random-Numbers.html#g-rand-new">g_rand_new</a>                      (void);
+void        <a href="glib-Random-Numbers.html#g-rand-free">g_rand_free</a>                     (<a href="glib-Random-Numbers.html#GRand">GRand</a> *rand_);
+void        <a href="glib-Random-Numbers.html#g-rand-set-seed">g_rand_set_seed</a>                 (<a href="glib-Random-Numbers.html#GRand">GRand</a> *rand_,
+                                             <a href="glib-Basic-Types.html#guint32">guint32</a> seed);
+#define     <a href="glib-Random-Numbers.html#g-rand-boolean">g_rand_boolean</a>                  (rand_)
+<a href="glib-Basic-Types.html#guint32">guint32</a>     <a href="glib-Random-Numbers.html#g-rand-int">g_rand_int</a>                      (<a href="glib-Random-Numbers.html#GRand">GRand</a> *rand_);
+<a href="glib-Basic-Types.html#gint32">gint32</a>      <a href="glib-Random-Numbers.html#g-rand-int-range">g_rand_int_range</a>                (<a href="glib-Random-Numbers.html#GRand">GRand</a> *rand_,
+                                             <a href="glib-Basic-Types.html#gint32">gint32</a> begin,
+                                             <a href="glib-Basic-Types.html#gint32">gint32</a> end);
+<a href="glib-Basic-Types.html#gdouble">gdouble</a>     <a href="glib-Random-Numbers.html#g-rand-double">g_rand_double</a>                   (<a href="glib-Random-Numbers.html#GRand">GRand</a> *rand_);
+<a href="glib-Basic-Types.html#gdouble">gdouble</a>     <a href="glib-Random-Numbers.html#g-rand-double-range">g_rand_double_range</a>             (<a href="glib-Random-Numbers.html#GRand">GRand</a> *rand_,
+                                             <a href="glib-Basic-Types.html#gdouble">gdouble</a> begin,
+                                             <a href="glib-Basic-Types.html#gdouble">gdouble</a> end);
+void        <a href="glib-Random-Numbers.html#g-random-set-seed">g_random_set_seed</a>               (<a href="glib-Basic-Types.html#guint32">guint32</a> seed);
+#define     <a href="glib-Random-Numbers.html#g-random-boolean">g_random_boolean</a>                ()
+<a href="glib-Basic-Types.html#guint32">guint32</a>     <a href="glib-Random-Numbers.html#g-random-int">g_random_int</a>                    (void);
+<a href="glib-Basic-Types.html#gint32">gint32</a>      <a href="glib-Random-Numbers.html#g-random-int-range">g_random_int_range</a>              (<a href="glib-Basic-Types.html#gint32">gint32</a> begin,
+                                             <a href="glib-Basic-Types.html#gint32">gint32</a> end);
+<a href="glib-Basic-Types.html#gdouble">gdouble</a>     <a href="glib-Random-Numbers.html#g-random-double">g_random_double</a>                 (void);
+<a href="glib-Basic-Types.html#gdouble">gdouble</a>     <a href="glib-Random-Numbers.html#g-random-double-range">g_random_double_range</a>           (<a href="glib-Basic-Types.html#gdouble">gdouble</a> begin,
+                                             <a href="glib-Basic-Types.html#gdouble">gdouble</a> end);
+</pre></div><div class="refsect1"><h2>Description</h2><p>
+The following functions allow you to use a portable, fast and good
+pseudo-random number generator (PRNG). It uses the Mersenne Twister
+PRNG, which was originally developed by Makoto Matsumoto and Takuji
+Nishimura. Further information can be found at <a href="http://www.math.keio.ac.jp/~matumoto/emt.html" target="_top">www.math.keio.ac.jp/~matumoto/emt.html</a>.
+</p><p>
+If you just need a random number, you simply call the 
+<tt>g_random_*</tt> functions, which will create a globally 
+used <a href="glib-Random-Numbers.html#GRand">GRand</a> and use the according <tt>g_rand_*</tt> functions 
+internally. Whenever you need a stream of reproducible random numbers, you 
+better create a <a href="glib-Random-Numbers.html#GRand">GRand</a> yourself and use the <tt>g_rand_*</tt> 
+functions directly, which will also be slightly faster. Initializing a <a href="glib-Random-Numbers.html#GRand">GRand</a> 
+with a certain seed will produce exactly the same series of random numbers 
+on all platforms. This can thus be used as a seed for e.g. games.
+</p><p>
+The <tt>g_rand*_range</tt> functions will return high quality
+equally distributed random numbers, whereas for example the
+<tt>(<a href="glib-Random-Numbers.html#g-random-int">g_random_int</a>()%<tt>max</tt>)</tt> approach often doesn't
+yield equally distributed numbers.
+</p><p>
+GLib changed the seeding algorithm for the pseudo-random number
+generator Mersenne Twister, as used by GRand
+and GRandom. This was necessary, because some
+seeds would yield very bad pseudo-random streams.  Also the
+pseudo-random integers generated by
+<tt>g_rand*_int_range()</tt> will have a
+slightly better equal distribution with the new version of GLib.
+</p><p>
+The original seeding and generation algorithms, as found in GLib 2.0.x,
+can be used instead of the new ones by setting the environment variable
+<tt>G_RANDOM_VERSION</tt> to the value of '2.0'. Use the
+GLib-2.0 algorithms only if you have sequences of numbers generated
+with Glib-2.0 that you need to reproduce exactly.
+</p></div><div class="refsect1"><h2>Details</h2><div class="refsect2"><h3><a name="GRand"></a>struct GRand</h3><pre class="programlisting">struct GRand;</pre><p>
+The <a href="glib-Random-Numbers.html#GRand">GRand</a> struct is an opaque data structure. It should only be
+accessed through the <tt>g_rand_*</tt> functions.
+</p></div><hr><div class="refsect2"><h3><a name="g-rand-new-with-seed"></a>g_rand_new_with_seed ()</h3><pre class="programlisting"><a href="glib-Random-Numbers.html#GRand">GRand</a>*      g_rand_new_with_seed            (<a href="glib-Basic-Types.html#guint32">guint32</a> seed);</pre><p>
+Creates a new random number generator initialized with <i><tt>seed</tt></i>.</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>seed</tt></i> :</span></td><td> a value to initialize the random number generator.
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td> the new <a href="glib-Random-Numbers.html#GRand">GRand</a>.
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-rand-new"></a>g_rand_new ()</h3><pre class="programlisting"><a href="glib-Random-Numbers.html#GRand">GRand</a>*      g_rand_new                      (void);</pre><p>
+Creates a new random number generator initialized with a seed taken
+either from <tt>/dev/urandom</tt> (if existing) or from 
+the current time (as a fallback).</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td> the new <a href="glib-Random-Numbers.html#GRand">GRand</a>.
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-rand-free"></a>g_rand_free ()</h3><pre class="programlisting">void        g_rand_free                     (<a href="glib-Random-Numbers.html#GRand">GRand</a> *rand_);</pre><p>
+Frees the memory allocated for the <a href="glib-Random-Numbers.html#GRand">GRand</a>.</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>rand_</tt></i> :</span></td><td> a <a href="glib-Random-Numbers.html#GRand">GRand</a>.
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-rand-set-seed"></a>g_rand_set_seed ()</h3><pre class="programlisting">void        g_rand_set_seed                 (<a href="glib-Random-Numbers.html#GRand">GRand</a> *rand_,
+                                             <a href="glib-Basic-Types.html#guint32">guint32</a> seed);</pre><p>
+Sets the seed for the random number generator <a href="glib-Random-Numbers.html#GRand">GRand</a> to <i><tt>seed</tt></i>.</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>rand_</tt></i> :</span></td><td> a <a href="glib-Random-Numbers.html#GRand">GRand</a>.
+</td></tr><tr><td><span class="term"><i><tt>seed</tt></i> :</span></td><td> a value to reinitialize the random number generator.
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-rand-boolean"></a>g_rand_boolean()</h3><pre class="programlisting">#define     g_rand_boolean(rand_)</pre><p>
+Returns a random <a href="glib-Basic-Types.html#gboolean">gboolean</a> from <i><tt>rand_</tt></i>. This corresponds to a unbiased
+coin toss.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>rand_</tt></i> :</span></td><td>a <a href="glib-Random-Numbers.html#GRand">GRand</a>.
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>a random <a href="glib-Basic-Types.html#gboolean">gboolean</a>.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-rand-int"></a>g_rand_int ()</h3><pre class="programlisting"><a href="glib-Basic-Types.html#guint32">guint32</a>     g_rand_int                      (<a href="glib-Random-Numbers.html#GRand">GRand</a> *rand_);</pre><p>
+Returns the next random <a href="glib-Basic-Types.html#guint32">guint32</a> from <i><tt>rand_</tt></i> equally distributed over
+the range [0..2^32-1].</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>rand_</tt></i> :</span></td><td> a <a href="glib-Random-Numbers.html#GRand">GRand</a>.
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td> A random number.
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-rand-int-range"></a>g_rand_int_range ()</h3><pre class="programlisting"><a href="glib-Basic-Types.html#gint32">gint32</a>      g_rand_int_range                (<a href="glib-Random-Numbers.html#GRand">GRand</a> *rand_,
+                                             <a href="glib-Basic-Types.html#gint32">gint32</a> begin,
+                                             <a href="glib-Basic-Types.html#gint32">gint32</a> end);</pre><p>
+Returns the next random <a href="glib-Basic-Types.html#gint32">gint32</a> from <i><tt>rand_</tt></i> equally distributed over
+the range [<i><tt>begin</tt></i>..<i><tt>end</tt></i>-1].</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>rand_</tt></i> :</span></td><td> a <a href="glib-Random-Numbers.html#GRand">GRand</a>.
+</td></tr><tr><td><span class="term"><i><tt>begin</tt></i> :</span></td><td> lower closed bound of the interval.
+</td></tr><tr><td><span class="term"><i><tt>end</tt></i> :</span></td><td> upper open bound of the interval.
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td> A random number.
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-rand-double"></a>g_rand_double ()</h3><pre class="programlisting"><a href="glib-Basic-Types.html#gdouble">gdouble</a>     g_rand_double                   (<a href="glib-Random-Numbers.html#GRand">GRand</a> *rand_);</pre><p>
+Returns the next random <a href="glib-Basic-Types.html#gdouble">gdouble</a> from <i><tt>rand_</tt></i> equally distributed over
+the range [0..1).</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>rand_</tt></i> :</span></td><td> a <a href="glib-Random-Numbers.html#GRand">GRand</a>.
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td> A random number.
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-rand-double-range"></a>g_rand_double_range ()</h3><pre class="programlisting"><a href="glib-Basic-Types.html#gdouble">gdouble</a>     g_rand_double_range             (<a href="glib-Random-Numbers.html#GRand">GRand</a> *rand_,
+                                             <a href="glib-Basic-Types.html#gdouble">gdouble</a> begin,
+                                             <a href="glib-Basic-Types.html#gdouble">gdouble</a> end);</pre><p>
+Returns the next random <a href="glib-Basic-Types.html#gdouble">gdouble</a> from <i><tt>rand_</tt></i> equally distributed over
+the range [<i><tt>begin</tt></i>..<i><tt>end</tt></i>).</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>rand_</tt></i> :</span></td><td> a <a href="glib-Random-Numbers.html#GRand">GRand</a>.
+</td></tr><tr><td><span class="term"><i><tt>begin</tt></i> :</span></td><td> lower closed bound of the interval.
+</td></tr><tr><td><span class="term"><i><tt>end</tt></i> :</span></td><td> upper open bound of the interval.
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td> A random number.
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-random-set-seed"></a>g_random_set_seed ()</h3><pre class="programlisting">void        g_random_set_seed               (<a href="glib-Basic-Types.html#guint32">guint32</a> seed);</pre><p>
+Sets the seed for the global random number generator, which is used
+by the <tt>g_random_*</tt> functions, to <i><tt>seed</tt></i>.</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>seed</tt></i> :</span></td><td> a value to reinitialize the global random number generator.
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-random-boolean"></a>g_random_boolean()</h3><pre class="programlisting">#define     g_random_boolean()</pre><p>
+Returns a random <a href="glib-Basic-Types.html#gboolean">gboolean</a>. This corresponds to a unbiased coin toss.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>a random <a href="glib-Basic-Types.html#gboolean">gboolean</a>.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-random-int"></a>g_random_int ()</h3><pre class="programlisting"><a href="glib-Basic-Types.html#guint32">guint32</a>     g_random_int                    (void);</pre><p>
+Return a random <a href="glib-Basic-Types.html#guint32">guint32</a> equally distributed over the range
+[0..2^32-1].</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td> A random number.
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-random-int-range"></a>g_random_int_range ()</h3><pre class="programlisting"><a href="glib-Basic-Types.html#gint32">gint32</a>      g_random_int_range              (<a href="glib-Basic-Types.html#gint32">gint32</a> begin,
+                                             <a href="glib-Basic-Types.html#gint32">gint32</a> end);</pre><p>
+Returns a random <a href="glib-Basic-Types.html#gint32">gint32</a> equally distributed over the range
+[<i><tt>begin</tt></i>..<i><tt>end</tt></i>-1].</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>begin</tt></i> :</span></td><td> lower closed bound of the interval.
+</td></tr><tr><td><span class="term"><i><tt>end</tt></i> :</span></td><td> upper open bound of the interval.
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td> A random number.
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-random-double"></a>g_random_double ()</h3><pre class="programlisting"><a href="glib-Basic-Types.html#gdouble">gdouble</a>     g_random_double                 (void);</pre><p>
+Returns a random <a href="glib-Basic-Types.html#gdouble">gdouble</a> equally distributed over the range [0..1).</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td> A random number.
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-random-double-range"></a>g_random_double_range ()</h3><pre class="programlisting"><a href="glib-Basic-Types.html#gdouble">gdouble</a>     g_random_double_range           (<a href="glib-Basic-Types.html#gdouble">gdouble</a> begin,
+                                             <a href="glib-Basic-Types.html#gdouble">gdouble</a> end);</pre><p>
+Returns a random <a href="glib-Basic-Types.html#gdouble">gdouble</a> equally distributed over the range [<i><tt>begin</tt></i>..<i><tt>end</tt></i>).</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>begin</tt></i> :</span></td><td> lower closed bound of the interval.
+</td></tr><tr><td><span class="term"><i><tt>end</tt></i> :</span></td><td> upper open bound of the interval.
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td> A random number.
+</td></tr></tbody></table></div></div></div></div><table class="navigation" width="100%" summary="Navigation footer" cellpadding="2" cellspacing="0"><tr valign="middle"><td align="left"><a accesskey="p" href="glib-Date-and-Time-Functions.html"><b>&lt;&lt; Date and Time Functions</b></a></td><td align="right"><a accesskey="n" href="glib-Hook-Functions.html"><b>Hook Functions &gt;&gt;</b></a></td></tr></table></body></html>

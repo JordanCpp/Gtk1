@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>GTypePlugin</title><meta name="generator" content="DocBook XSL Stylesheets V1.50.0"><meta name="generator" content="GTK-Doc V1.0 (XML mode)"><style type="text/css">
+        .synopsis, .classsynopsis {
+            background: #eeeeee;
+            border: solid 1px #aaaaaa;
+            padding: 0.5em;
+        }
+        .programlisting {
+            background: #eeeeff;
+            border: solid 1px #aaaaff;
+            padding: 0.5em;
+        }
+        .variablelist {
+            padding: 4px;
+            margin-left: 3em;
+        }
+        .navigation {
+            background: #ffeeee;
+            border: solid 1px #ffaaaa;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+        .navigation a {
+            color: #770000;
+        }
+        .navigation a:visited {
+            color: #550000;
+        }
+        .navigation .title {
+            font-size: 200%;
+        }
+      </style><link rel="home" href="index.html" title="GObject Reference Manual"><link rel="up" href="rn01.html" title="API Reference"><link rel="previous" href="gobject-GType.html" title="GType"><link rel="next" href="gobject-GTypeModule.html" title="GTypeModule"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><table class="navigation" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2"><tr valign="middle"><td><a accesskey="p" href="gobject-GType.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td><td><a accesskey="u" href="rn01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td><td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td><th width="100%" align="center">GObject Reference Manual</th><td><a accesskey="n" href="gobject-GTypeModule.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td></tr></table><div class="refentry"><a name="gobject-GTypePlugin"></a><div class="titlepage"></div><div class="refnamediv"><h2>GTypePlugin</h2><p>GTypePlugin &#8212; An interface for dynamically loadable types</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><pre class="synopsis">
+
+#include &lt;gobject.h&gt;
+
+
+struct      <a href="gobject-GTypePlugin.html#GTypePlugin">GTypePlugin</a>;
+struct      <a href="gobject-GTypePlugin.html#GTypePluginClass">GTypePluginClass</a>;
+void        (<a href="gobject-GTypePlugin.html#GTypePluginUse">*GTypePluginUse</a>)               (<a href="gobject-GTypePlugin.html#GTypePlugin">GTypePlugin</a> *plugin);
+void        (<a href="gobject-GTypePlugin.html#GTypePluginUnuse">*GTypePluginUnuse</a>)             (<a href="gobject-GTypePlugin.html#GTypePlugin">GTypePlugin</a> *plugin);
+void        (<a href="gobject-GTypePlugin.html#GTypePluginCompleteTypeInfo">*GTypePluginCompleteTypeInfo</a>)  (<a href="gobject-GTypePlugin.html#GTypePlugin">GTypePlugin</a> *plugin,
+                                             <a href="gobject-GType.html#GType">GType</a> g_type,
+                                             <a href="gobject-GType.html#GTypeInfo">GTypeInfo</a> *info,
+                                             <a href="gobject-GType.html#GTypeValueTable">GTypeValueTable</a> *value_table);
+void        (<a href="gobject-GTypePlugin.html#GTypePluginCompleteInterfaceInfo">*GTypePluginCompleteInterfaceInfo</a>)
+                                            (<a href="gobject-GTypePlugin.html#GTypePlugin">GTypePlugin</a> *plugin,
+                                             <a href="gobject-GType.html#GType">GType</a> instance_type,
+                                             <a href="gobject-GType.html#GType">GType</a> interface_type,
+                                             <a href="gobject-GType.html#GInterfaceInfo">GInterfaceInfo</a> *info);
+void        <a href="gobject-GTypePlugin.html#g-type-plugin-use">g_type_plugin_use</a>               (<a href="gobject-GTypePlugin.html#GTypePlugin">GTypePlugin</a> *plugin);
+void        <a href="gobject-GTypePlugin.html#g-type-plugin-unuse">g_type_plugin_unuse</a>             (<a href="gobject-GTypePlugin.html#GTypePlugin">GTypePlugin</a> *plugin);
+void        <a href="gobject-GTypePlugin.html#g-type-plugin-complete-type-info">g_type_plugin_complete_type_info</a>
+                                            (<a href="gobject-GTypePlugin.html#GTypePlugin">GTypePlugin</a> *plugin,
+                                             <a href="gobject-GType.html#GType">GType</a> g_type,
+                                             <a href="gobject-GType.html#GTypeInfo">GTypeInfo</a> *info,
+                                             <a href="gobject-GType.html#GTypeValueTable">GTypeValueTable</a> *value_table);
+void        <a href="gobject-GTypePlugin.html#g-type-plugin-complete-interface-info">g_type_plugin_complete_interface_info</a>
+                                            (<a href="gobject-GTypePlugin.html#GTypePlugin">GTypePlugin</a> *plugin,
+                                             <a href="gobject-GType.html#GType">GType</a> instance_type,
+                                             <a href="gobject-GType.html#GType">GType</a> interface_type,
+                                             <a href="gobject-GType.html#GInterfaceInfo">GInterfaceInfo</a> *info);
+
+</pre></div><div class="refsect1"><h2>Description</h2><p>
+
+</p></div><div class="refsect1"><h2>Details</h2><div class="refsect2"><h3><a name="GTypePlugin"></a>struct GTypePlugin</h3><pre class="programlisting">struct GTypePlugin;</pre><p>
+
+</p></div><hr><div class="refsect2"><h3><a name="GTypePluginClass"></a>struct GTypePluginClass</h3><pre class="programlisting">struct GTypePluginClass {
+
+  GTypeInterface		   base_iface;
+  
+  GTypePluginUse		   use_plugin;
+  GTypePluginUnuse		   unuse_plugin;
+  GTypePluginCompleteTypeInfo	   complete_type_info;
+  GTypePluginCompleteInterfaceInfo complete_interface_info;
+};
+</pre><p>
+
+</p></div><hr><div class="refsect2"><h3><a name="GTypePluginUse"></a>GTypePluginUse ()</h3><pre class="programlisting">void        (*GTypePluginUse)               (<a href="gobject-GTypePlugin.html#GTypePlugin">GTypePlugin</a> *plugin);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>plugin</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="GTypePluginUnuse"></a>GTypePluginUnuse ()</h3><pre class="programlisting">void        (*GTypePluginUnuse)             (<a href="gobject-GTypePlugin.html#GTypePlugin">GTypePlugin</a> *plugin);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>plugin</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="GTypePluginCompleteTypeInfo"></a>GTypePluginCompleteTypeInfo ()</h3><pre class="programlisting">void        (*GTypePluginCompleteTypeInfo)  (<a href="gobject-GTypePlugin.html#GTypePlugin">GTypePlugin</a> *plugin,
+                                             <a href="gobject-GType.html#GType">GType</a> g_type,
+                                             <a href="gobject-GType.html#GTypeInfo">GTypeInfo</a> *info,
+                                             <a href="gobject-GType.html#GTypeValueTable">GTypeValueTable</a> *value_table);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>plugin</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>g_type</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>info</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>value_table</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="GTypePluginCompleteInterfaceInfo"></a>GTypePluginCompleteInterfaceInfo ()</h3><pre class="programlisting">void        (*GTypePluginCompleteInterfaceInfo)
+                                            (<a href="gobject-GTypePlugin.html#GTypePlugin">GTypePlugin</a> *plugin,
+                                             <a href="gobject-GType.html#GType">GType</a> instance_type,
+                                             <a href="gobject-GType.html#GType">GType</a> interface_type,
+                                             <a href="gobject-GType.html#GInterfaceInfo">GInterfaceInfo</a> *info);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>plugin</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>instance_type</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>interface_type</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>info</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-type-plugin-use"></a>g_type_plugin_use ()</h3><pre class="programlisting">void        g_type_plugin_use               (<a href="gobject-GTypePlugin.html#GTypePlugin">GTypePlugin</a> *plugin);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>plugin</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-type-plugin-unuse"></a>g_type_plugin_unuse ()</h3><pre class="programlisting">void        g_type_plugin_unuse             (<a href="gobject-GTypePlugin.html#GTypePlugin">GTypePlugin</a> *plugin);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>plugin</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-type-plugin-complete-type-info"></a>g_type_plugin_complete_type_info ()</h3><pre class="programlisting">void        g_type_plugin_complete_type_info
+                                            (<a href="gobject-GTypePlugin.html#GTypePlugin">GTypePlugin</a> *plugin,
+                                             <a href="gobject-GType.html#GType">GType</a> g_type,
+                                             <a href="gobject-GType.html#GTypeInfo">GTypeInfo</a> *info,
+                                             <a href="gobject-GType.html#GTypeValueTable">GTypeValueTable</a> *value_table);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>plugin</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>g_type</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>info</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>value_table</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-type-plugin-complete-interface-info"></a>g_type_plugin_complete_interface_info ()</h3><pre class="programlisting">void        g_type_plugin_complete_interface_info
+                                            (<a href="gobject-GTypePlugin.html#GTypePlugin">GTypePlugin</a> *plugin,
+                                             <a href="gobject-GType.html#GType">GType</a> instance_type,
+                                             <a href="gobject-GType.html#GType">GType</a> interface_type,
+                                             <a href="gobject-GType.html#GInterfaceInfo">GInterfaceInfo</a> *info);</pre><p>
+
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>plugin</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>instance_type</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>interface_type</tt></i> :</span></td><td>
+</td></tr><tr><td><span class="term"><i><tt>info</tt></i> :</span></td><td>
+
+
+</td></tr></tbody></table></div></div></div></div><table class="navigation" width="100%" summary="Navigation footer" cellpadding="2" cellspacing="0"><tr valign="middle"><td align="left"><a accesskey="p" href="gobject-GType.html"><b>&lt;&lt; GType</b></a></td><td align="right"><a accesskey="n" href="gobject-GTypeModule.html"><b>GTypeModule &gt;&gt;</b></a></td></tr></table></body></html>

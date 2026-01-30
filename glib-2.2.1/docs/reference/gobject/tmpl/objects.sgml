@@ -1,0 +1,575 @@
+<!-- ##### SECTION Title ##### -->
+GObject
+
+<!-- ##### SECTION Short_Description ##### -->
+The base object type
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### STRUCT GObject ##### -->
+<para>
+All the fields in the GObject structure are private to the #GObject implementation
+and should never be accessed directly.
+</para>
+
+@g_type_instance: 
+
+<!-- ##### STRUCT GObjectClass ##### -->
+<para>
+
+</para>
+
+@g_type_class: 
+
+<!-- ##### USER_FUNCTION GObjectGetPropertyFunc ##### -->
+<para>
+
+</para>
+
+@object: 
+@property_id: 
+@value: 
+@pspec: 
+<!-- # Unused Parameters # -->
+@trailer: 
+
+
+<!-- ##### USER_FUNCTION GObjectSetPropertyFunc ##### -->
+<para>
+
+</para>
+
+@object: 
+@property_id: 
+@value: 
+@pspec: 
+<!-- # Unused Parameters # -->
+@trailer: 
+
+
+<!-- ##### USER_FUNCTION GObjectFinalizeFunc ##### -->
+<para>
+
+</para>
+
+@object: 
+
+
+<!-- ##### MACRO G_TYPE_IS_OBJECT ##### -->
+<para>
+Return a boolean value of %FALSE or %TRUE indicating whether
+the passed in type id is a %G_TYPE_OBJECT or derived from it.
+</para>
+
+@type: Type id to check for is a %G_TYPE_OBJECT relationship.
+@Returns: %FALSE or %TRUE, indicating whether @type is a %G_TYPE_OBJECT.
+
+
+<!-- ##### MACRO G_OBJECT ##### -->
+<para>
+Cast a #GObject or derived pointer into a (GObject*) pointer.
+Depending on the current debugging level, this function may invoke
+certain runtime checks to identify invalid casts.
+</para>
+
+@object: Object which is subject to casting.
+
+
+<!-- ##### MACRO G_IS_OBJECT ##### -->
+<para>
+Check whether a valid #GTypeInstance pointer is of type %G_TYPE_OBJECT.
+</para>
+
+@object: Instance to check for being a %G_TYPE_OBJECT.
+
+
+<!-- ##### MACRO G_OBJECT_CLASS ##### -->
+<para>
+
+</para>
+
+@class: 
+
+
+<!-- ##### MACRO G_IS_OBJECT_CLASS ##### -->
+<para>
+
+</para>
+
+@class: 
+
+
+<!-- ##### MACRO G_OBJECT_GET_CLASS ##### -->
+<para>
+
+</para>
+
+@object: 
+
+
+<!-- ##### MACRO G_OBJECT_TYPE ##### -->
+<para>
+Return the type id of an object.
+</para>
+
+@object: Object to return the type id for.
+@Returns: Type id of @object.
+
+
+<!-- ##### MACRO G_OBJECT_TYPE_NAME ##### -->
+<para>
+
+</para>
+
+@object: 
+
+
+<!-- ##### MACRO G_OBJECT_CLASS_TYPE ##### -->
+<para>
+
+</para>
+
+@class: 
+
+
+<!-- ##### MACRO G_OBJECT_CLASS_NAME ##### -->
+<para>
+
+</para>
+
+@class: 
+
+
+<!-- ##### FUNCTION g_object_class_install_property ##### -->
+<para>
+
+</para>
+
+@oclass: 
+@property_id: 
+@pspec: 
+
+
+<!-- ##### FUNCTION g_object_class_find_property ##### -->
+<para>
+
+</para>
+
+@oclass: 
+@property_name: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_object_class_list_properties ##### -->
+<para>
+
+</para>
+
+@oclass: 
+@n_properties: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_object_new ##### -->
+<para>
+
+</para>
+
+@object_type: 
+@first_property_name: 
+@Varargs: 
+@Returns: 
+<!-- # Unused Parameters # -->
+@first_param_name: 
+
+
+<!-- ##### FUNCTION g_object_newv ##### -->
+<para>
+
+</para>
+
+@object_type: 
+@n_parameters: 
+@parameters: 
+@Returns: 
+
+
+<!-- ##### STRUCT GParameter ##### -->
+<para>
+
+</para>
+
+@name: 
+@value: 
+
+<!-- ##### FUNCTION g_object_ref ##### -->
+<para>
+
+</para>
+
+@object: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_object_unref ##### -->
+<para>
+
+</para>
+
+@object: 
+
+
+<!-- ##### USER_FUNCTION GWeakNotify ##### -->
+<para>
+
+</para>
+
+@data: 
+@where_the_object_was: 
+
+
+<!-- ##### FUNCTION g_object_weak_ref ##### -->
+<para>
+
+</para>
+
+@object: 
+@notify: 
+@data: 
+
+
+<!-- ##### FUNCTION g_object_weak_unref ##### -->
+<para>
+
+</para>
+
+@object: 
+@notify: 
+@data: 
+
+
+<!-- ##### FUNCTION g_object_add_weak_pointer ##### -->
+<para>
+Adds a weak reference from weak_pointer to @object to indicate that
+the pointer located at @weak_pointer_location is only valid during the 
+lifetime of @object. When the @object is finalized, @weak_pointer will 
+be set to %NULL.
+</para>
+
+@object: The object that should be weak referenced.
+@weak_pointer_location: The memory address of a pointer.
+
+
+<!-- ##### FUNCTION g_object_remove_weak_pointer ##### -->
+<para>
+Removes a weak reference from @object that was previously added
+using g_object_add_weak_pointer(). The @weak_pointer_location has
+to match the one used with g_object_add_weak_pointer().
+</para>
+
+@object: The object that is weak referenced.
+@weak_pointer_location: The memory address of a pointer.
+
+
+<!-- ##### FUNCTION g_object_connect ##### -->
+<para>
+
+</para>
+
+@object: 
+@signal_spec: 
+@Varargs: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_object_disconnect ##### -->
+<para>
+
+</para>
+
+@object: 
+@signal_spec: 
+@Varargs: 
+<!-- # Unused Parameters # -->
+@Returns: 
+
+
+<!-- ##### FUNCTION g_object_set ##### -->
+<para>
+
+</para>
+
+@object: 
+@first_property_name: 
+@Varargs: 
+<!-- # Unused Parameters # -->
+@Returns: 
+
+
+<!-- ##### FUNCTION g_object_get ##### -->
+<para>
+
+</para>
+
+@object: 
+@first_property_name: 
+@Varargs: 
+
+
+<!-- ##### FUNCTION g_object_notify ##### -->
+<para>
+
+</para>
+
+@object: 
+@property_name: 
+
+
+<!-- ##### FUNCTION g_object_freeze_notify ##### -->
+<para>
+
+</para>
+
+@object: 
+
+
+<!-- ##### FUNCTION g_object_thaw_notify ##### -->
+<para>
+
+</para>
+
+@object: 
+
+
+<!-- ##### FUNCTION g_object_get_data ##### -->
+<para>
+
+</para>
+
+@object: 
+@key: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_object_set_data ##### -->
+<para>
+
+</para>
+
+@object: 
+@key: 
+@data: 
+
+
+<!-- ##### FUNCTION g_object_set_data_full ##### -->
+<para>
+
+</para>
+
+@object: 
+@key: 
+@data: 
+@destroy: 
+
+
+<!-- ##### FUNCTION g_object_steal_data ##### -->
+<para>
+
+</para>
+
+@object: 
+@key: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_object_get_qdata ##### -->
+<para>
+This function gets back user data pointers stored via
+g_object_set_qdata().
+</para>
+
+@object:  The GObject to get a stored user data pointer from
+@quark:   A #GQuark, naming the user data pointer
+@Returns: The user data pointer set, or %NULL
+
+
+<!-- ##### FUNCTION g_object_set_qdata ##### -->
+<para>
+This sets an opaque, named pointer on an object.
+The name is specified through a #GQuark (retrived e.g. via
+g_quark_from_static_string()), and the pointer
+can be gotten back from the @object with g_object_get_qdata()
+until the @object is finalized.
+Setting a previously set user data pointer, overrides (frees)
+the old pointer set, using #NULL as pointer essentially
+removes the data stored.
+</para>
+
+@object: The GObject to set store a user data pointer
+@quark:  A #GQuark, naming the user data pointer
+@data:   An opaque user data pointer
+
+
+<!-- ##### FUNCTION g_object_set_qdata_full ##### -->
+<para>
+This function works like g_object_set_qdata(), but in addition,
+a void (*destroy) (gpointer) function may be specified which is
+called with @data as argument when the @object is finalized, or
+the data is being overwritten by a call to g_object_set_qdata()
+with the same @quark.
+</para>
+
+@object:  The GObject to set store a user data pointer
+@quark:   A #GQuark, naming the user data pointer
+@data:    An opaque user data pointer
+@destroy: Function to invoke with @data as argument, when @data needs to be freed
+
+
+<!-- ##### FUNCTION g_object_steal_qdata ##### -->
+<para>
+This function gets back user data pointers stored via
+g_object_set_qdata() and removes the @data from object
+without invoking it's destroy() function (if any was
+set).
+Usually, calling this function is only required to update
+user data pointers with a destroy notifier, for example:
+<programlisting>
+void
+object_add_to_user_list (GObject     *object,
+                         const gchar *new_string)
+{
+  /* the quark, naming the object data */
+  GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+  /* retrive the old string list */
+  GList *list = g_object_steal_qdata (object, quark_string_list);
+  
+  /* prepend new string */
+  list = g_list_prepend (list, g_strdup (new_string));
+  /* this changed 'list', so we need to set it again */
+  g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+}
+static void
+free_string_list (gpointer data)
+{
+  GList *node, *list = data;
+  
+  for (node = list; node; node = node->next)
+    g_free (node->data);
+  g_list_free (list);
+}
+</programlisting>
+Using g_object_get_qdata() in the above example, instead of g_object_steal_qdata()
+would have left the destroy function set, and thus the partial string list would
+have been freed upon g_object_set_qdata_full().
+</para>
+
+@object:  The GObject to get a stored user data pointer from
+@quark:   A #GQuark, naming the user data pointer
+@Returns: The user data pointer set, or %NULL
+
+
+<!-- ##### FUNCTION g_object_set_property ##### -->
+<para>
+
+</para>
+
+@object: 
+@property_name: 
+@value: 
+
+
+<!-- ##### FUNCTION g_object_get_property ##### -->
+<para>
+
+</para>
+
+@object: 
+@property_name: 
+@value: 
+
+
+<!-- ##### FUNCTION g_object_new_valist ##### -->
+<para>
+
+</para>
+
+@object_type: 
+@first_property_name: 
+@var_args: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_object_set_valist ##### -->
+<para>
+
+</para>
+
+@object: 
+@first_property_name: 
+@var_args: 
+
+
+<!-- ##### FUNCTION g_object_get_valist ##### -->
+<para>
+
+</para>
+
+@object: 
+@first_property_name: 
+@var_args: 
+
+
+<!-- ##### FUNCTION g_object_watch_closure ##### -->
+<para>
+This function essentially limits the life time of the @closure
+to the life time of the object. That is, when the object is finalized,
+the @closure is invalidated by calling g_closure_invalidate() on it,
+in order to prevent invocations of the closure with a finalized (non
+existing) object. Also, g_object_ref() and g_object_unref() are added
+as marshal guards to the @closure, to ensure that an extra reference
+count is held on @object during invocation of the @closure.
+Usually, this function will be called on closures that use this @object
+as closure data.
+</para>
+
+@object:  GObject restricting lifetime of @closure
+@closure: GClosure to watch
+
+
+<!-- ##### FUNCTION g_object_run_dispose ##### -->
+<para>
+
+</para>
+
+@object: 
+
+
+<!-- ##### MACRO G_OBJECT_WARN_INVALID_PSPEC ##### -->
+<para>
+
+</para>
+
+@object: 
+@pname: 
+@property_id: 
+@pspec: 
+
+
+<!-- ##### MACRO G_OBJECT_WARN_INVALID_PROPERTY_ID ##### -->
+<para>
+
+</para>
+
+@object: 
+@property_id: 
+@pspec: 
+
+

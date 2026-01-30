@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Dynamic Loading of Modules</title><meta name="generator" content="DocBook XSL Stylesheets V1.50.0"><meta name="generator" content="GTK-Doc V1.0 (XML mode)"><style type="text/css">
+        .synopsis, .classsynopsis {
+            background: #eeeeee;
+            border: solid 1px #aaaaaa;
+            padding: 0.5em;
+        }
+        .programlisting {
+            background: #eeeeff;
+            border: solid 1px #aaaaff;
+            padding: 0.5em;
+        }
+        .variablelist {
+            padding: 4px;
+            margin-left: 3em;
+        }
+        .navigation {
+            background: #ffeeee;
+            border: solid 1px #ffaaaa;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+        .navigation a {
+            color: #770000;
+        }
+        .navigation a:visited {
+            color: #550000;
+        }
+        .navigation .title {
+            font-size: 200%;
+        }
+      </style><link rel="home" href="index.html" title="GLib Reference Manual"><link rel="up" href="glib-core.html" title="GLib Core Application Support"><link rel="previous" href="glib-Asynchronous-Queues.html" title="Asynchronous Queues"><link rel="next" href="glib-Memory-Allocation.html" title="Memory Allocation"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><table class="navigation" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2"><tr valign="middle"><td><a accesskey="p" href="glib-Asynchronous-Queues.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td><td><a accesskey="u" href="glib-core.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td><td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td><th width="100%" align="center">GLib Reference Manual</th><td><a accesskey="n" href="glib-Memory-Allocation.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td></tr></table><div class="refentry"><a name="glib-Dynamic-Loading-of-Modules"></a><div class="titlepage"></div><div class="refnamediv"><h2>Dynamic Loading of Modules</h2><p>Dynamic Loading of Modules &#8212; portable method for dynamically loading 'plug-ins'.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><pre class="synopsis">
+
+#include &lt;gmodule.h&gt;
+
+
+struct      <a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a>;
+<a href="glib-Basic-Types.html#gboolean">gboolean</a>    <a href="glib-Dynamic-Loading-of-Modules.html#g-module-supported">g_module_supported</a>              (void);
+<a href="glib-Basic-Types.html#gchar">gchar</a>*      <a href="glib-Dynamic-Loading-of-Modules.html#g-module-build-path">g_module_build_path</a>             (const <a href="glib-Basic-Types.html#gchar">gchar</a> *directory,
+                                             const <a href="glib-Basic-Types.html#gchar">gchar</a> *module_name);
+<a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a>*    <a href="glib-Dynamic-Loading-of-Modules.html#g-module-open">g_module_open</a>                   (const <a href="glib-Basic-Types.html#gchar">gchar</a> *file_name,
+                                             <a href="glib-Dynamic-Loading-of-Modules.html#GModuleFlags">GModuleFlags</a> flags);
+enum        <a href="glib-Dynamic-Loading-of-Modules.html#GModuleFlags">GModuleFlags</a>;
+<a href="glib-Basic-Types.html#gboolean">gboolean</a>    <a href="glib-Dynamic-Loading-of-Modules.html#g-module-symbol">g_module_symbol</a>                 (<a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a> *module,
+                                             const <a href="glib-Basic-Types.html#gchar">gchar</a> *symbol_name,
+                                             <a href="glib-Basic-Types.html#gpointer">gpointer</a> *symbol);
+G_CONST_RETURN <a href="glib-Basic-Types.html#gchar">gchar</a>* <a href="glib-Dynamic-Loading-of-Modules.html#g-module-name">g_module_name</a>         (<a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a> *module);
+void        <a href="glib-Dynamic-Loading-of-Modules.html#g-module-make-resident">g_module_make_resident</a>          (<a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a> *module);
+<a href="glib-Basic-Types.html#gboolean">gboolean</a>    <a href="glib-Dynamic-Loading-of-Modules.html#g-module-close">g_module_close</a>                  (<a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a> *module);
+G_CONST_RETURN <a href="glib-Basic-Types.html#gchar">gchar</a>* <a href="glib-Dynamic-Loading-of-Modules.html#g-module-error">g_module_error</a>        (void);
+
+const <a href="glib-Basic-Types.html#gchar">gchar</a>* (<a href="glib-Dynamic-Loading-of-Modules.html#GModuleCheckInit">*GModuleCheckInit</a>)            (<a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a> *module);
+void        (<a href="glib-Dynamic-Loading-of-Modules.html#GModuleUnload">*GModuleUnload</a>)                (<a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a> *module);
+#define     <a href="glib-Dynamic-Loading-of-Modules.html#G-MODULE-SUFFIX-CAPS">G_MODULE_SUFFIX</a>
+#define     <a href="glib-Dynamic-Loading-of-Modules.html#G-MODULE-EXPORT-CAPS">G_MODULE_EXPORT</a>
+#define     <a href="glib-Dynamic-Loading-of-Modules.html#G-MODULE-IMPORT-CAPS">G_MODULE_IMPORT</a>
+</pre></div><div class="refsect1"><h2>Description</h2><p>
+These functions provide a portable way to dynamically load object files
+(commonly known as 'plug-ins').
+The current implementation supports all systems that provide
+an implementation of <tt>dlopen()</tt> (e.g. Linux/Sun), as well as HP-UX via its
+<tt>shl_load()</tt> mechanism, and Windows platforms via DLLs.
+</p><p>
+A program which wants to use these functions must be linked to the
+libraries output by the command <b>pkg-config --libs gmodule-2.0</b>.
+</p><p>
+To use them you must first determine whether dynamic loading
+is supported on the platform by calling <a href="glib-Dynamic-Loading-of-Modules.html#g-module-supported">g_module_supported</a>().
+If it is, you can open a module with <a href="glib-Dynamic-Loading-of-Modules.html#g-module-open">g_module_open</a>(),
+find the module's symbols (e.g. function names) with <a href="glib-Dynamic-Loading-of-Modules.html#g-module-symbol">g_module_symbol</a>(),
+and later close the module with <a href="glib-Dynamic-Loading-of-Modules.html#g-module-close">g_module_close</a>().
+<a href="glib-Dynamic-Loading-of-Modules.html#g-module-name">g_module_name</a>() will return the file name of a currently opened module.
+</p><p>
+If any of the above functions fail, the error status can be found with
+<a href="glib-Dynamic-Loading-of-Modules.html#g-module-error">g_module_error</a>().
+</p><p>
+The <a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a> implementation features reference counting for opened modules,
+and supports hook functions within a module which are called when the
+module is loaded and unloaded (see <a href="glib-Dynamic-Loading-of-Modules.html#GModuleCheckInit">GModuleCheckInit</a> and <a href="glib-Dynamic-Loading-of-Modules.html#GModuleUnload">GModuleUnload</a>).
+</p><p>
+If your module introduces static data to common subsystems in the running
+program, e.g. through calling <tt>g_quark_from_static_string (&quot;my-module-stuff&quot;)</tt>,
+it must ensure that it is never unloaded, by calling <a href="glib-Dynamic-Loading-of-Modules.html#g-module-make-resident">g_module_make_resident</a>().
+</p></div><div class="refsect1"><h2>Details</h2><div class="refsect2"><h3><a name="GModule"></a>struct GModule</h3><pre class="programlisting">struct GModule;</pre><p>
+The <a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a> struct is an opaque data structure to represent a
+<a href="glib-Dynamic-Loading-of-Modules.html" title="Dynamic Loading of Modules">Dynamically-Loaded Module</a>.
+It should only be accessed via the following functions.
+</p></div><hr><div class="refsect2"><h3><a name="g-module-supported"></a>g_module_supported ()</h3><pre class="programlisting"><a href="glib-Basic-Types.html#gboolean">gboolean</a>    g_module_supported              (void);</pre><p>
+Checks if modules are supported on the current platform.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td><tt>TRUE</tt> if modules are supported.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-module-build-path"></a>g_module_build_path ()</h3><pre class="programlisting"><a href="glib-Basic-Types.html#gchar">gchar</a>*      g_module_build_path             (const <a href="glib-Basic-Types.html#gchar">gchar</a> *directory,
+                                             const <a href="glib-Basic-Types.html#gchar">gchar</a> *module_name);</pre><p>
+A portable way to build the filename of a module. The platform-specific
+prefix and suffix are added to the filename, if needed, and the result is
+added to the directory, using the correct separator character.
+</p><p>
+The directory should specify the directory where the module can be found.
+It can be <tt>NULL</tt> or an empty string to indicate that the module is in a standard
+platform-specific directory, though this is not recommended since the
+wrong module may be found.
+</p><p>
+For example, calling <a href="glib-Dynamic-Loading-of-Modules.html#g-module-build-path">g_module_build_path</a>() on a Linux system with a <i><tt>directory</tt></i>
+of <tt>/lib</tt> and a <i><tt>module_name</tt></i> of &quot;mylibrary&quot; will return 
+<tt>/lib/libmylibrary.so</tt>. On a Windows system, using 
+<tt>\Windows</tt> as the directory it will return
+<tt>\Windows\mylibrary.dll</tt>.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>directory</tt></i> :</span></td><td>the directory where the module is. This can be <tt>NULL</tt> or the empty
+string to indicate that the standard platform-specific directories will be 
+used, though that is not recommended.
+</td></tr><tr><td><span class="term"><i><tt>module_name</tt></i> :</span></td><td>the name of the module.
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>the complete path of the module, including the standard library
+prefix and suffix. This should be freed when no longer needed.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-module-open"></a>g_module_open ()</h3><pre class="programlisting"><a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a>*    g_module_open                   (const <a href="glib-Basic-Types.html#gchar">gchar</a> *file_name,
+                                             <a href="glib-Dynamic-Loading-of-Modules.html#GModuleFlags">GModuleFlags</a> flags);</pre><p>
+Opens a module. If the module has already been opened, its reference
+count is incremented. 
+</p><p>
+First of all <a href="glib-Dynamic-Loading-of-Modules.html#g-module-open">g_module_open</a>() tries to open <i><tt>file_name</tt></i> as a module. If
+that fails and <i><tt>file_name</tt></i> has the &quot;.la&quot;-suffix (and is a libtool archive) 
+it tries to open the corresponding module. If that fails and it doesn't 
+have the proper module suffix for the platform (<a href="glib-Dynamic-Loading-of-Modules.html#G-MODULE-SUFFIX-CAPS">G_MODULE_SUFFIX</a>), this 
+suffix will be appended and the corresponding module will be opended. If 
+that fails and <i><tt>file_name</tt></i> doesn't have the &quot;.la&quot;-suffix, this suffix is 
+appended and <a href="glib-Dynamic-Loading-of-Modules.html#g-module-open">g_module_open</a>() tries to open the corresponding module. If 
+eventually that fails as well, <tt>NULL</tt> is returned.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>file_name</tt></i> :</span></td><td>the name of the file containing the module.
+</td></tr><tr><td><span class="term"><i><tt>flags</tt></i> :</span></td><td>the flags used for opening the module. Currently this can be 0 or
+G_MODULE_BIND_LAZY for lazy binding, where symbols are only bound when needed.
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>a <a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a> on success, or <tt>NULL</tt> on failure.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="GModuleFlags"></a>enum GModuleFlags</h3><pre class="programlisting">typedef enum
+{
+  G_MODULE_BIND_LAZY	= 1 &lt;&lt; 0,
+  G_MODULE_BIND_MASK	= 0x01
+} GModuleFlags;
+</pre><p>
+Flags passed to <a href="glib-Dynamic-Loading-of-Modules.html#g-module-open">g_module_open</a>().
+G_MODULE_BIND_LAZY specifies that symbols are only resolved when needed.
+The default action is to bind all symbols when the module is loaded.
+(G_MODULE_BIND_LAZY is not supported on all platforms.)
+</p></div><hr><div class="refsect2"><h3><a name="g-module-symbol"></a>g_module_symbol ()</h3><pre class="programlisting"><a href="glib-Basic-Types.html#gboolean">gboolean</a>    g_module_symbol                 (<a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a> *module,
+                                             const <a href="glib-Basic-Types.html#gchar">gchar</a> *symbol_name,
+                                             <a href="glib-Basic-Types.html#gpointer">gpointer</a> *symbol);</pre><p>
+Gets a symbol pointer from a module.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>module</tt></i> :</span></td><td>a <a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a>.
+</td></tr><tr><td><span class="term"><i><tt>symbol_name</tt></i> :</span></td><td>the name of the symbol to find.
+</td></tr><tr><td><span class="term"><i><tt>symbol</tt></i> :</span></td><td>returns the pointer to the symbol value.
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td><tt>TRUE</tt> on success.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-module-name"></a>g_module_name ()</h3><pre class="programlisting">G_CONST_RETURN <a href="glib-Basic-Types.html#gchar">gchar</a>* g_module_name         (<a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a> *module);</pre><p>
+Gets the filename from a <a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a>.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>module</tt></i> :</span></td><td>a <a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a>.
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>the filename of the module, or &quot;main&quot; if the module is the main
+program itself.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-module-make-resident"></a>g_module_make_resident ()</h3><pre class="programlisting">void        g_module_make_resident          (<a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a> *module);</pre><p>
+Ensures that a module will never be unloaded.
+Any future <a href="glib-Dynamic-Loading-of-Modules.html#g-module-close">g_module_close</a>() calls on the module will be ignored.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>module</tt></i> :</span></td><td>a <a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a> to make permanently resident.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-module-close"></a>g_module_close ()</h3><pre class="programlisting"><a href="glib-Basic-Types.html#gboolean">gboolean</a>    g_module_close                  (<a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a> *module);</pre><p>
+Closes a module.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>module</tt></i> :</span></td><td>a <a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a> to close.
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td><tt>TRUE</tt> on success.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="g-module-error"></a>g_module_error ()</h3><pre class="programlisting">G_CONST_RETURN <a href="glib-Basic-Types.html#gchar">gchar</a>* g_module_error        (void);</pre><p>
+Gets a string describing the last module error.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td>a string describing the last module error.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="GModuleCheckInit"></a>GModuleCheckInit ()</h3><pre class="programlisting">const <a href="glib-Basic-Types.html#gchar">gchar</a>* (*GModuleCheckInit)            (<a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a> *module);</pre><p>
+Specifies the type of the module initialization function.
+If a module contains a function named g_module_check_init() it is called
+automatically when the module is loaded. It is passed the <a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a> structure
+and should return <tt>NULL</tt> on success or a string describing the initialization
+error.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>module</tt></i> :</span></td><td>the <a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a> corresponding to the module which has just been loaded.
+</td></tr><tr><td><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></td><td><tt>NULL</tt> on success, or a string describing the initialization error.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="GModuleUnload"></a>GModuleUnload ()</h3><pre class="programlisting">void        (*GModuleUnload)                (<a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a> *module);</pre><p>
+Specifies the type of the module function called when it is unloaded.
+If a module contains a function named g_module_unload() it is called
+automatically when the module is unloaded.
+It is passed the <a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a> structure.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>module</tt></i> :</span></td><td>the <a href="glib-Dynamic-Loading-of-Modules.html#GModule">GModule</a> about to be unloaded.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-MODULE-SUFFIX-CAPS"></a>G_MODULE_SUFFIX</h3><pre class="programlisting">#define G_MODULE_SUFFIX &quot;so&quot;
+</pre><p>
+Expands to the proper shared library suffix for the current platform
+without the leading dot. For the most Unices and Linux this is &quot;so&quot;,
+for some HP-UX versions this is &quot;sl&quot; and for Windows this is &quot;dll&quot;.
+</p></div><hr><div class="refsect2"><h3><a name="G-MODULE-EXPORT-CAPS"></a>G_MODULE_EXPORT</h3><pre class="programlisting">#define     G_MODULE_EXPORT</pre><p>
+Used to declare functions exported by modules.
+</p></div><hr><div class="refsect2"><h3><a name="G-MODULE-IMPORT-CAPS"></a>G_MODULE_IMPORT</h3><pre class="programlisting">#define	G_MODULE_IMPORT		extern
+</pre><p>
+Used to declare functions imported from modules.
+</p></div></div></div><table class="navigation" width="100%" summary="Navigation footer" cellpadding="2" cellspacing="0"><tr valign="middle"><td align="left"><a accesskey="p" href="glib-Asynchronous-Queues.html"><b>&lt;&lt; Asynchronous Queues</b></a></td><td align="right"><a accesskey="n" href="glib-Memory-Allocation.html"><b>Memory Allocation &gt;&gt;</b></a></td></tr></table></body></html>

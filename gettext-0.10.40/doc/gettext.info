@@ -1,0 +1,138 @@
+This is gettext.info, produced by makeinfo version 4.0 from
+gettext.texi.
+
+INFO-DIR-SECTION GNU Gettext Utilities
+START-INFO-DIR-ENTRY
+* Gettext: (gettext).                           GNU gettext utilities.
+* gettextize: (gettext)gettextize Invocation.   Prepare a package for gettext.
+* msgfmt: (gettext)msgfmt Invocation.           Make MO files out of PO files.
+* msgmerge: (gettext)msgmerge Invocation.       Update two PO files into one.
+* xgettext: (gettext)xgettext Invocation.       Extract strings into a PO file.
+END-INFO-DIR-ENTRY
+
+   This file provides documentation for GNU `gettext' utilities.  It
+also serves as a reference for the free Translation Project.
+
+   Copyright (C) 1995, 1996, 1997, 1998, 2001 Free Software Foundation,
+Inc.
+
+   Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+   Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, provided that
+the entire resulting derived work is distributed under the terms of a
+permission notice identical to this one.
+
+   Permission is granted to copy and distribute translations of this
+manual into another language, under the above conditions for modified
+versions, except that this permission notice may be stated in a
+translation approved by the Foundation.
+
+
+Indirect:
+gettext.info-1: 1411
+gettext.info-2: 49085
+gettext.info-3: 98522
+gettext.info-4: 147287
+gettext.info-5: 196901
+
+Tag Table:
+(Indirect)
+Node: Top1411
+Node: Introduction7072
+Node: Why8928
+Ref: Why-Footnote-112035
+Node: Concepts12191
+Node: Aspects15604
+Node: Files21353
+Node: Overview23295
+Node: Basics34216
+Node: Installation35046
+Node: PO Files37016
+Ref: PO Files-Footnote-144018
+Node: Main PO Commands44145
+Node: Entry Positioning49085
+Node: Normalizing54339
+Node: Sources58792
+Node: Triggering60062
+Node: Mark Keywords63078
+Node: Marking66626
+Node: c-format74270
+Node: Special cases78026
+Node: Template80888
+Node: xgettext Invocation81240
+Node: Creating85050
+Node: Updating91373
+Node: msgmerge Invocation92126
+Node: Translated Entries92300
+Node: Fuzzy Entries93591
+Node: Untranslated Entries96686
+Node: Obsolete Entries98522
+Node: Modifying Translations101654
+Node: Modifying Comments109475
+Node: Subedit113783
+Node: C Sources Context117559
+Node: Auxiliary122525
+Node: Compendium125624
+Node: Binaries126320
+Node: msgfmt Invocation126584
+Node: MO Files129212
+Node: Users137301
+Node: Matrix138784
+Node: Installers139988
+Node: End Users141158
+Node: Programmers141807
+Node: catgets142979
+Node: Interface to catgets144383
+Node: Problems with catgets146387
+Node: gettext147287
+Node: Interface to gettext148745
+Node: Ambiguities151086
+Node: Locating Catalogs153779
+Ref: Locating Catalogs-Footnote-1154926
+Ref: Locating Catalogs-Footnote-2155151
+Node: Charset conversion155300
+Node: Plural forms157742
+Ref: Plural forms-Footnote-1168327
+Node: GUI program problems168419
+Node: Optimized gettext173523
+Node: Comparison174856
+Node: Using libintl.a179128
+Node: gettext grok179905
+Node: Temp Programmers182537
+Node: Temp Implementations182977
+Node: Temp catgets184343
+Node: Temp WSI186030
+Node: Temp Notes188018
+Node: Translators188507
+Node: Trans Intro 0188886
+Node: Trans Intro 1191535
+Node: Discussions193399
+Node: Organization196901
+Node: Central Coordination198882
+Node: National Teams200010
+Node: Sub-Cultures202522
+Node: Organizational Ideas203441
+Node: Mailing Lists204444
+Node: Information Flow206247
+Node: Maintainers208380
+Node: Flat and Non-Flat210139
+Node: Prerequisites211622
+Node: gettextize Invocation215744
+Node: Adjusting Files219316
+Node: po/POTFILES.in220613
+Node: configure.in221557
+Node: config.guess223688
+Node: aclocal224747
+Node: acconfig225879
+Node: Makefile226362
+Node: src/Makefile228810
+Node: Conclusion231712
+Node: History232202
+Node: References235662
+Node: Language Codes237217
+Node: Country Codes241120
+
+End Tag Table

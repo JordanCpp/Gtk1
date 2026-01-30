@@ -1,0 +1,236 @@
+<!-- ##### SECTION Title ##### -->
+Enums and Flags
+
+<!-- ##### SECTION Short_Description ##### -->
+Enumeration and flags types
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### STRUCT GEnumClass ##### -->
+<para>
+
+</para>
+
+@g_type_class: 
+@minimum: 
+@maximum: 
+@n_values: 
+@values: 
+
+<!-- ##### STRUCT GFlagsClass ##### -->
+<para>
+
+</para>
+
+@g_type_class: 
+@mask: 
+@n_values: 
+@values: 
+
+<!-- ##### MACRO G_ENUM_CLASS_TYPE ##### -->
+<para>
+Returns the type identifier from a given #GEnumClass structure.
+</para>
+
+@class: a #GEnumClass
+
+
+<!-- ##### MACRO G_ENUM_CLASS_TYPE_NAME ##### -->
+<para>
+Returns the static type name from a given #GEnumClass structure.
+</para>
+
+@class: a #GEnumClass
+
+
+<!-- ##### MACRO G_TYPE_IS_ENUM ##### -->
+<para>
+Returns whether @type "is a" %G_TYPE_ENUM.
+</para>
+
+@type: a #GType ID.
+
+
+<!-- ##### MACRO G_ENUM_CLASS ##### -->
+<para>
+Casts a derived #GEnumClass structure into a #GEnumClass structure.
+</para>
+
+@class: a valid #GEnumClass
+
+
+<!-- ##### MACRO G_IS_ENUM_CLASS ##### -->
+<para>
+Checks whether @class "is a" valid #GEnumClass structure of type %G_TYPE_ENUM
+or derived.
+</para>
+
+@class: a #GEnumClass
+
+
+<!-- ##### MACRO G_TYPE_IS_FLAGS ##### -->
+<para>
+Returns whether @type "is a" %G_TYPE_FLAGS.
+</para>
+
+@type: a #GType ID.
+
+
+<!-- ##### MACRO G_FLAGS_CLASS ##### -->
+<para>
+Casts a derived #GFlagsClass structure into a #GFlagsClass structure.
+</para>
+
+@class: a valid #GFlagsClass
+
+
+<!-- ##### MACRO G_IS_FLAGS_CLASS ##### -->
+<para>
+Checks whether @class "is a" valid #GFlagsClass structure of type %G_TYPE_FLAGS
+or derived.
+</para>
+
+@class: a #GFlagsClass
+
+
+<!-- ##### MACRO G_FLAGS_CLASS_TYPE ##### -->
+<para>
+Returns the type identifier from a given #GFlagsClass structure.
+</para>
+
+@class: a #GFlagsClass
+
+
+<!-- ##### MACRO G_FLAGS_CLASS_TYPE_NAME ##### -->
+<para>
+Returns the static type name from a given #GFlagsClass structure.
+</para>
+
+@class: a #GFlagsClass
+
+
+<!-- ##### STRUCT GEnumValue ##### -->
+<para>
+
+</para>
+
+@value: 
+@value_name: 
+@value_nick: 
+
+<!-- ##### STRUCT GFlagsValue ##### -->
+<para>
+
+</para>
+
+@value: 
+@value_name: 
+@value_nick: 
+
+<!-- ##### FUNCTION g_enum_get_value ##### -->
+<para>
+
+</para>
+
+@enum_class: 
+@value: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_enum_get_value_by_name ##### -->
+<para>
+
+</para>
+
+@enum_class: 
+@name: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_enum_get_value_by_nick ##### -->
+<para>
+
+</para>
+
+@enum_class: 
+@nick: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_flags_get_first_value ##### -->
+<para>
+
+</para>
+
+@flags_class: 
+@value: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_flags_get_value_by_name ##### -->
+<para>
+
+</para>
+
+@flags_class: 
+@name: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_flags_get_value_by_nick ##### -->
+<para>
+
+</para>
+
+@flags_class: 
+@nick: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_enum_register_static ##### -->
+<para>
+
+</para>
+
+@name: 
+@const_static_values: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_flags_register_static ##### -->
+<para>
+
+</para>
+
+@name: 
+@const_static_values: 
+@Returns: 
+
+
+<!-- ##### FUNCTION g_enum_complete_type_info ##### -->
+<para>
+
+</para>
+
+@g_enum_type: 
+@info: 
+@const_values: 
+
+
+<!-- ##### FUNCTION g_flags_complete_type_info ##### -->
+<para>
+
+</para>
+
+@g_flags_type: 
+@info: 
+@const_values: 
+
+

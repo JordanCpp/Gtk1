@@ -1,0 +1,274 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Miscellaneous Macros</title><meta name="generator" content="DocBook XSL Stylesheets V1.50.0"><meta name="generator" content="GTK-Doc V1.0 (XML mode)"><style type="text/css">
+        .synopsis, .classsynopsis {
+            background: #eeeeee;
+            border: solid 1px #aaaaaa;
+            padding: 0.5em;
+        }
+        .programlisting {
+            background: #eeeeff;
+            border: solid 1px #aaaaff;
+            padding: 0.5em;
+        }
+        .variablelist {
+            padding: 4px;
+            margin-left: 3em;
+        }
+        .navigation {
+            background: #ffeeee;
+            border: solid 1px #ffaaaa;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+        .navigation a {
+            color: #770000;
+        }
+        .navigation a:visited {
+            color: #550000;
+        }
+        .navigation .title {
+            font-size: 200%;
+        }
+      </style><link rel="home" href="index.html" title="GLib Reference Manual"><link rel="up" href="glib-fundamentals.html" title="GLib Fundamentals"><link rel="previous" href="glib-Numerical-Definitions.html" title="Numerical Definitions"><link rel="next" href="glib-core.html" title="GLib Core Application Support"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><table class="navigation" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2"><tr valign="middle"><td><a accesskey="p" href="glib-Numerical-Definitions.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td><td><a accesskey="u" href="glib-fundamentals.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td><td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td><th width="100%" align="center">GLib Reference Manual</th><td><a accesskey="n" href="glib-core.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td></tr></table><div class="refentry"><a name="glib-Miscellaneous-Macros"></a><div class="titlepage"></div><div class="refnamediv"><h2>Miscellaneous Macros</h2><p>Miscellaneous Macros &#8212; specialized macros which are not used often.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><pre class="synopsis">
+
+#include &lt;glib.h&gt;
+
+
+#define     <a href="glib-Miscellaneous-Macros.html#G-INLINE-FUNC-CAPS">G_INLINE_FUNC</a>
+
+#define     <a href="glib-Miscellaneous-Macros.html#G-STMT-START-CAPS">G_STMT_START</a>
+#define     <a href="glib-Miscellaneous-Macros.html#G-STMT-END-CAPS">G_STMT_END</a>
+
+#define     <a href="glib-Miscellaneous-Macros.html#G-BEGIN-DECLS-CAPS">G_BEGIN_DECLS</a>
+#define     <a href="glib-Miscellaneous-Macros.html#G-END-DECLS-CAPS">G_END_DECLS</a>
+
+#define     <a href="glib-Miscellaneous-Macros.html#G-N-ELEMENTS-CAPS">G_N_ELEMENTS</a>                    (arr)
+
+#define     <a href="glib-Miscellaneous-Macros.html#G-VA-COPY-CAPS">G_VA_COPY</a>
+
+#define     <a href="glib-Miscellaneous-Macros.html#G-STRINGIFY-CAPS">G_STRINGIFY</a>                     (macro_or_string)
+
+#define     <a href="glib-Miscellaneous-Macros.html#G-GNUC-EXTENSION-CAPS">G_GNUC_EXTENSION</a>
+#define     <a href="glib-Miscellaneous-Macros.html#G-GNUC-CONST-CAPS">G_GNUC_CONST</a>
+#define     <a href="glib-Miscellaneous-Macros.html#G-GNUC-NORETURN-CAPS">G_GNUC_NORETURN</a>
+#define     <a href="glib-Miscellaneous-Macros.html#G-GNUC-UNUSED-CAPS">G_GNUC_UNUSED</a>
+#define     <a href="glib-Miscellaneous-Macros.html#G-GNUC-PURE-CAPS">G_GNUC_PURE</a>
+#define     <a href="glib-Miscellaneous-Macros.html#G-GNUC-PRINTF-CAPS">G_GNUC_PRINTF</a>                   ( format_idx, arg_idx )
+#define     <a href="glib-Miscellaneous-Macros.html#G-GNUC-SCANF-CAPS">G_GNUC_SCANF</a>                    ( format_idx, arg_idx )
+#define     <a href="glib-Miscellaneous-Macros.html#G-GNUC-FORMAT-CAPS">G_GNUC_FORMAT</a>                   ( arg_idx )
+#define     <a href="glib-Miscellaneous-Macros.html#G-GNUC-FUNCTION-CAPS">G_GNUC_FUNCTION</a>
+#define     <a href="glib-Miscellaneous-Macros.html#G-GNUC-PRETTY-FUNCTION-CAPS">G_GNUC_PRETTY_FUNCTION</a>
+#define     <a href="glib-Miscellaneous-Macros.html#G-GNUC-NO-INSTRUMENT-CAPS">G_GNUC_NO_INSTRUMENT</a>
+
+#define     <a href="glib-Miscellaneous-Macros.html#G-LIKELY-CAPS">G_LIKELY</a>                        (expr)
+#define     <a href="glib-Miscellaneous-Macros.html#G-UNLIKELY-CAPS">G_UNLIKELY</a>                      (expr)
+
+#define     <a href="glib-Miscellaneous-Macros.html#G-STRLOC-CAPS">G_STRLOC</a>
+
+#define     <a href="glib-Miscellaneous-Macros.html#G-GINT16-FORMAT-CAPS">G_GINT16_FORMAT</a>
+#define     <a href="glib-Miscellaneous-Macros.html#G-GUINT16-FORMAT-CAPS">G_GUINT16_FORMAT</a>
+#define     <a href="glib-Miscellaneous-Macros.html#G-GINT32-FORMAT-CAPS">G_GINT32_FORMAT</a>
+#define     <a href="glib-Miscellaneous-Macros.html#G-GUINT32-FORMAT-CAPS">G_GUINT32_FORMAT</a>
+#define     <a href="glib-Miscellaneous-Macros.html#G-GINT64-FORMAT-CAPS">G_GINT64_FORMAT</a>
+#define     <a href="glib-Miscellaneous-Macros.html#G-GUINT64-FORMAT-CAPS">G_GUINT64_FORMAT</a>
+
+</pre></div><div class="refsect1"><h2>Description</h2><p>
+These macros provide more specialized features which are not needed so often
+by application programmers.
+</p></div><div class="refsect1"><h2>Details</h2><div class="refsect2"><h3><a name="G-INLINE-FUNC-CAPS"></a>G_INLINE_FUNC</h3><pre class="programlisting">#define     G_INLINE_FUNC</pre><p>
+Used to declare inline functions. If inline functions are not supported on
+the particular platform, the macro evaluates to the empty string.
+</p></div><hr><div class="refsect2"><h3><a name="G-STMT-START-CAPS"></a>G_STMT_START</h3><pre class="programlisting">#define     G_STMT_START</pre><p>
+Used within multi-statement macros so that they can be used in places where
+only one statement is expected by the compiler.
+</p></div><hr><div class="refsect2"><h3><a name="G-STMT-END-CAPS"></a>G_STMT_END</h3><pre class="programlisting">#define     G_STMT_END</pre><p>
+Used within multi-statement macros so that they can be used in places where
+only one statement is expected by the compiler.
+</p></div><hr><div class="refsect2"><h3><a name="G-BEGIN-DECLS-CAPS"></a>G_BEGIN_DECLS</h3><pre class="programlisting">#define     G_BEGIN_DECLS</pre><p>
+Used (along with <a href="glib-Miscellaneous-Macros.html#G-END-DECLS-CAPS">G_END_DECLS</a>) to bracket header files. If the
+compiler in use is a C++ compiler, adds <tt>extern &quot;C&quot;</tt> 
+around the header.
+</p></div><hr><div class="refsect2"><h3><a name="G-END-DECLS-CAPS"></a>G_END_DECLS</h3><pre class="programlisting">#define     G_END_DECLS</pre><p>
+Used (along with <a href="glib-Miscellaneous-Macros.html#G-BEGIN-DECLS-CAPS">G_BEGIN_DECLS</a>) to bracket header files. If the
+compiler in use is a C++ compiler, adds <tt>extern &quot;C&quot;</tt> 
+around the header.
+</p></div><hr><div class="refsect2"><h3><a name="G-N-ELEMENTS-CAPS"></a>G_N_ELEMENTS()</h3><pre class="programlisting">#define G_N_ELEMENTS(arr)		(sizeof (arr) / sizeof ((arr)[0]))
+</pre><p>
+Determines the number of elements in an array. The array must be
+declared so the compiler knows its size at compile-time; this 
+macro will not work on an array allocated on the heap, only static
+arrays or arrays on the stack.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>arr</tt></i> :</span></td><td>the array
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-VA-COPY-CAPS"></a>G_VA_COPY</h3><pre class="programlisting">#define     G_VA_COPY</pre><p>
+Portable way to copy va_list variables.
+</p><p>
+In order to use this function, you must include <tt>string.h</tt> 
+yourself, because this macro may use <tt>memmove()</tt> and GLib 
+does not include <tt>string.h</tt> for you.
+</p></div><hr><div class="refsect2"><h3><a name="G-STRINGIFY-CAPS"></a>G_STRINGIFY()</h3><pre class="programlisting">#define G_STRINGIFY(macro_or_string)	G_STRINGIFY_ARG (macro_or_string)
+</pre><p>
+Accepts a macro or a string and converts it into a string.
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>macro_or_string</tt></i> :</span></td><td>a macro or a string.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-GNUC-EXTENSION-CAPS"></a>G_GNUC_EXTENSION</h3><pre class="programlisting">#define     G_GNUC_EXTENSION</pre><p>
+Expands to <tt>__extension__</tt> when <b>gcc</b> is 
+used as the compiler.
+This simply tells <b>gcc</b> not to warn about the following non-standard code
+when compiling with the <tt>-pedantic</tt> option.
+</p></div><hr><div class="refsect2"><h3><a name="G-GNUC-CONST-CAPS"></a>G_GNUC_CONST</h3><pre class="programlisting">#define     G_GNUC_CONST</pre><p>
+Expands to the GNU C <tt>const</tt> function attribute if the compiler is <b>gcc</b>.
+Declaring a function as const enables better optimization of the function.
+A const function doesn't examine any values except its parameters,
+and has no effects except its return value.
+See the GNU C documentation for details. 
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+A function that has pointer arguments and examines the data pointed to 
+must <span class="emphasis"><em>not</em></span> be declared const. Likewise, a function that 
+calls a non-const function usually must not be const. It doesn't make sense 
+for a const function to return void.
+</p></div></div><hr><div class="refsect2"><h3><a name="G-GNUC-NORETURN-CAPS"></a>G_GNUC_NORETURN</h3><pre class="programlisting">#define     G_GNUC_NORETURN</pre><p>
+Expands to the GNU C <tt>noreturn</tt> function attribute if the compiler is <b>gcc</b>.
+It is used for declaring functions which never return.
+It enables optimization of the function, and avoids possible compiler
+warnings. See the GNU C documentation for details. 
+</p></div><hr><div class="refsect2"><h3><a name="G-GNUC-UNUSED-CAPS"></a>G_GNUC_UNUSED</h3><pre class="programlisting">#define     G_GNUC_UNUSED</pre><p>
+Expands to the GNU C <tt>unused</tt> function attribute if the compiler is <b>gcc</b>.
+It is used for declaring functions which may never be used.
+It avoids possible compiler warnings. See the GNU C documentation for details. 
+</p></div><hr><div class="refsect2"><h3><a name="G-GNUC-PURE-CAPS"></a>G_GNUC_PURE</h3><pre class="programlisting">#define     G_GNUC_PURE</pre><p>
+Expands to the GNU C <tt>pure</tt> function attribute if the compiler is <b>gcc</b>.
+Declaring a function as pure enables better optimization of the function.
+A pure function has no effects except its return value and the return 
+value depends only on the parameters and/or global variables.
+See the GNU C documentation for details. 
+</p></div><hr><div class="refsect2"><h3><a name="G-GNUC-PRINTF-CAPS"></a>G_GNUC_PRINTF()</h3><pre class="programlisting">#define     G_GNUC_PRINTF( format_idx, arg_idx )</pre><p>
+Expands to the GNU C <tt>format</tt> function attribute if the compiler is <b>gcc</b>.
+This is used for declaring functions which take a variable number of
+arguments, with the same syntax as <tt>printf()</tt>.
+It allows the compiler to type-check the arguments passed to the function.
+See the GNU C documentation for details. 
+</p><div class="informalexample"><pre class="programlisting">
+gint g_snprintf (gchar  *string,
+                 gulong       n,
+                 gchar const *format,
+                 ...) G_GNUC_PRINTF (3, 4);
+</pre></div><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>format_idx</tt></i> :</span></td><td>the index of the argument corresponding to the format string.
+(The arguments are numbered from 1).
+</td></tr><tr><td><span class="term"><i><tt>arg_idx</tt></i> :</span></td><td>the index of the first of the format arguments.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-GNUC-SCANF-CAPS"></a>G_GNUC_SCANF()</h3><pre class="programlisting">#define     G_GNUC_SCANF( format_idx, arg_idx )</pre><p>
+Expands to the GNU C <tt>format</tt> function attribute if the compiler is <b>gcc</b>.
+This is used for declaring functions which take a variable number of
+arguments, with the same syntax as <tt>scanf()</tt>.
+It allows the compiler to type-check the arguments passed to the function.
+See the GNU C documentation for details. 
+</p><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>format_idx</tt></i> :</span></td><td>the index of the argument corresponding to the format string.
+(The arguments are numbered from 1).
+</td></tr><tr><td><span class="term"><i><tt>arg_idx</tt></i> :</span></td><td>the index of the first of the format arguments.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-GNUC-FORMAT-CAPS"></a>G_GNUC_FORMAT()</h3><pre class="programlisting">#define     G_GNUC_FORMAT( arg_idx )</pre><p>
+Expands to the GNU C <tt>format_arg</tt> function attribute if the compiler is <b>gcc</b>.
+This function attribute specifies that a function takes a format
+string for a <tt>printf()</tt>, <tt>scanf()</tt>, 
+<tt>strftime()</tt> or <tt>strfmon()</tt> style
+function and modifies it, so that the result can be passed to a 
+<tt>printf()</tt>, <tt>scanf()</tt>, 
+<tt>strftime()</tt> or <tt>strfmon()</tt> style 
+function (with the remaining arguments to the format function the same as 
+they would have been for the unmodified string). 
+See the GNU C documentation for details. 
+</p><div class="informalexample"><pre class="programlisting">
+gchar *g_dgettext (gchar *domain_name, gchar *msgid) G_GNUC_FORMAT (2);
+</pre></div><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>arg_idx</tt></i> :</span></td><td>the index of the argument.
+
+
+</td></tr></tbody></table></div></div><hr><div class="refsect2"><h3><a name="G-GNUC-FUNCTION-CAPS"></a>G_GNUC_FUNCTION</h3><pre class="programlisting">#define     G_GNUC_FUNCTION</pre><p>
+Expands to the GNU C <tt>__FUNCTION__</tt> variable if the 
+compiler is <b>gcc</b>, or &quot;&quot; if it isn't. The GNU C 
+<tt>__FUNCTION__</tt> variable contains the name of the 
+current function. See the GNU C documentation for details. 
+</p></div><hr><div class="refsect2"><h3><a name="G-GNUC-PRETTY-FUNCTION-CAPS"></a>G_GNUC_PRETTY_FUNCTION</h3><pre class="programlisting">#define     G_GNUC_PRETTY_FUNCTION</pre><p>
+Expands to the GNU C <tt>__PRETTY_FUNCTION__</tt> variable 
+if the compiler is <b>gcc</b>, or &quot;&quot; if it isn't.
+The GNU C <tt>__PRETTY_FUNCTION__</tt> variable contains the 
+name of the current function. For a C program this is the same as the 
+<tt>__FUNCTION__</tt> variable but for C++ it also includes 
+extra information such as the class and function prototype. See the 
+GNU C documentation for details. 
+</p></div><hr><div class="refsect2"><h3><a name="G-GNUC-NO-INSTRUMENT-CAPS"></a>G_GNUC_NO_INSTRUMENT</h3><pre class="programlisting">#define     G_GNUC_NO_INSTRUMENT</pre><p>
+Expands to the GNU C <tt>no_instrument_function</tt> function 
+attribute if the compiler is <b>gcc</b>. Functions with this 
+attribute will not be 
+instrumented for profiling, when the compiler is called with the
+<tt>-finstrument-functions</tt> option.
+See the GNU C documentation for details. 
+</p></div><hr><div class="refsect2"><h3><a name="G-LIKELY-CAPS"></a>G_LIKELY()</h3><pre class="programlisting">#define     G_LIKELY(expr)</pre><p>
+Hints the compiler that the expression is likely to evaluate to a true
+value. The compiler may use this information for optimizations.
+</p><div class="informalexample"><pre class="programlisting">
+if (G_LIKELY (random() != 1))
+  g_print (&quot;not one&quot;);
+</pre></div><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>expr</tt></i> :</span></td><td>the expression
+</td></tr></tbody></table></div><p>Since 2.2
+
+
+</p></div><hr><div class="refsect2"><h3><a name="G-UNLIKELY-CAPS"></a>G_UNLIKELY()</h3><pre class="programlisting">#define     G_UNLIKELY(expr)</pre><p>
+Hints the compiler that the expression is unlikely to evaluate to a true
+value. The compiler may use this information for optimizations.
+</p><div class="informalexample"><pre class="programlisting">
+if (G_UNLIKELY (random() == 1))
+  g_print (&quot;a random one&quot;);
+</pre></div><div class="variablelist"><table border="0"><col align="left"><tbody><tr><td><span class="term"><i><tt>expr</tt></i> :</span></td><td>the expression
+</td></tr></tbody></table></div><p>Since 2.2
+
+
+</p></div><hr><div class="refsect2"><h3><a name="G-STRLOC-CAPS"></a>G_STRLOC</h3><pre class="programlisting">#define     G_STRLOC</pre><p>
+Expands to a string identifying the current code position. 
+</p></div><hr><div class="refsect2"><h3><a name="G-GINT16-FORMAT-CAPS"></a>G_GINT16_FORMAT</h3><pre class="programlisting">#define G_GINT16_FORMAT &quot;hi&quot;
+</pre><p>
+This is the platform dependent conversion specifier for scanning and
+printing values of type <a href="glib-Basic-Types.html#gint16">gint16</a>. It is a string literal, but doesn't
+include the percent-sign, such that you can add precision and length
+modifiers between percent-sign and conversion specifier.
+</p><p>
+</p><div class="informalexample"><pre class="programlisting">
+gint16 in;
+gint32 out;
+sscanf (&quot;42&quot;, &quot;%&quot; G_GINT16_FORMAT, &amp;in)
+out = in * 1000;
+g_print (&quot;%&quot; G_GINT32_FORMAT, out);
+</pre></div><p>
+</p></div><hr><div class="refsect2"><h3><a name="G-GUINT16-FORMAT-CAPS"></a>G_GUINT16_FORMAT</h3><pre class="programlisting">#define G_GUINT16_FORMAT &quot;hu&quot;
+</pre><p>
+This is the platform dependent conversion specifier for scanning and
+printing values of type <a href="glib-Basic-Types.html#guint16">guint16</a>. See also <a href="glib-Miscellaneous-Macros.html#G-GINT16-FORMAT-CAPS">G_GINT16_FORMAT</a>.
+</p></div><hr><div class="refsect2"><h3><a name="G-GINT32-FORMAT-CAPS"></a>G_GINT32_FORMAT</h3><pre class="programlisting">#define G_GINT32_FORMAT &quot;i&quot;
+</pre><p>
+This is the platform dependent conversion specifier for scanning and
+printing values of type <a href="glib-Basic-Types.html#gint32">gint32</a>. See also <a href="glib-Miscellaneous-Macros.html#G-GINT16-FORMAT-CAPS">G_GINT16_FORMAT</a>.
+</p></div><hr><div class="refsect2"><h3><a name="G-GUINT32-FORMAT-CAPS"></a>G_GUINT32_FORMAT</h3><pre class="programlisting">#define G_GUINT32_FORMAT &quot;u&quot;
+</pre><p>
+This is the platform dependent conversion specifier for scanning and
+printing values of type <a href="glib-Basic-Types.html#guint32">guint32</a>. See also <a href="glib-Miscellaneous-Macros.html#G-GINT16-FORMAT-CAPS">G_GINT16_FORMAT</a>.
+</p></div><hr><div class="refsect2"><h3><a name="G-GINT64-FORMAT-CAPS"></a>G_GINT64_FORMAT</h3><pre class="programlisting">#define G_GINT64_FORMAT &quot;lli&quot;
+</pre><p>
+This is the platform dependent conversion specifier for scanning and
+printing values of type <a href="glib-Basic-Types.html#gint64">gint64</a>. See also <a href="glib-Miscellaneous-Macros.html#G-GINT16-FORMAT-CAPS">G_GINT16_FORMAT</a>.
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+Some platforms do not support scanning and printing 64 bit integers,
+even though the types are supported. On such platforms <a href="glib-Miscellaneous-Macros.html#G-GINT64-FORMAT-CAPS">G_GINT64_FORMAT</a>
+is not defined.
+</p></div></div><hr><div class="refsect2"><h3><a name="G-GUINT64-FORMAT-CAPS"></a>G_GUINT64_FORMAT</h3><pre class="programlisting">#define G_GUINT64_FORMAT &quot;llu&quot;
+</pre><p>
+This is the platform dependent conversion specifier for scanning and
+printing values of type <a href="glib-Basic-Types.html#guint64">guint64</a>. See also <a href="glib-Miscellaneous-Macros.html#G-GINT16-FORMAT-CAPS">G_GINT16_FORMAT</a>.
+</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+Some platforms do not support scanning and printing 64 bit integers,
+even though the types are supported. On such platforms <a href="glib-Miscellaneous-Macros.html#G-GUINT64-FORMAT-CAPS">G_GUINT64_FORMAT</a>
+is not defined.
+</p></div></div></div></div><table class="navigation" width="100%" summary="Navigation footer" cellpadding="2" cellspacing="0"><tr valign="middle"><td align="left"><a accesskey="p" href="glib-Numerical-Definitions.html"><b>&lt;&lt; Numerical Definitions</b></a></td><td align="right"><a accesskey="n" href="glib-core.html"><b>GLib Core Application Support &gt;&gt;</b></a></td></tr></table></body></html>

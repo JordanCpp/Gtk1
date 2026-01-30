@@ -1,0 +1,1113 @@
+# Makefile.in generated automatically by automake 1.4-p6 from Makefile.am
+
+# Copyright (C) 1994, 1995-8, 1999, 2001 Free Software Foundation, Inc.
+# This Makefile.in is free software; the Free Software Foundation
+# gives unlimited permission to copy and/or distribute it,
+# with or without modifications, as long as this notice is preserved.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY, to the extent permitted by law; without
+# even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+
+SHELL = @SHELL@
+
+srcdir = @srcdir@
+top_srcdir = @top_srcdir@
+VPATH = @srcdir@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+
+bindir = @bindir@
+sbindir = @sbindir@
+libexecdir = @libexecdir@
+datadir = @datadir@
+sysconfdir = @sysconfdir@
+sharedstatedir = @sharedstatedir@
+localstatedir = @localstatedir@
+libdir = @libdir@
+infodir = @infodir@
+mandir = @mandir@
+includedir = @includedir@
+oldincludedir = /usr/include
+
+DESTDIR =
+
+pkgdatadir = $(datadir)/@PACKAGE@
+pkglibdir = $(libdir)/@PACKAGE@
+pkgincludedir = $(includedir)/@PACKAGE@
+
+top_builddir = ..
+
+ACLOCAL = @ACLOCAL@
+AUTOCONF = @AUTOCONF@
+AUTOMAKE = @AUTOMAKE@
+AUTOHEADER = @AUTOHEADER@
+
+INSTALL = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@ $(AM_INSTALL_PROGRAM_FLAGS)
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+transform = @program_transform_name@
+
+NORMAL_INSTALL = :
+PRE_INSTALL = :
+POST_INSTALL = :
+NORMAL_UNINSTALL = :
+PRE_UNINSTALL = :
+POST_UNINSTALL = :
+host_alias = @host_alias@
+host_triplet = @host@
+AS = @AS@
+AWK = @AWK@
+CC = @CC@
+CXX = @CXX@
+DB2HTML = @DB2HTML@
+DISABLE_MEM_POOLS = @DISABLE_MEM_POOLS@
+DLLTOOL = @DLLTOOL@
+ECHO = @ECHO@
+ENABLE_GC_FRIENDLY = @ENABLE_GC_FRIENDLY@
+EXEEXT = @EXEEXT@
+GETTEXT_PACKAGE = @GETTEXT_PACKAGE@
+GIO = @GIO@
+GLIBC21 = @GLIBC21@
+GLIB_BINARY_AGE = @GLIB_BINARY_AGE@
+GLIB_DEBUG_FLAGS = @GLIB_DEBUG_FLAGS@
+GLIB_DEF = @GLIB_DEF@
+GLIB_GENMARSHAL = @GLIB_GENMARSHAL@
+GLIB_INTERFACE_AGE = @GLIB_INTERFACE_AGE@
+GLIB_MAJOR_VERSION = @GLIB_MAJOR_VERSION@
+GLIB_MICRO_VERSION = @GLIB_MICRO_VERSION@
+GLIB_MINOR_VERSION = @GLIB_MINOR_VERSION@
+GLIB_VERSION = @GLIB_VERSION@
+GMODULE_DEF = @GMODULE_DEF@
+GOBJECT_DEF = @GOBJECT_DEF@
+GSPAWN = @GSPAWN@
+GTHREAD_COMPILE_IMPL_DEFINES = @GTHREAD_COMPILE_IMPL_DEFINES@
+GTHREAD_DEF = @GTHREAD_DEF@
+GTKDOC = @GTKDOC@
+G_LIBS_EXTRA = @G_LIBS_EXTRA@
+G_LIB_WIN32_RESOURCE = @G_LIB_WIN32_RESOURCE@
+G_MODULE_BROKEN_RTLD_GLOBAL = @G_MODULE_BROKEN_RTLD_GLOBAL@
+G_MODULE_HAVE_DLERROR = @G_MODULE_HAVE_DLERROR@
+G_MODULE_IMPL = @G_MODULE_IMPL@
+G_MODULE_LDFLAGS = @G_MODULE_LDFLAGS@
+G_MODULE_LIBS = @G_MODULE_LIBS@
+G_MODULE_LIBS_EXTRA = @G_MODULE_LIBS_EXTRA@
+G_MODULE_NEED_USCORE = @G_MODULE_NEED_USCORE@
+G_MODULE_PLUGIN_LIBS = @G_MODULE_PLUGIN_LIBS@
+G_MODULE_SUPPORTED = @G_MODULE_SUPPORTED@
+G_MODULE_WIN32_RESOURCE = @G_MODULE_WIN32_RESOURCE@
+G_OBJECT_WIN32_RESOURCE = @G_OBJECT_WIN32_RESOURCE@
+G_THREAD_CFLAGS = @G_THREAD_CFLAGS@
+G_THREAD_LIBS = @G_THREAD_LIBS@
+G_THREAD_LIBS_EXTRA = @G_THREAD_LIBS_EXTRA@
+G_THREAD_LIBS_FOR_GTHREAD = @G_THREAD_LIBS_FOR_GTHREAD@
+G_THREAD_WIN32_RESOURCE = @G_THREAD_WIN32_RESOURCE@
+HAVE_GTK_DOC = @HAVE_GTK_DOC@
+HTML_DIR = @HTML_DIR@
+ICONV_LIBS = @ICONV_LIBS@
+INDENT = @INDENT@
+LIBTOOL = @LIBTOOL@
+LN_S = @LN_S@
+LT_AGE = @LT_AGE@
+LT_CURRENT = @LT_CURRENT@
+LT_CURRENT_MINUS_AGE = @LT_CURRENT_MINUS_AGE@
+LT_RELEASE = @LT_RELEASE@
+LT_REVISION = @LT_REVISION@
+MAINT = @MAINT@
+MAKEINFO = @MAKEINFO@
+OBJDUMP = @OBJDUMP@
+OBJEXT = @OBJEXT@
+PACKAGE = @PACKAGE@
+PERL = @PERL@
+PERL_PATH = @PERL_PATH@
+PKG_CONFIG = @PKG_CONFIG@
+PLATFORMDEP = @PLATFORMDEP@
+RANLIB = @RANLIB@
+REBUILD = @REBUILD@
+STRIP = @STRIP@
+STRIP_BEGIN = @STRIP_BEGIN@
+STRIP_DUMMY = @STRIP_DUMMY@
+STRIP_END = @STRIP_END@
+TESTGMODULE_EXP = @TESTGMODULE_EXP@
+TRIO_LIBS = @TRIO_LIBS@
+VERSION = @VERSION@
+ms_librarian = @ms_librarian@
+
+@HAVE_GOOD_PRINTF_FALSE@TRIO_SUBDIR = @HAVE_GOOD_PRINTF_FALSE@trio
+@HAVE_GOOD_PRINTF_FALSE@trio_libtrio_la = @HAVE_GOOD_PRINTF_FALSE@trio/libtrio.la
+
+SUBDIRS = libcharset $(TRIO_SUBDIR)
+
+DIST_SUBDIRS = libcharset trio
+
+INCLUDES = -I$(top_srcdir) -DG_LOG_DOMAIN=\"GLib\" \
+	@GLIB_DEBUG_FLAGS@ -DG_DISABLE_DEPRECATED -DGLIB_COMPILATION 
+
+
+EXTRA_DIST = \
+	makefile.mingw.in	\
+	makefile.msc.in		\
+	glib.rc.in		\
+	gen-unicode-tables.pl	\
+	glib.def
+
+
+# These may be in the builddir too
+BUILT_EXTRA_DIST = \
+	makefile.msc		\
+	makefile.mingw		\
+	glib.rc
+
+
+lib_LTLIBRARIES = libglib-2.0.la
+
+@MS_LIB_AVAILABLE_TRUE@noinst_DATA = @MS_LIB_AVAILABLE_TRUE@glib-2.0.lib
+
+libglib_2_0_la_SOURCES = \
+	garray.c		\
+	gasyncqueue.c		\
+	gbacktrace.c		\
+	gbsearcharray.c		\
+	gbsearcharray.h		\
+	gcache.c		\
+	gcompletion.c		\
+	gconvert.c		\
+	gdataset.c		\
+	gdate.c         	\
+	gdir.c			\
+	gerror.c		\
+	gfileutils.c		\
+	ghash.c			\
+	ghook.c			\
+	giochannel.c    	\
+	glibintl.h		\
+	glist.c			\
+	gmain.c         	\
+	gmarkup.c		\
+	gmem.c			\
+	gmessages.c		\
+	gnode.c			\
+	gpattern.c		\
+	gprimes.c		\
+	gqsort.c		\
+	gqueue.c		\
+	grel.c			\
+	grand.c			\
+	gscanner.c		\
+	gshell.c		\
+	gslist.c		\
+	gstrfuncs.c		\
+	gstring.c		\
+	gthread.c       	\
+	gthreadpool.c   	\
+	gtimer.c		\
+	gtree.c			\
+	guniprop.c		\
+	gutf8.c			\
+	gunibreak.h		\
+	gunibreak.c		\
+	gunichartables.h	\
+	gunicollate.c		\
+	gunicomp.h		\
+	gunidecomp.h		\
+	gunidecomp.c		\
+	gutils.c		\
+	gdebug.h		\
+	gprintf.c		\
+	gprintfint.h
+
+
+EXTRA_libglib_2_0_la_SOURCES = \
+	giounix.c	\
+	giowin32.c	\
+	gspawn.c	\
+	gspawn-win32.c	\
+	gwin32.c
+
+
+glibincludedir = $(includedir)/glib-2.0
+glibinclude_HEADERS = \
+	glib-object.h	\
+	glib.h
+
+
+glibsubincludedir = $(includedir)/glib-2.0/glib
+glibsubinclude_HEADERS = \
+	galloca.h	\
+	garray.h	\
+	gasyncqueue.h	\
+	gbacktrace.h	\
+	gcache.h	\
+	gcompletion.h	\
+	gconvert.h	\
+	gdataset.h	\
+	gdate.h		\
+	gdir.h		\
+	gerror.h	\
+	gfileutils.h	\
+	ghash.h		\
+	ghook.h		\
+	giochannel.h	\
+	glist.h		\
+	gmacros.h	\
+	gmain.h		\
+	gmarkup.h	\
+	gmem.h		\
+	gmessages.h	\
+	gnode.h		\
+	gpattern.h	\
+	gprimes.h	\
+	gqsort.h	\
+	gquark.h	\
+	gqueue.h	\
+	grand.h		\
+	grel.h		\
+	gscanner.h	\
+	gshell.h	\
+	gslist.h	\
+	gspawn.h	\
+	gstrfuncs.h	\
+	gstring.h	\
+	gthread.h	\
+	gthreadpool.h	\
+	gtimer.h	\
+	gtree.h		\
+	gtypes.h	\
+	gunicode.h	\
+	gutils.h	\
+	gwin32.h	\
+	gprintf.h
+
+
+@PLATFORM_WIN32_TRUE@no_undefined = @PLATFORM_WIN32_TRUE@-no-undefined
+
+# This requires a very new libtool
+@OS_WIN32_TRUE@export_symbols = @OS_WIN32_TRUE@-export-symbols glib.def
+
+libglib_2_0_la_LIBADD = libcharset/libcharset.la $(trio_libtrio_la) @GIO@ @GSPAWN@ @PLATFORMDEP@ @G_LIB_WIN32_RESOURCE@ @ICONV_LIBS@ @G_LIBS_EXTRA@ 
+libglib_2_0_la_DEPENDENCIES = libcharset/libcharset.la $(trio_libtrio_la) @GIO@ @GSPAWN@ @PLATFORMDEP@ @G_LIB_WIN32_RESOURCE@ @GLIB_DEF@
+
+libglib_2_0_la_LDFLAGS = \
+	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) \
+	-export-dynamic $(no_undefined) $(export_symbols)
+
+
+@OS_WIN32_TRUE@bin_PROGRAMS = @OS_WIN32_TRUE@gspawn-win32-helper
+@OS_WIN32_TRUE@gspawn_win32_helper_LDADD = @OS_WIN32_TRUE@libglib-2.0.la
+@OS_WIN32_TRUE@gspawn_win32_helper_LDFLAGS = @OS_WIN32_TRUE@-mwindows
+mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
+CONFIG_HEADER = ../config.h
+CONFIG_CLEAN_FILES = 
+LTLIBRARIES =  $(lib_LTLIBRARIES)
+
+
+DEFS = @DEFS@ -I. -I$(srcdir) -I..
+CPPFLAGS = @CPPFLAGS@
+LDFLAGS = @LDFLAGS@
+LIBS = @LIBS@
+libglib_2_0_la_OBJECTS =  garray.lo gasyncqueue.lo gbacktrace.lo \
+gbsearcharray.lo gcache.lo gcompletion.lo gconvert.lo gdataset.lo \
+gdate.lo gdir.lo gerror.lo gfileutils.lo ghash.lo ghook.lo \
+giochannel.lo glist.lo gmain.lo gmarkup.lo gmem.lo gmessages.lo \
+gnode.lo gpattern.lo gprimes.lo gqsort.lo gqueue.lo grel.lo grand.lo \
+gscanner.lo gshell.lo gslist.lo gstrfuncs.lo gstring.lo gthread.lo \
+gthreadpool.lo gtimer.lo gtree.lo guniprop.lo gutf8.lo gunibreak.lo \
+gunicollate.lo gunidecomp.lo gutils.lo gprintf.lo
+@OS_WIN32_TRUE@bin_PROGRAMS =  gspawn-win32-helper$(EXEEXT)
+PROGRAMS =  $(bin_PROGRAMS)
+
+gspawn_win32_helper_SOURCES = gspawn-win32-helper.c
+gspawn_win32_helper_OBJECTS =  gspawn-win32-helper.$(OBJEXT)
+@OS_WIN32_TRUE@gspawn_win32_helper_DEPENDENCIES =  libglib-2.0.la
+CFLAGS = @CFLAGS@
+COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+CCLD = $(CC)
+LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
+DATA =  $(noinst_DATA)
+
+HEADERS =  $(glibinclude_HEADERS) $(glibsubinclude_HEADERS)
+
+DIST_COMMON =  Makefile.am Makefile.in
+
+
+DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
+
+TAR = gtar
+GZIP_ENV = --best
+SOURCES = $(libglib_2_0_la_SOURCES) $(EXTRA_libglib_2_0_la_SOURCES) gspawn-win32-helper.c
+OBJECTS = $(libglib_2_0_la_OBJECTS) gspawn-win32-helper.$(OBJEXT)
+
+all: all-redirect
+.SUFFIXES:
+.SUFFIXES: .S .c .lo .o .obj .s
+$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
+	cd $(top_srcdir) && $(AUTOMAKE) --gnu --include-deps glib/Makefile
+
+Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status
+	cd $(top_builddir) \
+	  && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
+
+
+mostlyclean-libLTLIBRARIES:
+
+clean-libLTLIBRARIES:
+	-test -z "$(lib_LTLIBRARIES)" || rm -f $(lib_LTLIBRARIES)
+
+distclean-libLTLIBRARIES:
+
+maintainer-clean-libLTLIBRARIES:
+
+install-libLTLIBRARIES: $(lib_LTLIBRARIES)
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(DESTDIR)$(libdir)
+	@list='$(lib_LTLIBRARIES)'; for p in $$list; do \
+	  if test -f $$p; then \
+	    echo "$(LIBTOOL)  --mode=install $(INSTALL) $$p $(DESTDIR)$(libdir)/$$p"; \
+	    $(LIBTOOL)  --mode=install $(INSTALL) $$p $(DESTDIR)$(libdir)/$$p; \
+	  else :; fi; \
+	done
+
+uninstall-libLTLIBRARIES:
+	@$(NORMAL_UNINSTALL)
+	list='$(lib_LTLIBRARIES)'; for p in $$list; do \
+	  $(LIBTOOL)  --mode=uninstall rm -f $(DESTDIR)$(libdir)/$$p; \
+	done
+
+.c.o:
+	$(COMPILE) -c $<
+
+# FIXME: We should only use cygpath when building on Windows,
+# and only if it is available.
+.c.obj:
+	$(COMPILE) -c `cygpath -w $<`
+
+.s.o:
+	$(COMPILE) -c $<
+
+.S.o:
+	$(COMPILE) -c $<
+
+mostlyclean-compile:
+	-rm -f *.o core *.core
+	-rm -f *.$(OBJEXT)
+
+clean-compile:
+
+distclean-compile:
+	-rm -f *.tab.c
+
+maintainer-clean-compile:
+
+.c.lo:
+	$(LIBTOOL) --mode=compile $(COMPILE) -c $<
+
+.s.lo:
+	$(LIBTOOL) --mode=compile $(COMPILE) -c $<
+
+.S.lo:
+	$(LIBTOOL) --mode=compile $(COMPILE) -c $<
+
+mostlyclean-libtool:
+	-rm -f *.lo
+
+clean-libtool:
+	-rm -rf .libs _libs
+
+distclean-libtool:
+
+maintainer-clean-libtool:
+
+libglib-2.0.la: $(libglib_2_0_la_OBJECTS) $(libglib_2_0_la_DEPENDENCIES)
+	$(LINK) -rpath $(libdir) $(libglib_2_0_la_LDFLAGS) $(libglib_2_0_la_OBJECTS) $(libglib_2_0_la_LIBADD) $(LIBS)
+
+mostlyclean-binPROGRAMS:
+
+clean-binPROGRAMS:
+	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
+
+distclean-binPROGRAMS:
+
+maintainer-clean-binPROGRAMS:
+
+install-binPROGRAMS: $(bin_PROGRAMS)
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(DESTDIR)$(bindir)
+	@list='$(bin_PROGRAMS)'; for p in $$list; do \
+	  if test -f $$p; then \
+	    echo " $(LIBTOOL)  --mode=install $(INSTALL_PROGRAM) $$p $(DESTDIR)$(bindir)/`echo $$p|sed 's/$(EXEEXT)$$//'|sed '$(transform)'|sed 's/$$/$(EXEEXT)/'`"; \
+	    $(LIBTOOL)  --mode=install $(INSTALL_PROGRAM) $$p $(DESTDIR)$(bindir)/`echo $$p|sed 's/$(EXEEXT)$$//'|sed '$(transform)'|sed 's/$$/$(EXEEXT)/'`; \
+	  else :; fi; \
+	done
+
+uninstall-binPROGRAMS:
+	@$(NORMAL_UNINSTALL)
+	list='$(bin_PROGRAMS)'; for p in $$list; do \
+	  rm -f $(DESTDIR)$(bindir)/`echo $$p|sed 's/$(EXEEXT)$$//'|sed '$(transform)'|sed 's/$$/$(EXEEXT)/'`; \
+	done
+
+gspawn-win32-helper$(EXEEXT): $(gspawn_win32_helper_OBJECTS) $(gspawn_win32_helper_DEPENDENCIES)
+	@rm -f gspawn-win32-helper$(EXEEXT)
+	$(LINK) $(gspawn_win32_helper_LDFLAGS) $(gspawn_win32_helper_OBJECTS) $(gspawn_win32_helper_LDADD) $(LIBS)
+
+install-glibincludeHEADERS: $(glibinclude_HEADERS)
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(DESTDIR)$(glibincludedir)
+	@list='$(glibinclude_HEADERS)'; for p in $$list; do \
+	  if test -f "$$p"; then d= ; else d="$(srcdir)/"; fi; \
+	  echo " $(INSTALL_DATA) $$d$$p $(DESTDIR)$(glibincludedir)/$$p"; \
+	  $(INSTALL_DATA) $$d$$p $(DESTDIR)$(glibincludedir)/$$p; \
+	done
+
+uninstall-glibincludeHEADERS:
+	@$(NORMAL_UNINSTALL)
+	list='$(glibinclude_HEADERS)'; for p in $$list; do \
+	  rm -f $(DESTDIR)$(glibincludedir)/$$p; \
+	done
+
+install-glibsubincludeHEADERS: $(glibsubinclude_HEADERS)
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(DESTDIR)$(glibsubincludedir)
+	@list='$(glibsubinclude_HEADERS)'; for p in $$list; do \
+	  if test -f "$$p"; then d= ; else d="$(srcdir)/"; fi; \
+	  echo " $(INSTALL_DATA) $$d$$p $(DESTDIR)$(glibsubincludedir)/$$p"; \
+	  $(INSTALL_DATA) $$d$$p $(DESTDIR)$(glibsubincludedir)/$$p; \
+	done
+
+uninstall-glibsubincludeHEADERS:
+	@$(NORMAL_UNINSTALL)
+	list='$(glibsubinclude_HEADERS)'; for p in $$list; do \
+	  rm -f $(DESTDIR)$(glibsubincludedir)/$$p; \
+	done
+
+# This directory's subdirectories are mostly independent; you can cd
+# into them and run `make' without going through this Makefile.
+# To change the values of `make' variables: instead of editing Makefiles,
+# (1) if the variable is set in `config.status', edit `config.status'
+#     (which will cause the Makefiles to be regenerated when you run `make');
+# (2) otherwise, pass the desired values on the `make' command line.
+
+@SET_MAKE@
+
+all-recursive install-data-recursive install-exec-recursive \
+installdirs-recursive install-recursive uninstall-recursive  \
+check-recursive installcheck-recursive info-recursive dvi-recursive:
+	@set fnord $(MAKEFLAGS); amf=$$2; \
+	dot_seen=no; \
+	target=`echo $@ | sed s/-recursive//`; \
+	list='$(SUBDIRS)'; for subdir in $$list; do \
+	  echo "Making $$target in $$subdir"; \
+	  if test "$$subdir" = "."; then \
+	    dot_seen=yes; \
+	    local_target="$$target-am"; \
+	  else \
+	    local_target="$$target"; \
+	  fi; \
+	  (cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) $$local_target) \
+	   || case "$$amf" in *=*) exit 1;; *k*) fail=yes;; *) exit 1;; esac; \
+	done; \
+	if test "$$dot_seen" = "no"; then \
+	  $(MAKE) $(AM_MAKEFLAGS) "$$target-am" || exit 1; \
+	fi; test -z "$$fail"
+
+mostlyclean-recursive clean-recursive distclean-recursive \
+maintainer-clean-recursive:
+	@set fnord $(MAKEFLAGS); amf=$$2; \
+	dot_seen=no; \
+	rev=''; list='$(SUBDIRS)'; for subdir in $$list; do \
+	  rev="$$subdir $$rev"; \
+	  test "$$subdir" != "." || dot_seen=yes; \
+	done; \
+	test "$$dot_seen" = "no" && rev=". $$rev"; \
+	target=`echo $@ | sed s/-recursive//`; \
+	for subdir in $$rev; do \
+	  echo "Making $$target in $$subdir"; \
+	  if test "$$subdir" = "."; then \
+	    local_target="$$target-am"; \
+	  else \
+	    local_target="$$target"; \
+	  fi; \
+	  (cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) $$local_target) \
+	   || case "$$amf" in *=*) exit 1;; *k*) fail=yes;; *) exit 1;; esac; \
+	done && test -z "$$fail"
+tags-recursive:
+	list='$(SUBDIRS)'; for subdir in $$list; do \
+	  test "$$subdir" = . || (cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) tags); \
+	done
+
+tags: TAGS
+
+ID: $(HEADERS) $(SOURCES) $(LISP)
+	list='$(SOURCES) $(HEADERS)'; \
+	unique=`for i in $$list; do echo $$i; done | \
+	  awk '    { files[$$0] = 1; } \
+	       END { for (i in files) print i; }'`; \
+	here=`pwd` && cd $(srcdir) \
+	  && mkid -f$$here/ID $$unique $(LISP)
+
+TAGS: tags-recursive $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) $(LISP)
+	tags=; \
+	here=`pwd`; \
+	list='$(SUBDIRS)'; for subdir in $$list; do \
+   if test "$$subdir" = .; then :; else \
+	    test -f $$subdir/TAGS && tags="$$tags -i $$here/$$subdir/TAGS"; \
+   fi; \
+	done; \
+	list='$(SOURCES) $(HEADERS)'; \
+	unique=`for i in $$list; do echo $$i; done | \
+	  awk '    { files[$$0] = 1; } \
+	       END { for (i in files) print i; }'`; \
+	test -z "$(ETAGS_ARGS)$$unique$(LISP)$$tags" \
+	  || (cd $(srcdir) && etags $(ETAGS_ARGS) $$tags  $$unique $(LISP) -o $$here/TAGS)
+
+mostlyclean-tags:
+
+clean-tags:
+
+distclean-tags:
+	-rm -f TAGS ID
+
+maintainer-clean-tags:
+
+distdir = $(top_builddir)/$(PACKAGE)-$(VERSION)/$(subdir)
+
+subdir = glib
+
+distdir: $(DISTFILES)
+	@for file in $(DISTFILES); do \
+	  d=$(srcdir); \
+	  if test -d $$d/$$file; then \
+	    cp -pr $$d/$$file $(distdir)/$$file; \
+	  else \
+	    test -f $(distdir)/$$file \
+	    || ln $$d/$$file $(distdir)/$$file 2> /dev/null \
+	    || cp -p $$d/$$file $(distdir)/$$file || :; \
+	  fi; \
+	done
+	for subdir in $(DIST_SUBDIRS); do \
+	  if test "$$subdir" = .; then :; else \
+	    test -d $(distdir)/$$subdir \
+	    || mkdir $(distdir)/$$subdir \
+	    || exit 1; \
+	    chmod 777 $(distdir)/$$subdir; \
+	    (cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) top_distdir=../$(top_distdir) distdir=../$(distdir)/$$subdir distdir) \
+	      || exit 1; \
+	  fi; \
+	done
+	$(MAKE) $(AM_MAKEFLAGS) top_distdir="$(top_distdir)" distdir="$(distdir)" dist-hook
+garray.lo garray.o : garray.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+gasyncqueue.lo gasyncqueue.o : gasyncqueue.c ../config.h glib.h \
+	galloca.h gtypes.h ../glibconfig.h gmacros.h garray.h \
+	gasyncqueue.h gthread.h gerror.h gquark.h gbacktrace.h gcache.h \
+	glist.h gmem.h gcompletion.h gconvert.h gdataset.h gdate.h \
+	gdir.h gfileutils.h ghash.h ghook.h giochannel.h gmain.h \
+	gslist.h gstring.h gunicode.h gmarkup.h gmessages.h gnode.h \
+	gpattern.h gprimes.h gqsort.h gqueue.h grand.h grel.h \
+	gscanner.h gshell.h gspawn.h gstrfuncs.h gthreadpool.h gtimer.h \
+	gtree.h gutils.h
+gbacktrace.lo gbacktrace.o : gbacktrace.c ../config.h glib.h galloca.h \
+	gtypes.h ../glibconfig.h gmacros.h garray.h gasyncqueue.h \
+	gthread.h gerror.h gquark.h gbacktrace.h gcache.h glist.h \
+	gmem.h gcompletion.h gconvert.h gdataset.h gdate.h gdir.h \
+	gfileutils.h ghash.h ghook.h giochannel.h gmain.h gslist.h \
+	gstring.h gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h \
+	gprimes.h gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h \
+	gspawn.h gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h \
+	gprintfint.h
+gbsearcharray.lo gbsearcharray.o : gbsearcharray.c ../config.h \
+	gbsearcharray.h gtypes.h ../glibconfig.h gmacros.h gutils.h \
+	gmem.h gmessages.h
+gcache.lo gcache.o : gcache.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+gcompletion.lo gcompletion.o : gcompletion.c ../config.h glib.h \
+	galloca.h gtypes.h ../glibconfig.h gmacros.h garray.h \
+	gasyncqueue.h gthread.h gerror.h gquark.h gbacktrace.h gcache.h \
+	glist.h gmem.h gcompletion.h gconvert.h gdataset.h gdate.h \
+	gdir.h gfileutils.h ghash.h ghook.h giochannel.h gmain.h \
+	gslist.h gstring.h gunicode.h gmarkup.h gmessages.h gnode.h \
+	gpattern.h gprimes.h gqsort.h gqueue.h grand.h grel.h \
+	gscanner.h gshell.h gspawn.h gstrfuncs.h gthreadpool.h gtimer.h \
+	gtree.h gutils.h
+gconvert.lo gconvert.o : gconvert.c ../config.h glib.h galloca.h \
+	gtypes.h ../glibconfig.h gmacros.h garray.h gasyncqueue.h \
+	gthread.h gerror.h gquark.h gbacktrace.h gcache.h glist.h \
+	gmem.h gcompletion.h gconvert.h gdataset.h gdate.h gdir.h \
+	gfileutils.h ghash.h ghook.h giochannel.h gmain.h gslist.h \
+	gstring.h gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h \
+	gprimes.h gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h \
+	gspawn.h gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h \
+	gprintfint.h glibintl.h
+gdataset.lo gdataset.o : gdataset.c ../config.h glib.h galloca.h \
+	gtypes.h ../glibconfig.h gmacros.h garray.h gasyncqueue.h \
+	gthread.h gerror.h gquark.h gbacktrace.h gcache.h glist.h \
+	gmem.h gcompletion.h gconvert.h gdataset.h gdate.h gdir.h \
+	gfileutils.h ghash.h ghook.h giochannel.h gmain.h gslist.h \
+	gstring.h gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h \
+	gprimes.h gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h \
+	gspawn.h gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+gdate.lo gdate.o : gdate.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+gdir.lo gdir.o : gdir.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h gdir.h \
+	glibintl.h
+gerror.lo gerror.o : gerror.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+gfileutils.lo gfileutils.o : gfileutils.c ../config.h glib.h galloca.h \
+	gtypes.h ../glibconfig.h gmacros.h garray.h gasyncqueue.h \
+	gthread.h gerror.h gquark.h gbacktrace.h gcache.h glist.h \
+	gmem.h gcompletion.h gconvert.h gdataset.h gdate.h gdir.h \
+	gfileutils.h ghash.h ghook.h giochannel.h gmain.h gslist.h \
+	gstring.h gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h \
+	gprimes.h gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h \
+	gspawn.h gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h \
+	glibintl.h
+ghash.lo ghash.o : ghash.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+ghook.lo ghook.o : ghook.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+giochannel.lo giochannel.o : giochannel.c ../config.h glib.h galloca.h \
+	gtypes.h ../glibconfig.h gmacros.h garray.h gasyncqueue.h \
+	gthread.h gerror.h gquark.h gbacktrace.h gcache.h glist.h \
+	gmem.h gcompletion.h gconvert.h gdataset.h gdate.h gdir.h \
+	gfileutils.h ghash.h ghook.h giochannel.h gmain.h gslist.h \
+	gstring.h gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h \
+	gprimes.h gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h \
+	gspawn.h gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h \
+	giochannel.h glibintl.h
+giounix.lo giounix.o : giounix.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+glist.lo glist.o : glist.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+gmain.lo gmain.o : gmain.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+gmarkup.lo gmarkup.o : gmarkup.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h glibintl.h
+gmem.lo gmem.o : gmem.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+gmessages.lo gmessages.o : gmessages.c ../config.h glib.h galloca.h \
+	gtypes.h ../glibconfig.h gmacros.h garray.h gasyncqueue.h \
+	gthread.h gerror.h gquark.h gbacktrace.h gcache.h glist.h \
+	gmem.h gcompletion.h gconvert.h gdataset.h gdate.h gdir.h \
+	gfileutils.h ghash.h ghook.h giochannel.h gmain.h gslist.h \
+	gstring.h gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h \
+	gprimes.h gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h \
+	gspawn.h gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h \
+	gdebug.h gprintfint.h
+gnode.lo gnode.o : gnode.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+gpattern.lo gpattern.o : gpattern.c ../config.h gpattern.h gtypes.h \
+	../glibconfig.h gmacros.h gmacros.h gmessages.h gmem.h \
+	gunicode.h gerror.h gquark.h gutils.h
+gprimes.lo gprimes.o : gprimes.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+gprintf.lo gprintf.o : gprintf.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h gprintf.h \
+	gprintfint.h
+gqsort.lo gqsort.o : gqsort.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+gqueue.lo gqueue.o : gqueue.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+grand.lo grand.o : grand.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+grel.lo grel.o : grel.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+gscanner.lo gscanner.o : gscanner.c ../config.h glib.h galloca.h \
+	gtypes.h ../glibconfig.h gmacros.h garray.h gasyncqueue.h \
+	gthread.h gerror.h gquark.h gbacktrace.h gcache.h glist.h \
+	gmem.h gcompletion.h gconvert.h gdataset.h gdate.h gdir.h \
+	gfileutils.h ghash.h ghook.h giochannel.h gmain.h gslist.h \
+	gstring.h gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h \
+	gprimes.h gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h \
+	gspawn.h gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h \
+	gprintfint.h
+gshell.lo gshell.o : gshell.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h glibintl.h
+gslist.lo gslist.o : gslist.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+gspawn.lo gspawn.o : gspawn.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h glibintl.h
+gstrfuncs.lo gstrfuncs.o : gstrfuncs.c ../config.h glib.h galloca.h \
+	gtypes.h ../glibconfig.h gmacros.h garray.h gasyncqueue.h \
+	gthread.h gerror.h gquark.h gbacktrace.h gcache.h glist.h \
+	gmem.h gcompletion.h gconvert.h gdataset.h gdate.h gdir.h \
+	gfileutils.h ghash.h ghook.h giochannel.h gmain.h gslist.h \
+	gstring.h gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h \
+	gprimes.h gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h \
+	gspawn.h gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h \
+	gprintfint.h
+gstring.lo gstring.o : gstring.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+gthread.lo gthread.o : gthread.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+gthreadpool.lo gthreadpool.o : gthreadpool.c ../config.h glib.h \
+	galloca.h gtypes.h ../glibconfig.h gmacros.h garray.h \
+	gasyncqueue.h gthread.h gerror.h gquark.h gbacktrace.h gcache.h \
+	glist.h gmem.h gcompletion.h gconvert.h gdataset.h gdate.h \
+	gdir.h gfileutils.h ghash.h ghook.h giochannel.h gmain.h \
+	gslist.h gstring.h gunicode.h gmarkup.h gmessages.h gnode.h \
+	gpattern.h gprimes.h gqsort.h gqueue.h grand.h grel.h \
+	gscanner.h gshell.h gspawn.h gstrfuncs.h gthreadpool.h gtimer.h \
+	gtree.h gutils.h
+gtimer.lo gtimer.o : gtimer.c ../config.h ../glibconfig.h gmacros.h \
+	glib.h galloca.h gtypes.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+gtree.lo gtree.o : gtree.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h
+gunibreak.lo gunibreak.o : gunibreak.c ../config.h glib.h galloca.h \
+	gtypes.h ../glibconfig.h gmacros.h garray.h gasyncqueue.h \
+	gthread.h gerror.h gquark.h gbacktrace.h gcache.h glist.h \
+	gmem.h gcompletion.h gconvert.h gdataset.h gdate.h gdir.h \
+	gfileutils.h ghash.h ghook.h giochannel.h gmain.h gslist.h \
+	gstring.h gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h \
+	gprimes.h gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h \
+	gspawn.h gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h \
+	gunibreak.h
+gunicollate.lo gunicollate.o : gunicollate.c ../config.h glib.h \
+	galloca.h gtypes.h ../glibconfig.h gmacros.h garray.h \
+	gasyncqueue.h gthread.h gerror.h gquark.h gbacktrace.h gcache.h \
+	glist.h gmem.h gcompletion.h gconvert.h gdataset.h gdate.h \
+	gdir.h gfileutils.h ghash.h ghook.h giochannel.h gmain.h \
+	gslist.h gstring.h gunicode.h gmarkup.h gmessages.h gnode.h \
+	gpattern.h gprimes.h gqsort.h gqueue.h grand.h grel.h \
+	gscanner.h gshell.h gspawn.h gstrfuncs.h gthreadpool.h gtimer.h \
+	gtree.h gutils.h
+gunidecomp.lo gunidecomp.o : gunidecomp.c ../config.h glib.h galloca.h \
+	gtypes.h ../glibconfig.h gmacros.h garray.h gasyncqueue.h \
+	gthread.h gerror.h gquark.h gbacktrace.h gcache.h glist.h \
+	gmem.h gcompletion.h gconvert.h gdataset.h gdate.h gdir.h \
+	gfileutils.h ghash.h ghook.h giochannel.h gmain.h gslist.h \
+	gstring.h gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h \
+	gprimes.h gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h \
+	gspawn.h gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h \
+	gunidecomp.h gunicomp.h
+guniprop.lo guniprop.o : guniprop.c ../config.h glib.h galloca.h \
+	gtypes.h ../glibconfig.h gmacros.h garray.h gasyncqueue.h \
+	gthread.h gerror.h gquark.h gbacktrace.h gcache.h glist.h \
+	gmem.h gcompletion.h gconvert.h gdataset.h gdate.h gdir.h \
+	gfileutils.h ghash.h ghook.h giochannel.h gmain.h gslist.h \
+	gstring.h gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h \
+	gprimes.h gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h \
+	gspawn.h gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h \
+	gunichartables.h
+gutf8.lo gutf8.o : gutf8.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h \
+	libcharset/libcharset.h glibintl.h
+gutils.lo gutils.o : gutils.c ../config.h glib.h galloca.h gtypes.h \
+	../glibconfig.h gmacros.h garray.h gasyncqueue.h gthread.h \
+	gerror.h gquark.h gbacktrace.h gcache.h glist.h gmem.h \
+	gcompletion.h gconvert.h gdataset.h gdate.h gdir.h gfileutils.h \
+	ghash.h ghook.h giochannel.h gmain.h gslist.h gstring.h \
+	gunicode.h gmarkup.h gmessages.h gnode.h gpattern.h gprimes.h \
+	gqsort.h gqueue.h grand.h grel.h gscanner.h gshell.h gspawn.h \
+	gstrfuncs.h gthreadpool.h gtimer.h gtree.h gutils.h \
+	gprintfint.h
+
+info-am:
+info: info-recursive
+dvi-am:
+dvi: dvi-recursive
+check-am: all-am
+check: check-recursive
+installcheck-am:
+installcheck: installcheck-recursive
+install-exec-am: install-libLTLIBRARIES install-binPROGRAMS
+install-exec: install-exec-recursive
+
+install-data-am: install-glibincludeHEADERS \
+		install-glibsubincludeHEADERS install-data-local
+install-data: install-data-recursive
+
+install-am: all-am
+	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
+install: install-recursive
+uninstall-am: uninstall-libLTLIBRARIES uninstall-binPROGRAMS \
+		uninstall-glibincludeHEADERS \
+		uninstall-glibsubincludeHEADERS uninstall-local
+uninstall: uninstall-recursive
+all-am: Makefile $(LTLIBRARIES) $(PROGRAMS) $(DATA) $(HEADERS)
+all-redirect: all-recursive
+install-strip:
+	$(MAKE) $(AM_MAKEFLAGS) AM_INSTALL_PROGRAM_FLAGS=-s install
+installdirs: installdirs-recursive
+installdirs-am:
+	$(mkinstalldirs)  $(DESTDIR)$(libdir) $(DESTDIR)$(bindir) \
+		$(DESTDIR)$(glibincludedir) \
+		$(DESTDIR)$(glibsubincludedir)
+
+
+mostlyclean-generic:
+
+clean-generic:
+
+distclean-generic:
+	-rm -f Makefile $(CONFIG_CLEAN_FILES)
+	-rm -f config.cache config.log stamp-h stamp-h[0-9]*
+
+maintainer-clean-generic:
+mostlyclean-am:  mostlyclean-libLTLIBRARIES mostlyclean-compile \
+		mostlyclean-libtool mostlyclean-binPROGRAMS \
+		mostlyclean-tags mostlyclean-generic
+
+mostlyclean: mostlyclean-recursive
+
+clean-am:  clean-libLTLIBRARIES clean-compile clean-libtool \
+		clean-binPROGRAMS clean-tags clean-generic \
+		mostlyclean-am
+
+clean: clean-recursive
+
+distclean-am:  distclean-libLTLIBRARIES distclean-compile \
+		distclean-libtool distclean-binPROGRAMS distclean-tags \
+		distclean-generic clean-am
+	-rm -f libtool
+
+distclean: distclean-recursive
+
+maintainer-clean-am:  maintainer-clean-libLTLIBRARIES \
+		maintainer-clean-compile maintainer-clean-libtool \
+		maintainer-clean-binPROGRAMS maintainer-clean-tags \
+		maintainer-clean-generic distclean-am
+	@echo "This command is intended for maintainers to use;"
+	@echo "it deletes files that may require special tools to rebuild."
+
+maintainer-clean: maintainer-clean-recursive
+
+.PHONY: mostlyclean-libLTLIBRARIES distclean-libLTLIBRARIES \
+clean-libLTLIBRARIES maintainer-clean-libLTLIBRARIES \
+uninstall-libLTLIBRARIES install-libLTLIBRARIES mostlyclean-compile \
+distclean-compile clean-compile maintainer-clean-compile \
+mostlyclean-libtool distclean-libtool clean-libtool \
+maintainer-clean-libtool mostlyclean-binPROGRAMS distclean-binPROGRAMS \
+clean-binPROGRAMS maintainer-clean-binPROGRAMS uninstall-binPROGRAMS \
+install-binPROGRAMS uninstall-glibincludeHEADERS \
+install-glibincludeHEADERS uninstall-glibsubincludeHEADERS \
+install-glibsubincludeHEADERS install-data-recursive \
+uninstall-data-recursive install-exec-recursive \
+uninstall-exec-recursive installdirs-recursive uninstalldirs-recursive \
+all-recursive check-recursive installcheck-recursive info-recursive \
+dvi-recursive mostlyclean-recursive distclean-recursive clean-recursive \
+maintainer-clean-recursive tags tags-recursive mostlyclean-tags \
+distclean-tags clean-tags maintainer-clean-tags distdir info-am info \
+dvi-am dvi check check-am installcheck-am installcheck install-exec-am \
+install-exec install-data-local install-data-am install-data install-am \
+install uninstall-local uninstall-am uninstall all-redirect all-am all \
+installdirs-am installdirs mostlyclean-generic distclean-generic \
+clean-generic maintainer-clean-generic clean mostlyclean distclean \
+maintainer-clean
+
+
+@MS_LIB_AVAILABLE_TRUE@install-ms-lib:
+@MS_LIB_AVAILABLE_TRUE@	$(INSTALL) glib-2.0.lib $(DESTDIR)$(libdir)
+
+@MS_LIB_AVAILABLE_TRUE@uninstall-ms-lib:
+@MS_LIB_AVAILABLE_TRUE@	-rm $(DESTDIR)$(libdir)/glib-2.0.lib
+@MS_LIB_AVAILABLE_FALSE@install-ms-lib:
+@MS_LIB_AVAILABLE_FALSE@uninstall-ms-lib:
+
+install-data-local: install-ms-lib install-libtool-import-lib
+	@if test -f $(glibincludedir)/glist.h ; then					\
+	  echo "*** Old headers found in $(glibincludedir). You should remove the" ;	\
+	  echo "*** contents of this directory and type 'make install' again." ;	\
+	  false ;									\
+        fi
+
+uninstall-local: uninstall-ms-lib uninstall-libtool-import-lib
+
+@OS_WIN32_TRUE@install-libtool-import-lib:
+@OS_WIN32_TRUE@	$(INSTALL) .libs/libglib-2.0.dll.a $(DESTDIR)$(libdir)
+@OS_WIN32_TRUE@	$(INSTALL) glib.def $(DESTDIR)$(libdir)/glib-2.0.def
+
+@OS_WIN32_TRUE@uninstall-libtool-import-lib:
+@OS_WIN32_TRUE@	-rm $(DESTDIR)$(libdir)/libglib-2.0.dll.a $(DESTDIR)$(libdir)/glib-2.0.def
+@OS_WIN32_FALSE@install-libtool-import-lib:
+@OS_WIN32_FALSE@uninstall-libtool-import-lib:
+
+@OS_WIN32_TRUE@@G_LIB_WIN32_RESOURCE@ : glib.rc
+@OS_WIN32_TRUE@	$(top_srcdir)/build/win32/lt-compile-resource glib.rc @G_LIB_WIN32_RESOURCE@
+
+glib-2.0.lib: libglib-2.0.la glib.def
+	lib -name:libglib-2.0-@LT_CURRENT_MINUS_AGE@.dll -def:glib.def -out:$@
+
+glib.rc: $(top_builddir)/config.status $(top_srcdir)/glib/glib.rc.in
+	cd $(top_builddir) && CONFIG_FILES=glib/$@ CONFIG_HEADERS= $(SHELL) ./config.status
+
+makefile.mingw: $(top_builddir)/config.status $(top_srcdir)/glib/makefile.mingw.in
+	cd $(top_builddir) && CONFIG_FILES=glib/$@ CONFIG_HEADERS= $(SHELL) ./config.status
+
+makefile.msc: $(top_builddir)/config.status $(top_srcdir)/glib/makefile.msc.in
+	cd $(top_builddir) && CONFIG_FILES=glib/$@ CONFIG_HEADERS= $(SHELL) ./config.status
+
+dist-hook: $(BUILT_EXTRA_DIST)
+	files='$(BUILT_EXTRA_DIST)'; \
+	for f in $$files; do \
+	  if test -f $$f; then d=.; else d=$(srcdir); fi; \
+	  cp $$d/$$f $(distdir) || exit 1; done
+
+# Tell versions [3.59,3.63) of GNU make to not export all variables.
+# Otherwise a system limit (for SysV at least) may be exceeded.
+.NOEXPORT:

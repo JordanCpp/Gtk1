@@ -1,0 +1,46 @@
+#ifdef GTK_COMPILATION
+#undef GTK_COMPILATION
+#endif
+
+#include <gtk/gtk.h>
+
+
+void
+hello (void)
+{
+  static gint counter = 0;
+  
+  g_print ("hello world\n");
+
+  if (++counter == 3)
+    gtk_main_quit ();
+}
+
+int
+main (int argc, char *argv[])
+{
+  GtkWidget *window;
+  GtkWidget *button;
+
+  gtk_init (&argc, &argv);
+
+  window = gtk_widget_new (gtk_window_get_type (),
+			   "GtkObject::user_data", NULL,
+			   "GtkWindow::type", GTK_WINDOW_TOPLEVEL,
+			   "GtkWindow::title", "hello world",
+			   "GtkWindow::allow_grow", FALSE,
+			   "GtkWindow::allow_shrink", FALSE,
+			   "GtkContainer::border_width", 10,
+			   NULL);
+  button = gtk_widget_new (gtk_button_get_type (),
+			   "GtkButton::label", "hello world",
+			   "GtkObject::signal::clicked", hello, NULL,
+			   "GtkWidget::parent", window,
+			   "GtkWidget::visible", TRUE,
+			   NULL);
+  gtk_widget_show (window);
+
+  gtk_main ();
+
+  return 0;
+}
