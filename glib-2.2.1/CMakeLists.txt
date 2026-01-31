@@ -4,7 +4,7 @@ project(glib-lib C)
 set(GLIB_SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/glib")
 set(DIRENT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/build/win32/dirent")
 
-# --- √≈Õ≈–»–”≈Ã ’≈ƒ≈–-œ”—“€ÿ ” » —“¿¡ ---
+# --- –ì–ï–ù–ï–†–ò–†–£–ï–ú –•–ï–î–ï–†-–ü–£–°–¢–´–®–ö–£ –ò –°–¢–ê–ë ---
 file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/intl_stub")
 file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/intl_stub/libintl.h" "
 #ifndef _LIBINTL_H
@@ -23,13 +23,13 @@ file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/intl_stub/intl_fix.c" "
 char *dgettext (const char *d, const char *m) { return (char *)m; }
 char *bindtextdomain (const char *d, const char *p) { return (char *)p; }
 char *bind_textdomain_codeset (const char *d, const char *c) { return (char *)c; }
-/* »ÏÂÌ‡ Ò ÔÓ‰˜ÂÍË‚‡ÌËÂÏ ‰Îˇ x86 ÎËÌÍÂ‡ */
+/* –ò–º–µ–Ω–∞ —Å –ø–æ–¥—á–µ—Ä–∫–∏–≤–∞–Ω–∏–µ–º –¥–ª—è x86 –ª–∏–Ω–∫–µ—Ä–∞ */
 char *_dgettext (const char *d, const char *m) { return (char *)m; }
 char *_bindtextdomain (const char *d, const char *p) { return (char *)p; }
 char *_bind_textdomain_codeset (const char *d, const char *c) { return (char *)c; }
 ")
 
-#  ÓÌÙË„Ë
+# –ö–æ–Ω—Ñ–∏–≥–∏
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/config.h.win32" "${CMAKE_CURRENT_SOURCE_DIR}/config.h" COPYONLY)
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/glibconfig.h.win32" "${CMAKE_CURRENT_SOURCE_DIR}/glibconfig.h" COPYONLY)
 
@@ -69,7 +69,7 @@ target_include_directories(glib-2.0 PRIVATE
     "${GLIB_SRC_DIR}/libcharset"
     "${DIRENT_DIR}"
     "${CMAKE_CURRENT_SOURCE_DIR}/../libiconv-1.8-w32-1/include"
-    "${CMAKE_CURRENT_BINARY_DIR}/intl_stub" # ◊“Œ¡€ Õ¿ÿ≈À libintl.h
+    "${CMAKE_CURRENT_BINARY_DIR}/intl_stub" # –ß–¢–û–ë–´ –ù–ê–®–ï–õ libintl.h
 )
 
 target_link_libraries(glib-2.0 PRIVATE iconv user32 advapi32 wsock32 ole32 shell32)

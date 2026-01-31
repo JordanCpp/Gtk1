@@ -3,11 +3,11 @@ project(gdk-win32 C)
 
 
 
-# 1. Конфиги (исправляем пути)
+# 1. РљРѕРЅС„РёРіРё (РёСЃРїСЂР°РІР»СЏРµРј РїСѓС‚Рё)
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/../config.h.win32" "${CMAKE_CURRENT_SOURCE_DIR}/../config.h" COPYONLY)
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/gdkconfig.h.win32" "${CMAKE_CURRENT_SOURCE_DIR}/gdkconfig.h" COPYONLY)
 
-# 2. Дефайны
+# 2. Р”РµС„Р°Р№РЅС‹
 add_definitions(-DHAVE_CONFIG_H -DGDK_COMPILATION -DG_LOG_DOMAIN="Gdk" -DG_ENABLE_DEBUG)
 
 add_definitions(
@@ -18,27 +18,27 @@ add_definitions(
 
 
 
-# Обязательно добавляем путь к этой заглушке
+# РћР±СЏР·Р°С‚РµР»СЊРЅРѕ РґРѕР±Р°РІР»СЏРµРј РїСѓС‚СЊ Рє СЌС‚РѕР№ Р·Р°РіР»СѓС€РєРµ
 
 
 
 
 
 add_compile_options(/D"HAVE_WINTAB=0")
-# 3. Сборка БЭКЕНДА (win32/*.c)
+# 3. РЎР±РѕСЂРєР° Р‘Р­РљР•РќР”Рђ (win32/*.c)
 file(GLOB GDK_WIN32_SOURCES "win32/*.c")
 add_library(gdk_win32_backend STATIC ${GDK_WIN32_SOURCES})
 
-# КРИТИЧНО: прописываем пути для файлов в папке win32
+# РљР РРўРР§РќРћ: РїСЂРѕРїРёСЃС‹РІР°РµРј РїСѓС‚Рё РґР»СЏ С„Р°Р№Р»РѕРІ РІ РїР°РїРєРµ win32
 target_include_directories(gdk_win32_backend PUBLIC 
-    "${CMAKE_CURRENT_SOURCE_DIR}"          # Чтобы видели gdkprivate.h, gdkcolor.h и т.д.
-    "${CMAKE_CURRENT_SOURCE_DIR}/.."       # Чтобы видели config.h
+    "${CMAKE_CURRENT_SOURCE_DIR}"          # Р§С‚РѕР±С‹ РІРёРґРµР»Рё gdkprivate.h, gdkcolor.h Рё С‚.Рґ.
+    "${CMAKE_CURRENT_SOURCE_DIR}/.."       # Р§С‚РѕР±С‹ РІРёРґРµР»Рё config.h
     "${CMAKE_CURRENT_SOURCE_DIR}/win32"
-    "${CMAKE_CURRENT_SOURCE_DIR}/../../glib-2.2.1"       # Путь к glibconfig.h
-    "${CMAKE_CURRENT_SOURCE_DIR}/../../glib-2.2.1/glib"  # Путь к glib.h
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../glib-2.2.1"       # РџСѓС‚СЊ Рє glibconfig.h
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../glib-2.2.1/glib"  # РџСѓС‚СЊ Рє glib.h
 )
 
-# 4. Сборка основной DLL
+# 4. РЎР±РѕСЂРєР° РѕСЃРЅРѕРІРЅРѕР№ DLL
 set(GDK_SOURCES
     gdk.c gdkcolor.c gdkcursor.c gdkdraw.c gdkevents.c
     gdkfont.c gdkgc.c gdkglobals.c gdkimage.c gdkrgb.c
@@ -47,7 +47,7 @@ set(GDK_SOURCES
 
 add_library(gdk SHARED ${GDK_SOURCES} gdk.def)
 
-# Инклуды для основной DLL
+# РРЅРєР»СѓРґС‹ РґР»СЏ РѕСЃРЅРѕРІРЅРѕР№ DLL
 target_include_directories(gdk PRIVATE 
     "${CMAKE_CURRENT_SOURCE_DIR}"
     "${CMAKE_CURRENT_SOURCE_DIR}/.."
@@ -55,7 +55,7 @@ target_include_directories(gdk PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/../../glib-2.2.1/glib"
 )
 
-# 5. Линковка
+# 5. Р›РёРЅРєРѕРІРєР°
 target_link_libraries(gdk PRIVATE 
     gdk_win32_backend
     glib-2.0

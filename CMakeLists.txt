@@ -4,7 +4,7 @@ project(Gtk1-Full-Project C)
 if(MSVC)
     add_compile_options(/W3 /TC /D_CRT_SECURE_NO_WARNINGS /D_CRT_NONSTDC_NO_WARNINGS /wd4005 /wd4273)
     
-    # Стаб для strings.h
+    # РЎС‚Р°Р± РґР»СЏ strings.h
     file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/stubs")
     file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/stubs/strings.h" "#include <string.h>\n")
     include_directories("${CMAKE_CURRENT_BINARY_DIR}/stubs")
@@ -23,7 +23,7 @@ char *bindtextdomain (const char *domainname, const char *dirname) { return (cha
 char *bind_textdomain_codeset (const char *domainname, const char *codeset) { return (char *)codeset; }
 ]])
 
-# Добавляем все подпроекты по очереди
+# Р”РѕР±Р°РІР»СЏРµРј РІСЃРµ РїРѕРґРїСЂРѕРµРєС‚С‹ РїРѕ РѕС‡РµСЂРµРґРё
 add_subdirectory(libiconv-1.8-w32-1)
 add_subdirectory(gettext-0.10.40)
 add_subdirectory(glib-2.2.1)
@@ -33,23 +33,23 @@ add_subdirectory(glib-2.2.1/gthread)
 
 add_subdirectory(gtk+-1.3.0)
 
-message(STATUS "Все модули Gtk1 сконфигурированы.")
+message(STATUS "Р’СЃРµ РјРѕРґСѓР»Рё Gtk1 СЃРєРѕРЅС„РёРіСѓСЂРёСЂРѕРІР°РЅС‹.")
 
 function(add_gtk_example target_name source_file)
-    # 1. Создаем исполняемый файл
+    # 1. РЎРѕР·РґР°РµРј РёСЃРїРѕР»РЅСЏРµРјС‹Р№ С„Р°Р№Р»
     add_executable(${target_name} ${source_file})
 
-    # 2. Подключаем инклуды
+    # 2. РџРѕРґРєР»СЋС‡Р°РµРј РёРЅРєР»СѓРґС‹
     target_include_directories(${target_name} PRIVATE 
         "gtk+-1.3.0"
         "gtk+-1.3.0/gtk"
         "gtk+-1.3.0/gdk"
         "glib-2.2.1"
         "glib-2.2.1/glib"
-        "${CMAKE_CURRENT_BINARY_DIR}/stubs" # для strings.h
+        "${CMAKE_CURRENT_BINARY_DIR}/stubs" # РґР»СЏ strings.h
     )
 
-    # 3. Линкуем библиотеки
+    # 3. Р›РёРЅРєСѓРµРј Р±РёР±Р»РёРѕС‚РµРєРё
     target_link_libraries(${target_name} PRIVATE 
         gtk-1.3 
         gdk 
@@ -59,7 +59,7 @@ function(add_gtk_example target_name source_file)
         legacy_stdio_definitions.lib
     )
 
-    # 4. Копируем DLL после сборки (Post-Build)
+    # 4. РљРѕРїРёСЂСѓРµРј DLL РїРѕСЃР»Рµ СЃР±РѕСЂРєРё (Post-Build)
     add_custom_command(TARGET ${target_name} POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:gtk-1.3> $<TARGET_FILE_DIR:${target_name}>
         COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:gdk> $<TARGET_FILE_DIR:${target_name}>
@@ -69,7 +69,7 @@ function(add_gtk_example target_name source_file)
     )
 endfunction()
 
-# --- ТЕПЕРЬ ДОБАВЛЯТЬ ПРИМЕРЫ ОЧЕНЬ ПРОСТО ---
+# --- РўР•РџР•Р Р¬ Р”РћР‘РђР’Р›РЇРўР¬ РџР РРњР•Р Р« РћР§Р•РќР¬ РџР РћРЎРўРћ ---
 
 add_gtk_example(calendar "gtk+-1.3.0/examples/calendar/calendar.c")
 add_gtk_example(buttons "gtk+-1.3.0/examples/buttons/buttons.c")

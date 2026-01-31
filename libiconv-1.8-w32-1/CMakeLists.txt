@@ -9,7 +9,7 @@ configure_file("${ICONV_DIR}/lib/config.h.win32"                 "${ICONV_DIR}/l
 configure_file("${ICONV_DIR}/libcharset/config.h.msvc"           "${ICONV_DIR}/libcharset/config.h" COPYONLY)
 configure_file("${ICONV_DIR}/libcharset/include/libcharset.h.in" "${ICONV_DIR}/libcharset/include/libcharset.h" COPYONLY)
 
-# 3. 蚜涡世 寥了任遗嗜
+# 3. 小袘袨袪袣袗 袘袠袘袥袠袨孝袝袣袠
 add_library(iconv STATIC 
     "${ICONV_DIR}/lib/iconv.c" 
     "${ICONV_DIR}/libcharset/lib/localcharset.c"

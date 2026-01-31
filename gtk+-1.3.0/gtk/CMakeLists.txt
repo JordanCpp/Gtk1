@@ -1,22 +1,22 @@
 cmake_minimum_required(VERSION 3.25)
 project(gtk-lib C)
 
-# 0. œÓËÒÍ ËÌÒÚÛÏÂÌÚÓ‚
+# 0. –ü–æ–∏—Å–∫ –∏–Ω—Å—Ç—Ä—É–º–µ–Ω—Ç–æ–≤
 find_program(PERL_EXECUTABLE perl PATHS "C:/Program Files/Git/usr/bin" REQUIRED)
 find_program(AWK_EXECUTABLE awk PATHS "C:/Program Files/Git/usr/bin" REQUIRED)
 
 set(GTK_SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
 set(GTK_BIN_DIR "${CMAKE_CURRENT_BINARY_DIR}")
 
-# 1. œÓ‰„ÓÚÓ‚Í‡ ÍÓÌÙË„‡
+# 1. –ü–æ–¥–≥–æ—Ç–æ–≤–∫–∞ –∫–æ–Ω—Ñ–∏–≥–∞
 configure_file("${GTK_SRC_DIR}/../config.h.win32" "${GTK_SRC_DIR}/../config.h" COPYONLY)
 
-# 2. √ÎÓ·‡Î¸Ì˚Â ‰ÂÙ‡ÈÌ˚
+# 2. –ì–ª–æ–±–∞–ª—å–Ω—ã–µ –¥–µ—Ñ–∞–π–Ω—ã
 add_definitions(-DHAVE_CONFIG_H -Dnear=xxnear -DGTK_DISABLE_COMPAT_H -DGTK_COMPILATION -DG_LOG_DOMAIN="Gtk")
 
-# --- ¡ÀŒ  √≈Õ≈–¿÷»» ‘¿…ÀŒ¬ ---
+# --- –ë–õ–û–ö –ì–ï–ù–ï–†–ê–¶–ò–ò –§–ê–ô–õ–û–í ---
 
-# —ÔËÒÓÍ Á‡„ÓÎÓ‚ÍÓ‚ (ËÁ Makefile.msc)
+# –°–ø–∏—Å–æ–∫ –∑–∞–≥–æ–ª–æ–≤–∫–æ–≤ (–∏–∑ Makefile.msc)
 set(GTK_HDRS
     gtk.h gtkaccelgroup.h gtkaccellabel.h gtkadjustment.h gtkalignment.h gtkarg.h
     gtkarrow.h gtkaspectframe.h gtkbin.h gtkbindings.h gtkbbox.h gtkbox.h
@@ -39,11 +39,11 @@ set(GTK_HDRS
     gtkvscrollbar.h gtkvseparator.h gtkwidget.h gtkwindow.h
 )
 
-# —ÓÁ‰‡ÂÏ Á‡„ÓÎÓ‚Ó˜Ì˚Â ˜‡ÒÚË Ù‡ÈÎÓ‚ Á‡‡ÌÂÂ, ˜ÚÓ·˚ ËÁ·ÂÊ‡Ú¸ ÔÓ·ÎÂÏ Ò Í‡‚˚˜Í‡ÏË ‚ ÍÓÏ‡Ì‰‡ı echo
+# –°–æ–∑–¥–∞–µ–º –∑–∞–≥–æ–ª–æ–≤–æ—á–Ω—ã–µ —á–∞—Å—Ç–∏ —Ñ–∞–π–ª–æ–≤ –∑–∞—Ä–∞–Ω–µ–µ, —á—Ç–æ–±—ã –∏–∑–±–µ–∂–∞—Ç—å –ø—Ä–æ–±–ª–µ–º —Å –∫–∞–≤—ã—á–∫–∞–º–∏ –≤ –∫–æ–º–∞–Ω–¥–∞—Ö echo
 file(WRITE "${GTK_BIN_DIR}/header_builtins.h" "#include \"gtktypebuiltins.h\"\n")
 file(WRITE "${GTK_BIN_DIR}/header_gtk.h" "#include \"gtk.h\"\n")
 
-# ¿. gtk.defs
+# –ê. gtk.defs
 add_custom_command(
     OUTPUT "${GTK_BIN_DIR}/gtk.defs"
     COMMAND ${PERL_EXECUTABLE} "${GTK_SRC_DIR}/makeenums.pl" defs ${GTK_HDRS} > "${GTK_BIN_DIR}/gtk.defs"
@@ -51,28 +51,28 @@ add_custom_command(
     DEPENDS "${GTK_SRC_DIR}/makeenums.pl" ${GTK_HDRS}
 )
 
-# ¡. gtktypebuiltins.h
+# –ë. gtktypebuiltins.h
 add_custom_command(
     OUTPUT "${GTK_BIN_DIR}/gtktypebuiltins.h"
     COMMAND ${AWK_EXECUTABLE} -f "${GTK_SRC_DIR}/maketypes.awk" "${GTK_BIN_DIR}/gtk.defs" macros > "${GTK_BIN_DIR}/gtktypebuiltins.h"
     DEPENDS "${GTK_BIN_DIR}/gtk.defs" "${GTK_SRC_DIR}/maketypes.awk"
 )
 
-# ¬. gtktypebuiltins_vars.c (“ŒÀ‹ Œ ƒ¿ÕÕ€≈)
+# –í. gtktypebuiltins_vars.c (–¢–û–õ–¨–ö–û –î–ê–ù–ù–´–ï)
 add_custom_command(
     OUTPUT "${GTK_BIN_DIR}/gtktypebuiltins_vars.c"
     COMMAND ${AWK_EXECUTABLE} -f "${GTK_SRC_DIR}/maketypes.awk" "${GTK_BIN_DIR}/gtk.defs" variables > "${GTK_BIN_DIR}/gtktypebuiltins_vars.c"
     DEPENDS "${GTK_BIN_DIR}/gtk.defs" "${GTK_SRC_DIR}/maketypes.awk"
 )
 
-# ƒ. gtktypebuiltins_ids.c (“ŒÀ‹ Œ ƒ¿ÕÕ€≈)
+# –î. gtktypebuiltins_ids.c (–¢–û–õ–¨–ö–û –î–ê–ù–ù–´–ï)
 add_custom_command(
     OUTPUT "${GTK_BIN_DIR}/gtktypebuiltins_ids.c"
     COMMAND ${AWK_EXECUTABLE} -f "${GTK_SRC_DIR}/maketypes.awk" "${GTK_BIN_DIR}/gtk.defs" entries > "${GTK_BIN_DIR}/gtktypebuiltins_ids.c"
     DEPENDS "${GTK_BIN_DIR}/gtk.defs" "${GTK_SRC_DIR}/maketypes.awk"
 )
 
-# √. gtktypebuiltins_evals.c (“ŒÀ‹ Œ ƒ¿ÕÕ€≈)
+# –ì. gtktypebuiltins_evals.c (–¢–û–õ–¨–ö–û –î–ê–ù–ù–´–ï)
 add_custom_command(
     OUTPUT "${GTK_BIN_DIR}/gtktypebuiltins_evals.c"
     COMMAND ${PERL_EXECUTABLE} "${GTK_SRC_DIR}/makeenums.pl" arrays ${GTK_HDRS} > "${GTK_BIN_DIR}/gtktypebuiltins_evals.c"
@@ -81,7 +81,7 @@ add_custom_command(
 )
 
 
-# --- —¡Œ– ¿ ¡»¡À»Œ“≈ » ---
+# --- –°–ë–û–†–ö–ê –ë–ò–ë–õ–ò–û–¢–ï–ö–ò ---
 
 set(GTK_SOURCES
     fnmatch.c gtkaccelgroup.c gtkaccellabel.c gtkadjustment.c gtkalignment.c

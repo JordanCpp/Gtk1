@@ -5,7 +5,7 @@ configure_file("gmoduleconf.h.win32" "${CMAKE_CURRENT_SOURCE_DIR}/gmoduleconf.h"
 
 add_definitions(-DHAVE_CONFIG_H -DG_LOG_DOMAIN="GModule")
 
-# В Windows используется реализация gmodule-win32.c
+# Р’ Windows РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ СЂРµР°Р»РёР·Р°С†РёСЏ gmodule-win32.c
 add_library(gmodule-2.0 SHARED 
     "gmodule.c"
     "gmodule.def"
